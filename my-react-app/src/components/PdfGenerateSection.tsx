@@ -11,6 +11,45 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
   const [showPreview, setShowPreview] = useState(false);
   const [inputText1, setInputText1] = useState('');
+  const [inputDate2, setInputDate2] = useState('');
+
+  const getMonthInEnglish = (dateString: string): string => {
+    const date = new Date(dateString);
+    const months = [
+      'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    const month = months[date.getMonth()];
+    const year = date.getFullYear();
+    return `${month}, ${year}`;
+  };
+
+  const getDayWithOrdinal = (dateString: string): string => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    if (day > 3 && day < 21) return `${day}th`;
+    switch (day % 10) {
+      case 1: return `${day}st`;
+      case 2: return `${day}nd`;
+      case 3: return `${day}rd`;
+      default: return `${day}th`;
+    }
+  };
+
+  const getMonthNumber = (dateString: string): string => {
+    const date = new Date(dateString);
+    return String(date.getMonth() + 1).padStart(2, '0');
+  };
+
+  const getDateNumber = (dateString: string): string => {
+    const date = new Date(dateString);
+    return String(date.getDate()).padStart(2, '0');
+  };
+
+  const getYear = (dateString: string): string => {
+    const date = new Date(dateString);
+    return String(date.getFullYear());
+  };
 
   const generatePDF = async () => {
     try {
@@ -23,25 +62,71 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
       const pages = pdfDoc.getPages();
       const { width, height } = pages[0].getSize()
       
-      // Add width value in small text
-      // pages[0].drawText(width.toString(), {
-      //   x: 5,
-      //   y: 5,
-      //   size: 12,
-      //   font: helveticaFont,
-      //   color: rgb(0.95, 0.1, 0.1),
-      // })
+      // Add date information if date is provided
+      if (inputDate2.trim()) {
+        // Original displays (day with ordinal and month, year)
+        const monthInEnglish = getMonthInEnglish(inputDate2);
+        pages[0].drawText(monthInEnglish, {
+          x: 260,
+          y: height - 128,
+          size: 14,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+
+        const dayWithOrdinal = getDayWithOrdinal(inputDate2);
+        pages[0].drawText(dayWithOrdinal, {
+          x: 168,
+          y: height - 128,
+          size: 14,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+
+        // New displays
+        // Date at top left
+        const dateNumber = getDateNumber(inputDate2);
+        pages[0].drawText(dateNumber, {
+          x: 394,
+          y: height - 156,
+          size: 14,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+
+        // Month number at top right
+        const monthNumber = getMonthNumber(inputDate2);
+        pages[0].drawText(monthNumber, {
+          x: 353,
+          y: height - 156,
+          size: 14,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+
+        // Year at bottom left
+        const year = getYear(inputDate2);
+        pages[0].drawText(year, {
+          x: 293,
+          y: height - 156,
+          size: 14,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+      }
 
       // Add user input text
       if (inputText1.trim()) {
         pages[0].drawText(inputText1, {
           x: 168,
-          y: height - 128, // Position from top
+          y: height - 128,
           size: 14,
           font: helveticaFont,
-          color: rgb(0, 0, 0), // Black color
+          color: rgb(0, 0, 0),
         })
       }
+
+      pdfDoc.removePage(2);
 
       const pdfBytes = await pdfDoc.save();
 
@@ -78,7 +163,16 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   return (
     <div className="pdf-generate-section">
       <div className="left-section">
-        <h2>PDF Generator</h2>
+        <h2>PDF Generator</h2>     
+        <div className="input-group">
+          <label htmlFor="pdf-date-2">Sign Date:</label>
+          <input
+            type="date"
+            id="pdf-date-2"
+            value={inputDate2}
+            onChange={(e) => setInputDate2(e.target.value)}
+          />
+        </div>
         <div className="input-group">
           <label htmlFor="pdf-text-1">Field 1:</label>
           <input
