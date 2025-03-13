@@ -49,6 +49,31 @@
   border-color: #007bff;
 }
 
+.input-group input[type="number"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  color: #333;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  appearance: none;
+}
+
+.input-group input[type="number"]:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+}
+
+.input-group input[type="number"]::-webkit-inner-spin-button,
+.input-group input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .controls {
   display: flex;
   justify-content: center;
@@ -150,4 +175,55 @@
 .placeholder-content p {
   margin: 0;
   font-size: 1.1rem;
+}
+
+.date-range-group {
+  display: flex;
+  gap: 2rem;
+  margin: 1.5rem 0;
+  justify-content: space-between;
+}
+
+.date-range-group .input-group {
+  flex: 0 1 48%;
+  margin: 0;
+}
+
+.date-range-group input[type="date"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  color: #333;
+}
+
+.date-range-group input[type="date"]:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+}
+
+@media screen and (max-width: 1366px) {
+  .pdf-generate-section {
+    flex-direction: column;
+    height: 100vh;
+    min-height: 100vh;
+  }
+
+  .left-section {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .right-section {
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid #e0e0e0;
+    padding-left: 0;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    min-height: 600px;
+  }
 }

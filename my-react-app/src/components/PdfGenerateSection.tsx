@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './PdfGenerateSection.css';
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
+import { toUpperCase, toChineseWithUnits } from 'chinese-number-format';
 
 interface PdfGenerateSectionProps {
   // Add props here as needed
@@ -11,6 +12,13 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
   const [showPreview, setShowPreview] = useState(false);
   const [inputText1, setInputText1] = useState('');
+  const [inputText2, setInputText2] = useState('');
+  const [inputText3, setInputText3] = useState('');
+  const [inputText4, setInputText4] = useState('');
+  const [inputText5, setInputText5] = useState('');
+  const [rentAmount, setRentAmount] = useState('');
+  const [dateFrom, setDateFrom] = useState('');
+  const [dateTo, setDateTo] = useState('');
   const [inputDate2, setInputDate2] = useState('');
 
   const getMonthInEnglish = (dateString: string): string => {
@@ -51,6 +59,15 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
     return String(date.getFullYear());
   };
 
+  const formatDate = (dateString: string): string => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  };
+
   const generatePDF = async () => {
     try {
       setIsLoading(true);
@@ -60,7 +77,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
       const pdfDoc = await PDFDocument.load(pdfBuffer);
       const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica)
       const pages = pdfDoc.getPages();
-      const { width, height } = pages[0].getSize()
+      const { height } = pages[0].getSize()
       
       // Add date information if date is provided
       if (inputDate2.trim()) {
@@ -115,15 +132,173 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
         });
       }
 
-      // Add user input text
+
+
+      // Add user input text 1: The Premises
       if (inputText1.trim()) {
-        pages[0].drawText(inputText1, {
-          x: 168,
-          y: height - 128,
+        pages[3].drawText(inputText1, {
+          x: 128,
+          y: height - 96,
           size: 14,
           font: helveticaFont,
           color: rgb(0, 0, 0),
         })
+      }
+
+      // Add user input text 2: The Landlord
+      if (inputText2.trim()) {
+        pages[3].drawText(inputText2, {
+          x: 128,
+          y: height - 132,
+          size: 14,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        })
+      }
+
+      // Add user input text 3: Landlord Address
+      if (inputText3.trim()) {
+        pages[3].drawText(inputText3, {
+          x: 128,
+          y: height - 160,
+          size: 14,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        })
+      }
+
+      // Add user input text 4: The Tenant
+      if (inputText4.trim()) {
+        pages[3].drawText(inputText4, {
+          x: 128,
+          y: height - 192,
+          size: 14,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        })
+      }
+
+      // Add user input text 5: Tenant Address
+      if (inputText5.trim()) {
+        pages[3].drawText(inputText5, {
+          x: 128,
+          y: height - 220,
+          size: 14,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        })
+      }
+
+      // Add date range of the Term at the top of page 3
+      if (dateFrom) {
+        // Display full date in DD/MM/YYYY format
+        pages[3].drawText(formatDate(dateFrom), {
+          x: 170,
+          y: height - 242,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        })
+
+        // Add date components
+        const fromDate = new Date(dateFrom);
+        const fromDay = String(fromDate.getDate()).padStart(2, '0');
+        const fromMonth = String(fromDate.getMonth() + 1).padStart(2, '0');
+        const fromYear = String(fromDate.getFullYear());
+
+        // Day
+        pages[3].drawText(fromDay, {
+          x: 248,
+          y: height - 257,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+
+        // Month
+        pages[3].drawText(fromMonth, {
+          x: 208,
+          y: height - 257,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+
+        // Year
+        pages[3].drawText(fromYear, {
+          x: 148,
+          y: height - 257,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+      }
+      
+      if (dateTo) {
+        // Display full date in DD/MM/YYYY format
+        pages[3].drawText(formatDate(dateTo), {
+          x: 310,
+          y: height - 242,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        })
+
+        // Add date components
+        const toDate = new Date(dateTo);
+        const toDay = String(toDate.getDate()).padStart(2, '0');
+        const toMonth = String(toDate.getMonth() + 1).padStart(2, '0');
+        const toYear = String(toDate.getFullYear());
+
+        // Day
+        pages[3].drawText(toDay, {
+          x: 404,
+          y: height - 257,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+
+        // Month
+        pages[3].drawText(toMonth, {
+          x: 366,
+          y: height - 257,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0)
+        });
+
+        // Year
+        pages[3].drawText(toYear, {
+          x: 308,
+          y: height - 257,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+      }
+
+      // Add rent amount
+      if (rentAmount) {
+        // Display at original position
+        pages[3].drawText(rentAmount + " -", {
+          x: 160,
+          y: height - 278,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+
+        // Display Chinese
+        const amount = Number(rentAmount);
+        console.log(toChineseWithUnits(amount, 'zh-CN'));
+        pages[3].drawText(toChineseWithUnits(amount, 'zh-CN'), {
+          x: 50,
+          y: height - 50,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
       }
 
       pdfDoc.removePage(2);
@@ -174,13 +349,85 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           />
         </div>
         <div className="input-group">
-          <label htmlFor="pdf-text-1">Field 1:</label>
+          <label htmlFor="pdf-text-1">The Premises:</label>
           <input
             type="text"
             id="pdf-text-1"
             value={inputText1}
             onChange={(e) => setInputText1(e.target.value)}
             placeholder="Enter text to add to PDF"
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor="pdf-text-2">The Landlord:</label>
+          <input
+            type="text"
+            id="pdf-text-2"
+            value={inputText2}
+            onChange={(e) => setInputText2(e.target.value)}
+            placeholder="Enter text to add to PDF"
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor="pdf-text-3">Landlord Address:</label>
+          <input
+            type="text"
+            id="pdf-text-3"
+            value={inputText3}
+            onChange={(e) => setInputText3(e.target.value)}
+            placeholder="Enter text to add to PDF"
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor="pdf-text-4">Tenant:</label>
+          <input
+            type="text"
+            id="pdf-text-4"
+            value={inputText4}
+            onChange={(e) => setInputText4(e.target.value)}
+            placeholder="Enter text to add to PDF"
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor="pdf-text-5">Tenant Address:</label>
+          <input
+            type="text"
+            id="pdf-text-5"
+            value={inputText5}
+            onChange={(e) => setInputText5(e.target.value)}
+            placeholder="Enter text to add to PDF"
+          />
+        </div>
+        <div className="date-range-group">
+          <div className="input-group">
+            <label htmlFor="date-from">From:</label>
+            <input
+              type="date"
+              id="date-from"
+              value={dateFrom}
+              onChange={(e) => setDateFrom(e.target.value)}
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="date-to">To:</label>
+            <input
+              type="date"
+              id="date-to"
+              value={dateTo}
+              onChange={(e) => setDateTo(e.target.value)}
+            />
+          </div>
+        </div>
+        <div className="input-group">
+          <label htmlFor="rent-amount">Rent:</label>
+          <input
+            type="number"
+            id="rent-amount"
+            value={rentAmount}
+            onChange={(e) => setRentAmount(e.target.value)}
+            placeholder="Enter rent amount"
+            min="0"
+            step="0.01"
           />
         </div>
         <div className="controls">
