@@ -151,7 +151,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           x: 128,
           y: height - 96,
           size: 14,
-          font: helveticaFont,
+          font: chineseFont,
           color: rgb(0, 0, 0),
         })
       }
@@ -162,7 +162,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           x: 128,
           y: height - 132,
           size: 14,
-          font: helveticaFont,
+          font: chineseFont,
           color: rgb(0, 0, 0),
         })
       }
@@ -173,7 +173,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           x: 128,
           y: height - 160,
           size: 14,
-          font: helveticaFont,
+          font: chineseFont,
           color: rgb(0, 0, 0),
         })
       }
@@ -184,7 +184,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           x: 128,
           y: height - 192,
           size: 14,
-          font: helveticaFont,
+          font: chineseFont,
           color: rgb(0, 0, 0),
         })
       }
@@ -195,7 +195,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           x: 128,
           y: height - 220,
           size: 14,
-          font: helveticaFont,
+          font: chineseFont,
           color: rgb(0, 0, 0),
         })
       }
