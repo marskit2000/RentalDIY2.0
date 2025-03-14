@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './PdfGenerateSection.css';
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
-import { toUpperCase, toChineseWithUnits } from 'chinese-number-format';
+import fontkit from '@pdf-lib/fontkit'
+import { toChinese, toUpperCase, toChineseWithUnits } from 'chinese-number-format';
 
 interface PdfGenerateSectionProps {
   // Add props here as needed
@@ -17,6 +18,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const [inputText4, setInputText4] = useState('');
   const [inputText5, setInputText5] = useState('');
   const [rentAmount, setRentAmount] = useState('');
+  const [securityDeposit, setSecurityDeposit] = useState('');
   const [dateFrom, setDateFrom] = useState('');
   const [dateTo, setDateTo] = useState('');
   const [inputDate2, setInputDate2] = useState('');
@@ -75,7 +77,16 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
       const pdfBuffer = await response.arrayBuffer();
       
       const pdfDoc = await PDFDocument.load(pdfBuffer);
+
+      // Fonts
       const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica)
+      pdfDoc.registerFontkit(fontkit)
+      const defaultFontBuffer = await fetch(
+        '/src/assets/fonts/NotoSansTC-Regular.ttf',
+    ).then(res => res.arrayBuffer());
+    const chineseFont = await pdfDoc.embedFont(defaultFontBuffer);
+
+
       const pages = pdfDoc.getPages();
       const { height } = pages[0].getSize()
       
@@ -291,12 +302,67 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
 
         // Display Chinese
         const amount = Number(rentAmount);
-        console.log(toChineseWithUnits(amount, 'zh-CN'));
-        pages[3].drawText(toChineseWithUnits(amount, 'zh-CN'), {
-          x: 50,
-          y: height - 50,
+        pages[3].drawText(toChineseWithUnits(amount, 'zh-TW')+"元正", {
+          x: 186,
+          y: height - 293,
+          size: 12,
+          font: chineseFont,
+          color: rgb(0, 0, 0),
+        });
+      }
+
+      // Add security deposit amount
+      if (securityDeposit) {
+        // Display at original position
+        pages[3].drawText(securityDeposit + " -", {
+          x: 160,
+          y: height - 323,
           size: 12,
           font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+
+        // Display Chinese
+        const depositAmount = Number(securityDeposit);
+        const tenPlace = ((Math.floor(depositAmount / 10) * 10)%100)/10;
+        const hundredPlace = ((Math.floor(depositAmount / 100) * 100)%1000)/100;
+        const thousandPlace = ((Math.floor(depositAmount / 1000) * 1000)%10000)/1000;
+        const tenThousandPlace = (Math.floor(depositAmount / 10000) * 10000)/10000;
+        console.log(toChinese(tenPlace), toChinese(hundredPlace), toChinese(thousandPlace), toChinese(tenThousandPlace));
+        
+        // Display 10
+        pages[3].drawText(toChinese(tenPlace), {
+          x: 288,
+          y: height - 335,
+          size: 10,
+          font: chineseFont,
+          color: rgb(0, 0, 0),
+        });
+
+        // Display 100
+        pages[3].drawText(toChinese(hundredPlace), {
+          x: 248,
+          y: height - 335,
+          size: 10,
+          font: chineseFont,
+          color: rgb(0, 0, 0),
+        });
+
+        // Display 1000
+        pages[3].drawText(toChinese(thousandPlace), {
+          x: 206,
+          y: height - 335,
+          size: 10,
+          font: chineseFont,
+          color: rgb(0, 0, 0),
+        });
+
+        // Display 10000
+        pages[3].drawText(toChineseWithUnits(tenThousandPlace), {
+          x: 151,
+          y: height - 335,
+          size: 10,
+          font: chineseFont,
           color: rgb(0, 0, 0),
         });
       }
@@ -426,6 +492,18 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
             value={rentAmount}
             onChange={(e) => setRentAmount(e.target.value)}
             placeholder="Enter rent amount"
+            min="0"
+            step="0.01"
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor="security-deposit">Security Deposit:</label>
+          <input
+            type="number"
+            id="security-deposit"
+            value={securityDeposit}
+            onChange={(e) => setSecurityDeposit(e.target.value)}
+            placeholder="Enter security deposit amount"
             min="0"
             step="0.01"
           />
