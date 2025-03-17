@@ -19,6 +19,10 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const [inputText5, setInputText5] = useState('');
   const [rentAmount, setRentAmount] = useState('');
   const [securityDeposit, setSecurityDeposit] = useState('');
+  const [propertyUse, setPropertyUse] = useState('residential');
+  const [managementFee, setManagementFee] = useState('landlord');
+  const [governmentRates, setGovernmentRates] = useState('landlord');
+  const [governmentRent, setGovernmentRent] = useState('landlord');
   const [dateFrom, setDateFrom] = useState('');
   const [dateTo, setDateTo] = useState('');
   const [inputDate2, setInputDate2] = useState('');
@@ -89,6 +93,9 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
 
       const pages = pdfDoc.getPages();
       const { height } = pages[0].getSize()
+
+      const fontColor = rgb(0, 0, 0);
+      const lineColor = rgb(0, 0, 0);
       
       // Add date information if date is provided
       if (inputDate2.trim()) {
@@ -99,7 +106,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 128,
           size: 14,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
 
         const dayWithOrdinal = getDayWithOrdinal(inputDate2);
@@ -108,7 +115,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 128,
           size: 14,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
 
         // New displays
@@ -119,7 +126,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 156,
           size: 14,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
 
         // Month number at top right
@@ -129,7 +136,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 156,
           size: 14,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
 
         // Year at bottom left
@@ -139,7 +146,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 156,
           size: 14,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
       }
 
@@ -152,7 +159,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 96,
           size: 14,
           font: chineseFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         })
       }
 
@@ -163,7 +170,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 132,
           size: 14,
           font: chineseFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         })
       }
 
@@ -174,7 +181,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 160,
           size: 14,
           font: chineseFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         })
       }
 
@@ -185,7 +192,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 192,
           size: 14,
           font: chineseFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         })
       }
 
@@ -196,7 +203,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 220,
           size: 14,
           font: chineseFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         })
       }
 
@@ -208,7 +215,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 242,
           size: 12,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         })
 
         // Add date components
@@ -223,7 +230,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 257,
           size: 12,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
 
         // Month
@@ -232,7 +239,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 257,
           size: 12,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
 
         // Year
@@ -241,7 +248,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 257,
           size: 12,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
       }
       
@@ -252,7 +259,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 242,
           size: 12,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         })
 
         // Add date components
@@ -267,7 +274,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 257,
           size: 12,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
 
         // Month
@@ -276,7 +283,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 257,
           size: 12,
           font: helveticaFont,
-          color: rgb(0, 0, 0)
+          color: fontColor,
         });
 
         // Year
@@ -285,7 +292,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 257,
           size: 12,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
       }
 
@@ -297,7 +304,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 278,
           size: 12,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
 
         // Display Chinese
@@ -307,7 +314,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 293,
           size: 12,
           font: chineseFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
       }
 
@@ -319,7 +326,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 323,
           size: 12,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
 
         // Display Chinese
@@ -336,7 +343,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 335,
           size: 10,
           font: chineseFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
 
         // Display 100
@@ -345,7 +352,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 335,
           size: 10,
           font: chineseFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
 
         // Display 1000
@@ -354,7 +361,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 335,
           size: 10,
           font: chineseFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
 
         // Display 10000
@@ -363,7 +370,149 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 335,
           size: 10,
           font: chineseFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
+        });
+      }
+
+      // Add property use
+      if (propertyUse) {
+        // Display property use at top right of page 3
+        pages[3].drawText(propertyUse, {
+          x: 62,
+          y: height - 448,
+          size: 12,
+          font: helveticaFont,
+          color: fontColor,
+        });
+
+        // Display Chinese
+        let propertyUseChinese = "";
+        if (propertyUse === "residential") {
+          propertyUseChinese = "住宅";
+        } else if (propertyUse === "commercial") {
+          propertyUseChinese = "商業";
+        } else if (propertyUse === "office") {
+          propertyUseChinese = "辦公室";
+        } else if (propertyUse === "shop") {
+          propertyUseChinese = "商店";
+        } else if (propertyUse === "industrial") { 
+          propertyUseChinese = "工業";
+        }
+
+        pages[3].drawText(propertyUseChinese, {
+          x: 146,
+          y: height - 476,
+          size: 12,
+          font: chineseFont,
+          color: fontColor,
+        });
+      }
+
+      
+
+      // Add management fee indicator
+      const managementFeeY = height - 566;
+      const managementFeeYChinese = height - 595;
+      if (managementFee === 'landlord') {
+        //Draw red line at English position
+        pages[3].drawLine({
+          start: { x: 236, y: managementFeeY },
+          end: { x: 278, y: managementFeeY },
+          thickness: 1,
+          color: lineColor,
+        })
+        // Draw red line at Chinese position
+        pages[3].drawLine({
+          start: { x: 142, y: managementFeeYChinese },
+          end: { x: 164, y: managementFeeYChinese },
+          thickness: 1,
+          color: lineColor,
+        });
+      } else if (managementFee === 'tenant') {
+        //Draw red line at English position
+        pages[3].drawLine({
+          start: { x: 186, y: managementFeeY },
+          end: { x: 230, y: managementFeeY },
+          thickness: 1,
+          color: lineColor,
+        })
+
+        // Draw red line at Chinese position
+        pages[3].drawLine({
+          start: { x: 112, y: managementFeeYChinese },
+          end: { x: 134, y: managementFeeYChinese },
+          thickness: 1,
+          color: lineColor,
+        });
+      }
+
+      // Add government rates indicator
+      const governmentRatesY = height - 619;
+      const governmentRatesYChinese = height - 633;
+      if (governmentRates === 'landlord') {
+        // Draw red line at English position
+        pages[3].drawLine({
+          start: { x: 246, y: governmentRatesY },
+          end: { x: 284, y: governmentRatesY },
+          thickness: 1,
+          color: lineColor,
+        })
+        // Draw red line at Chinese position
+        pages[3].drawLine({
+          start: { x: 130, y: governmentRatesYChinese },
+          end: { x: 154, y: governmentRatesYChinese },
+          thickness: 1,
+          color: lineColor,
+        });
+      } else if (governmentRates === 'tenant') {
+        // Draw red line at English position
+        pages[3].drawLine({
+          start: { x: 194, y: governmentRatesY },
+          end: { x: 242, y: governmentRatesY },
+          thickness: 1,
+          color: lineColor,
+        })
+        // Draw red line at Chinese position (top left + 25px)
+        pages[3].drawLine({
+          start: { x: 100, y: governmentRatesYChinese },
+          end: { x: 122, y: governmentRatesYChinese },
+          thickness: 1,
+          color: lineColor,
+        });
+      }
+
+      // Add government rent indicator
+      const governmentRentY = height - 655;
+      const governmentRentYChinese = height - 667;
+      if (governmentRent === 'landlord') {
+        // Draw red line at English position
+        pages[3].drawLine({
+          start: { x: 242, y: governmentRentY },
+          end: { x: 278, y: governmentRentY },
+          thickness: 1,
+          color: lineColor,
+        })
+        // Draw red line at Chinese position
+        pages[3].drawLine({
+          start: { x: 130, y: governmentRentYChinese },
+          end: { x: 154, y: governmentRentYChinese },
+          thickness: 1,
+          color: lineColor,
+        });
+      } else if (governmentRent === 'tenant') {
+        // Draw red line at English position
+        pages[3].drawLine({
+          start: { x: 189, y: governmentRentY },
+          end: { x: 235, y: governmentRentY },
+          thickness: 1,
+          color: lineColor,
+        })
+        // Draw red line at Chinese position (top left + 25px)
+        pages[3].drawLine({
+          start: { x: 100, y: governmentRentYChinese },
+          end: { x: 122, y: governmentRentYChinese },
+          thickness: 1,
+          color: lineColor,
         });
       }
 
@@ -507,6 +656,55 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
             min="0"
             step="0.01"
           />
+        </div>
+        <div className="input-group">
+          <label htmlFor="property-use">Property Use:</label>
+          <select
+            id="property-use"
+            value={propertyUse}
+            onChange={(e) => setPropertyUse(e.target.value)}
+          >
+            <option value="residential">Residential</option>
+            <option value="commercial">Commercial</option>
+            <option value="office">Office</option>
+            <option value="shop">Shop</option>
+            <option value="industrial">Industrial</option>
+          </select>
+        </div>
+        <div className="fee-row">
+          <div className="input-group">
+            <label htmlFor="management-fee">Management Fee:</label>
+            <select
+              id="management-fee"
+              value={managementFee}
+              onChange={(e) => setManagementFee(e.target.value)}
+            >
+              <option value="landlord">Landlord</option>
+              <option value="tenant">Tenant</option>
+            </select>
+          </div>
+          <div className="input-group">
+            <label htmlFor="government-rates">Government Rates:</label>
+            <select
+              id="government-rates"
+              value={governmentRates}
+              onChange={(e) => setGovernmentRates(e.target.value)}
+            >
+              <option value="landlord">Landlord</option>
+              <option value="tenant">Tenant</option>
+            </select>
+          </div>
+          <div className="input-group">
+            <label htmlFor="government-rent">Government Rent:</label>
+            <select
+              id="government-rent"
+              value={governmentRent}
+              onChange={(e) => setGovernmentRent(e.target.value)}
+            >
+              <option value="landlord">Landlord</option>
+              <option value="tenant">Tenant</option>
+            </select>
+          </div>
         </div>
         <div className="controls">
           <button 
