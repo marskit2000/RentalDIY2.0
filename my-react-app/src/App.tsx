@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>PDF Generator App</h1>
+        <h1>Rental Agreement DIY</h1>
       </header>
       <main>
         <PdfGenerateSection />

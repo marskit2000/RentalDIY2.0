@@ -23,6 +23,8 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const [managementFee, setManagementFee] = useState('landlord');
   const [governmentRates, setGovernmentRates] = useState('landlord');
   const [governmentRent, setGovernmentRent] = useState('landlord');
+  const [rentFreeFrom, setRentFreeFrom] = useState('');
+  const [rentFreeTo, setRentFreeTo] = useState('');
   const [dateFrom, setDateFrom] = useState('');
   const [dateTo, setDateTo] = useState('');
   const [inputDate2, setInputDate2] = useState('');
@@ -320,7 +322,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
 
       // Add security deposit amount
       if (securityDeposit) {
-        // Display at original position
+        // Display at page 3
         pages[3].drawText(securityDeposit + " -", {
           x: 160,
           y: height - 323,
@@ -329,14 +331,25 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           color: fontColor,
         });
 
+        //Display at page 1
+        pages[1].drawText(securityDeposit + " -", {
+          x: 80,
+          y: height - 551,
+          size: 12,
+          font: helveticaFont,
+          color: fontColor,
+        });
+
         // Display Chinese
         const depositAmount = Number(securityDeposit);
+        const singlePlace = depositAmount%10;
         const tenPlace = ((Math.floor(depositAmount / 10) * 10)%100)/10;
         const hundredPlace = ((Math.floor(depositAmount / 100) * 100)%1000)/100;
         const thousandPlace = ((Math.floor(depositAmount / 1000) * 1000)%10000)/1000;
         const tenThousandPlace = (Math.floor(depositAmount / 10000) * 10000)/10000;
         console.log(toChinese(tenPlace), toChinese(hundredPlace), toChinese(thousandPlace), toChinese(tenThousandPlace));
         
+        // Display at page 3
         // Display 10
         pages[3].drawText(toChinese(tenPlace), {
           x: 288,
@@ -368,6 +381,52 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
         pages[3].drawText(toChineseWithUnits(tenThousandPlace), {
           x: 151,
           y: height - 335,
+          size: 10,
+          font: chineseFont,
+          color: fontColor,
+        });
+
+        // Display at page 1
+        const heightAdjustmentPage1 = 587;
+        // Display 1
+        pages[1].drawText(toChinese(singlePlace), {
+          x: 178,
+          y: height - heightAdjustmentPage1,
+          size: 10,
+          font: chineseFont,
+          color: fontColor,
+        });
+        // Display 10
+        pages[1].drawText(toChinese(tenPlace), {
+          x: 148,
+          y: height - heightAdjustmentPage1,
+          size: 10,
+          font: chineseFont,
+          color: fontColor,
+        });
+
+        // Display 100
+        pages[1].drawText(toChinese(hundredPlace), {
+          x: 118,
+          y: height - heightAdjustmentPage1,
+          size: 10,
+          font: chineseFont,
+          color: fontColor,
+        });
+
+        // Display 1000
+        pages[1].drawText(toChinese(thousandPlace), {
+          x: 89,
+          y: height - heightAdjustmentPage1,
+          size: 10,
+          font: chineseFont,
+          color: fontColor,
+        });
+
+        // Display 10000
+        pages[1].drawText(toChineseWithUnits(tenThousandPlace), {
+          x: 59,
+          y: height - heightAdjustmentPage1,
           size: 10,
           font: chineseFont,
           color: fontColor,
@@ -516,6 +575,60 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
         });
       }
 
+      // Add rent free period dates
+
+      if (rentFreeFrom) {
+        pages[3].drawText(formatDate(rentFreeFrom), {
+          x: 340,
+          y: height - 741,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+
+        pages[3].drawText(formatDate(rentFreeFrom), {
+          x: 202,
+          y: height - 800,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+      }
+
+      if (rentFreeTo) {
+        pages[3].drawText(formatDate(rentFreeTo), {
+          x: 480,
+          y: height - 741,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+
+        pages[3].drawText(formatDate(rentFreeTo), {
+          x: 288,
+          y: height - 800,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+      }
+
+      // Calculate date difference if both dates are available
+      if (rentFreeFrom && rentFreeTo) {
+        const fromDate = new Date(rentFreeFrom);
+        const toDate = new Date(rentFreeTo);
+        const diffTime = toDate.getTime() - fromDate.getTime();
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        const diffDaysInclusive = diffDays + 1;
+        pages[3].drawText(diffDaysInclusive.toString(), {
+          x: 106,
+          y: height - 800,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+      }
+
       pdfDoc.removePage(2);
 
       const pdfBytes = await pdfDoc.save();
@@ -552,8 +665,8 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
 
   return (
     <div className="pdf-generate-section">
-      <div className="left-section">
-        <h2>PDF Generator</h2>     
+      <div className="left-section">  
+        <p className="input-group-heading">Please fill in the following information:</p>
         <div className="input-group">
           <label htmlFor="pdf-date-2">Sign Date:</label>
           <input
@@ -706,6 +819,26 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
             </select>
           </div>
         </div>
+        <div className="date-range-group">
+          <div className="input-group">
+            <label htmlFor="rent-free-from">Rent Free From:</label>
+            <input
+              type="date"
+              id="rent-free-from"
+              value={rentFreeFrom}
+              onChange={(e) => setRentFreeFrom(e.target.value)}
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="rent-free-to">Rent Free To:</label>
+            <input
+              type="date"
+              id="rent-free-to"
+              value={rentFreeTo}
+              onChange={(e) => setRentFreeTo(e.target.value)}
+            />
+          </div>
+        </div>
         <div className="controls">
           <button 
             className="generate-btn" 
@@ -727,7 +860,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
         {showPreview && pdfUrl ? (
           <div className="pdf-preview">
             <iframe 
-              src={pdfUrl} 
+              src={pdfUrl+"#toolbar=0&zoom=150"} 
               title="PDF Preview"
             />
           </div>

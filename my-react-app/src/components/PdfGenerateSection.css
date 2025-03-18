@@ -1,7 +1,7 @@
 .pdf-generate-section {
   display: flex;
   gap: 2rem;
-  padding: 2rem;
+  padding: 0rem;
   height: 100vh;
   width: 100%;
 }
@@ -16,6 +16,10 @@
   min-width: 300px;
 }
 
+.input-group-heading {
+  align-self: left;
+  text-align: left !important;
+}
 .right-section {
   flex: 2;
   border-left: 1px solid #e0e0e0;
@@ -42,6 +46,7 @@
   border-radius: 4px;
   font-size: 1rem;
   transition: border-color 0.2s;
+  box-sizing: border-box;
 }
 
 .input-group input:focus {
