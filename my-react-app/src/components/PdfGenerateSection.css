@@ -1,7 +1,7 @@
 .pdf-generate-section {
   display: flex;
   gap: 2rem;
-  padding: 0rem;
+  padding: 2rem;
   height: 100vh;
   width: 100%;
 }
@@ -112,6 +112,37 @@
 .fee-row .input-group {
   flex: 1;
   margin: 0;
+}
+
+.break-clause-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.break-clause-row .input-group {
+  flex: 1;
+  margin: 0;
+}
+
+.break-clause-3-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.break-clause-3-inputs {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.break-clause-3-inputs select {
+  flex: 1;
+}
+
+.break-clause-3-inputs input {
+  flex: 1;
 }
 
 .controls {

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './PdfGenerateSection.css';
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit'
-import { toChinese, toUpperCase, toChineseWithUnits } from 'chinese-number-format';
+import { toChinese, toChineseWithUnits } from 'chinese-number-format';
 
 interface PdfGenerateSectionProps {
   // Add props here as needed
@@ -25,6 +25,10 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const [governmentRent, setGovernmentRent] = useState('landlord');
   const [rentFreeFrom, setRentFreeFrom] = useState('');
   const [rentFreeTo, setRentFreeTo] = useState('');
+  const [breakClause1, setBreakClause1] = useState('landlord');
+  const [breakClause2, setBreakClause2] = useState('');
+  const [breakClause3, setBreakClause3] = useState('12');
+  const [breakClause3Other, setBreakClause3Other] = useState('');
   const [dateFrom, setDateFrom] = useState('');
   const [dateTo, setDateTo] = useState('');
   const [inputDate2, setInputDate2] = useState('');
@@ -629,6 +633,271 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
         });
       }
 
+      // Add Break Clause 1 indicator
+      if (breakClause1 === 'landlord') {
+        // Draw red line zone1
+        pages[4].drawLine({
+          start: { x: 434, y: height - 64 },
+          end: { x: 532, y: height - 64 },
+          thickness: 1,
+          color: rgb(1, 0, 0),
+        });
+        // Draw red line zone2
+        pages[4].drawLine({
+          start: { x: 345, y: height - 94 },
+          end: { x: 390, y: height - 94 },
+          thickness: 1,
+          color: rgb(1, 0, 0),
+        });
+        pages[4].drawLine({
+          start: { x: 428, y: height - 94 },
+          end: { x: 485, y: height - 94 },
+          thickness: 1,
+          color: rgb(1, 0, 0),
+        });
+        // Draw red line zone3
+        pages[4].drawLine({
+          start: { x: 152, y: height - 137 },
+          end: { x: 237, y: height - 137 },
+          thickness: 1,
+          color: rgb(1, 0, 0),
+        });
+        // Draw red line zone4
+        pages[4].drawLine({
+          start: { x: 267, y: height - 137 },
+          end: { x: 294, y: height - 137 },
+          thickness: 1,
+          color: rgb(1, 0, 0),
+        });
+        pages[4].drawLine({
+          start: { x: 334, y: height - 137 },
+          end: { x: 364, y: height - 137 },
+          thickness: 1,
+          color: rgb(1, 0, 0),
+        });
+      } else if (breakClause1 === 'tenant') {
+        // Draw red line zone1
+        pages[4].drawLine({
+          start: { x: 387, y: height - 64 },
+          end: { x: 434, y: height - 64 },
+          thickness: 1,
+          color: rgb(1, 0, 0),
+        });
+        pages[4].drawLine({
+          start: { x: 470, y: height - 64 },
+          end: { x: 532, y: height - 64 },
+          thickness: 1,
+          color: rgb(1, 0, 0),
+        });
+        // Draw red line zone2
+        pages[4].drawLine({
+          start: { x: 391, y: height - 94 },
+          end: { x: 485, y: height - 94 },
+          thickness: 1,
+          color: rgb(1, 0, 0),
+        });
+        // Draw red line zone3
+        pages[4].drawLine({
+          start: { x: 121, y: height - 137 },
+          end: { x: 148, y: height - 137 },
+          thickness: 1,
+          color: rgb(1, 0, 0),
+        });
+        pages[4].drawLine({
+          start: { x: 184, y: height - 137 },
+          end: { x: 237, y: height - 137 },
+          thickness: 1,
+          color: rgb(1, 0, 0),
+        });
+        // Draw red line zone4
+        pages[4].drawLine({
+          start: { x: 300, y: height - 137 },
+          end: { x: 367, y: height - 137 },
+          thickness: 1,
+          color: rgb(1, 0, 0),
+        });
+      } else if (breakClause1 === 'either') {
+        // Draw red line zone1
+        pages[4].drawLine({
+          start: { x: 387, y: height - 64 },
+          end: { x: 470, y: height - 64 },
+          thickness: 1,
+          color: rgb(1, 0, 0),
+        });
+        // Draw red line zone2
+        pages[4].drawLine({
+          start: { x: 345, y: height - 94 },
+          end: { x: 428, y: height - 94 },
+          thickness: 1,
+          color: rgb(1, 0, 0),
+        });
+        // Draw red line zone3
+        pages[4].drawLine({
+          start: { x: 120, y: height - 137 },
+          end: { x: 183, y: height - 137 },
+          thickness: 1,
+          color: rgb(1, 0, 0),
+        });
+        // Draw red line zone4
+        pages[4].drawLine({
+          start: { x: 268, y: height - 137 },
+          end: { x: 333, y: height - 137 },
+          thickness: 1,
+          color: rgb(1, 0, 0),
+        });
+      }
+
+      // Add Break Clause 2 
+      if (breakClause2) {
+        pages[4].drawText(breakClause2, {
+          x: 507,
+          y: height - 82,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+        pages[4].drawText(breakClause2, {
+          x: 186,
+          y: height - 97,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+        pages[4].drawText(breakClause2, {
+          x: 410,
+          y: height - 140,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+        pages[4].drawText(breakClause2, {
+          x: 523,
+          y: height - 140,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+      }
+
+      // Add Break Clause 3
+      if (breakClause3 === '12') {
+        // Draw red line zone1
+        pages[4].drawLine({
+          start: { x: 430, y: height - 108 },
+          end: { x: 480, y: height - 108 },
+          thickness: 1,
+          color: rgb(1, 0, 0),
+        });
+        // Draw red line zone2
+        pages[4].drawLine({
+          start: { x: 436, y: height - 152 },
+          end: { x: 475, y: height - 152 },
+          thickness: 1,
+          color: rgb(1, 0, 0),
+        });
+        //Display zone3 & 4
+        pages[4].drawText(breakClause3, {
+          x: 478,
+          y: height - 126,
+          size: 10,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+        pages[4].drawText(breakClause3, {
+          x: 104,
+          y: height - 169,
+          size: 10,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+      } else if (breakClause3 === '14') {
+        // Draw red line zone1
+        pages[4].drawLine({
+          start: { x: 412, y: height - 108 },
+          end: { x: 430, y: height - 108 },
+          thickness: 1,
+          color: rgb(1, 0, 0),
+        });
+        pages[4].drawLine({
+          start: { x: 447, y: height - 108 },
+          end: { x: 480, y: height - 108 },
+          thickness: 1,
+          color: rgb(1, 0, 0),
+        });
+        // Draw red line zone2
+        pages[4].drawLine({
+          start: { x: 419, y: height - 152 },
+          end: { x: 435, y: height - 152 },
+          thickness: 1,
+          color: rgb(1, 0, 0),
+        });
+        pages[4].drawLine({
+          start: { x: 452, y: height - 152 },
+          end: { x: 475, y: height - 152 },
+          thickness: 1,
+          color: rgb(1, 0, 0),
+        });
+        //Display zone3 & 4
+        pages[4].drawText(breakClause3, {
+          x: 478,
+          y: height - 126,
+          size: 10,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+        pages[4].drawText(breakClause3, {
+          x: 104,
+          y: height - 169,
+          size: 10,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+      } else if (breakClause3 === 'other' && breakClause3Other) {
+        // Display other value zone 1
+        pages[4].drawLine({
+          start: { x: 412, y: height - 108 },
+          end: { x: 446, y: height - 108 },
+          thickness: 1,
+          color: rgb(1, 0, 0),
+        });
+        pages[4].drawText(breakClause3Other, {
+          x: 457,
+          y: height - 111,
+          size: 10,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+        // Display other value zone 2
+        pages[4].drawLine({
+          start: { x: 419, y: height - 152 },
+          end: { x: 451, y: height - 152 },
+          thickness: 1,
+          color: rgb(1, 0, 0),
+        });
+        pages[4].drawText(breakClause3Other, {
+          x: 457,
+          y: height - 155,
+          size: 10,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+        //Display zone3 & 4
+        pages[4].drawText(breakClause3Other, {
+          x: 478,
+          y: height - 126,
+          size: 10,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+        pages[4].drawText(breakClause3Other, {
+          x: 104,
+          y: height - 169,
+          size: 10,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+      }
+
       pdfDoc.removePage(2);
 
       const pdfBytes = await pdfDoc.save();
@@ -837,6 +1106,57 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               value={rentFreeTo}
               onChange={(e) => setRentFreeTo(e.target.value)}
             />
+          </div>
+        </div>
+        <div className="break-clause-row">
+          <div className="input-group">
+            <label htmlFor="break-clause-1">Break Clause 1:</label>
+            <select
+              id="break-clause-1"
+              value={breakClause1}
+              onChange={(e) => setBreakClause1(e.target.value)}
+            >
+              <option value="landlord">Landlord</option>
+              <option value="tenant">Tenant</option>
+              <option value="either">Either Party</option>
+            </select>
+          </div>
+          <div className="input-group">
+            <label htmlFor="break-clause-2">Break Clause 2:</label>
+            <input
+              type="number"
+              id="break-clause-2"
+              value={breakClause2}
+              onChange={(e) => setBreakClause2(e.target.value)}
+              placeholder="Enter a number"
+              min="0"
+              step="1"
+            />
+          </div>
+          <div className="input-group break-clause-3-group">
+            <label htmlFor="break-clause-3">Break Clause 3:</label>
+            <div className="break-clause-3-inputs">
+              <select
+                id="break-clause-3"
+                value={breakClause3}
+                onChange={(e) => setBreakClause3(e.target.value)}
+              >
+                <option value="12">12</option>
+                <option value="14">14</option>
+                <option value="other">Others</option>
+              </select>
+              {breakClause3 === 'other' && (
+                <input
+                  type="number"
+                  id="break-clause-3-other"
+                  value={breakClause3Other}
+                  onChange={(e) => setBreakClause3Other(e.target.value)}
+                  placeholder="Enter a number"
+                  min="0"
+                  step="1"
+                />
+              )}
+            </div>
           </div>
         </div>
         <div className="controls">
