@@ -161,6 +161,14 @@
   width: 100%;
 }
 
+.landlord-input {
+  width: 70%;
+}
+
+.landlord-id-input {
+  width: 30%;
+}
+
 .controls {
   display: flex;
   justify-content: center;

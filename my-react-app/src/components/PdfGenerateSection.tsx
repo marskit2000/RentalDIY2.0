@@ -41,6 +41,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const [wardrobe, setWardrobe] = useState('');
   const [settee, setSettee] = useState('');
   const [otherFurniture, setOtherFurniture] = useState('');
+  const [landLordId, setLandLordId] = useState('');
   const [inputDate2, setInputDate2] = useState('');
   const [dateFrom, setDateFrom] = useState('');
   const [dateTo, setDateTo] = useState('');
@@ -188,6 +189,17 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 132,
           size: 14,
           font: chineseFont,
+          color: fontColor,
+        })
+      }
+
+      // Add landlord ID
+      if (landLordId.trim()) {
+        pages[3].drawText(landLordId, {
+          x: 480,
+          y: height - 132,
+          size: 14,
+          font: helveticaFont,
           color: fontColor,
         })
       }
@@ -1096,6 +1108,18 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
             value={inputText2}
             onChange={(e) => setInputText2(e.target.value)}
             placeholder="Enter text to add to PDF"
+            className="landlord-input"
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor="landLordId">Landlord ID:</label>
+          <input
+            type="text"
+            id="landLordId"
+            value={landLordId}
+            onChange={(e) => setLandLordId(e.target.value)}
+            placeholder="Enter ID"
+            className="landlord-id-input"
           />
         </div>
         <div className="input-group">
