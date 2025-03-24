@@ -29,9 +29,21 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const [breakClause2, setBreakClause2] = useState('');
   const [breakClause3, setBreakClause3] = useState('12');
   const [breakClause3Other, setBreakClause3Other] = useState('');
+  const [airConditioner, setAirConditioner] = useState('');
+  const [ventilator, setVentilator] = useState('');
+  const [oilVentilator, setOilVentilator] = useState('');
+  const [waterHeater, setWaterHeater] = useState('');
+  const [gasStove, setGasStove] = useState('');
+  const [lightings, setLightings] = useState('');
+  const [refrigerator, setRefrigerator] = useState('');
+  const [washingMachine, setWashingMachine] = useState('');
+  const [bed, setBed] = useState('');
+  const [wardrobe, setWardrobe] = useState('');
+  const [settee, setSettee] = useState('');
+  const [otherFurniture, setOtherFurniture] = useState('');
+  const [inputDate2, setInputDate2] = useState('');
   const [dateFrom, setDateFrom] = useState('');
   const [dateTo, setDateTo] = useState('');
-  const [inputDate2, setInputDate2] = useState('');
 
   const getMonthInEnglish = (dateString: string): string => {
     const date = new Date(dateString);
@@ -898,6 +910,127 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
         });
       }
 
+      // Add furniture items
+      if (airConditioner) {
+        pages[4].drawText(airConditioner, {
+          x: 135,
+          y: height - 248,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+      }
+
+      if (ventilator) {
+        pages[4].drawText(ventilator, {
+          x: 231,
+          y: height - 248,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+      }
+
+      if (oilVentilator) {
+        pages[4].drawText(oilVentilator, {
+          x: 343,
+          y: height - 248,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+      }
+
+      if (waterHeater) {
+        pages[4].drawText(waterHeater, {
+          x: 541,
+          y: height - 248,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+      }
+
+      if (gasStove) {
+        pages[4].drawText(gasStove, {
+          x: 135,
+          y: height - 284,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+      }
+
+      if (lightings) {
+        pages[4].drawText(lightings, {
+          x: 231,
+          y: height - 284,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+      }
+
+      if (refrigerator) {
+        pages[4].drawText(refrigerator, {
+          x: 343,
+          y: height - 284,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+      }
+
+      if (washingMachine) {
+        pages[4].drawText(washingMachine, {
+          x: 541,
+          y: height - 284,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+      }
+
+      if (bed) {
+        pages[4].drawText(bed, {
+          x: 135,
+          y: height - 320,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+      }
+
+      if (wardrobe) {
+        pages[4].drawText(wardrobe, {
+          x: 231,
+          y: height - 320,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+      }
+
+      if (settee) {
+        pages[4].drawText(settee, {
+          x: 343,
+          y: height - 320,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+      }
+
+      if (otherFurniture) {
+        pages[4].drawText(otherFurniture, {
+          x: 422,
+          y: height - 320,
+          size: 12,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+      }
+
       pdfDoc.removePage(2);
 
       const pdfBytes = await pdfDoc.save();
@@ -1157,6 +1290,132 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
                 />
               )}
             </div>
+          </div>
+        </div>
+        <div className="furniture-row">
+          <div className="input-group">
+            <label htmlFor="air-conditioner">Air Conditioner:</label>
+            <input
+              type="text"
+              id="air-conditioner"
+              value={airConditioner}
+              onChange={(e) => setAirConditioner(e.target.value)}
+              placeholder="Enter number of air conditioners"
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="ventilator">Ventilator:</label>
+            <input
+              type="text"
+              id="ventilator"
+              value={ventilator}
+              onChange={(e) => setVentilator(e.target.value)}
+              placeholder="Enter number of ventilators"
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="oil-ventilator">Oil Ventilator:</label>
+            <input
+              type="text"
+              id="oil-ventilator"
+              value={oilVentilator}
+              onChange={(e) => setOilVentilator(e.target.value)}
+              placeholder="Enter number of oil ventilators"
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="water-heater">Water Heater:</label>
+            <input
+              type="text"
+              id="water-heater"
+              value={waterHeater}
+              onChange={(e) => setWaterHeater(e.target.value)}
+              placeholder="Enter number of water heaters"
+            />
+          </div>
+        </div>
+        <div className="furniture-row">
+          <div className="input-group">
+            <label htmlFor="gas-stove">Gas Stove:</label>
+            <input
+              type="text"
+              id="gas-stove"
+              value={gasStove}
+              onChange={(e) => setGasStove(e.target.value)}
+              placeholder="Enter number of gas stoves"
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="lightings">Lightings:</label>
+            <input
+              type="text"
+              id="lightings"
+              value={lightings}
+              onChange={(e) => setLightings(e.target.value)}
+              placeholder="Enter number of lightings"
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="refrigerator">Refrigerator:</label>
+            <input
+              type="text"
+              id="refrigerator"
+              value={refrigerator}
+              onChange={(e) => setRefrigerator(e.target.value)}
+              placeholder="Enter number of refrigerators"
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="washing-machine">Washing Machine:</label>
+            <input
+              type="text"
+              id="washing-machine"
+              value={washingMachine}
+              onChange={(e) => setWashingMachine(e.target.value)}
+              placeholder="Enter number of washing machines"
+            />
+          </div>
+        </div>
+        <div className="furniture-row">
+          <div className="input-group">
+            <label htmlFor="bed">Bed:</label>
+            <input
+              type="text"
+              id="bed"
+              value={bed}
+              onChange={(e) => setBed(e.target.value)}
+              placeholder="Enter number of beds"
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="wardrobe">Wardrobe:</label>
+            <input
+              type="text"
+              id="wardrobe"
+              value={wardrobe}
+              onChange={(e) => setWardrobe(e.target.value)}
+              placeholder="Enter number of wardrobes"
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="settee">Settee:</label>
+            <input
+              type="text"
+              id="settee"
+              value={settee}
+              onChange={(e) => setSettee(e.target.value)}
+              placeholder="Enter number of settees"
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="other-furniture">Others:</label>
+            <input
+              type="text"
+              id="other-furniture"
+              value={otherFurniture}
+              onChange={(e) => setOtherFurniture(e.target.value)}
+              placeholder="Enter other furniture"
+            />
           </div>
         </div>
         <div className="controls">
