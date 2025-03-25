@@ -102,10 +102,24 @@
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
 }
 
+.input-group-row-container {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.input-group-70 {
+  flex: 0.7;
+}
+
+.input-group-30 {
+  flex: 0.3;
+}
+
 .fee-row {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+
   margin: 1.5rem 0;
 }
 
@@ -161,12 +175,14 @@
   width: 100%;
 }
 
-.landlord-input {
-  width: 70%;
+.bank-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
-.landlord-id-input {
-  width: 30%;
+.bank-row .input-group {
+  flex: 1;
 }
 
 .controls {

@@ -42,6 +42,9 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const [settee, setSettee] = useState('');
   const [otherFurniture, setOtherFurniture] = useState('');
   const [landLordId, setLandLordId] = useState('');
+  const [tenantId, setTenantId] = useState('');
+  const [landlordBankAccount, setLandlordBankAccount] = useState('');
+  const [bank, setBank] = useState('');
   const [inputDate2, setInputDate2] = useState('');
   const [dateFrom, setDateFrom] = useState('');
   const [dateTo, setDateTo] = useState('');
@@ -195,10 +198,10 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
 
       // Add landlord ID
       if (landLordId.trim()) {
-        pages[3].drawText(landLordId, {
-          x: 480,
-          y: height - 132,
-          size: 14,
+        pages[1].drawText(landLordId, {
+          x: 428,
+          y: height - 792,
+          size: 12,
           font: helveticaFont,
           color: fontColor,
         })
@@ -222,6 +225,17 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 192,
           size: 14,
           font: chineseFont,
+          color: fontColor,
+        })
+      }
+
+      // Add tenant ID
+      if (tenantId.trim()) {
+        pages[1].drawText(tenantId, {
+          x: 160,
+          y: height - 792,
+          size: 12,
+          font: helveticaFont,
           color: fontColor,
         })
       }
@@ -1043,6 +1057,42 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
         });
       }
 
+      // Add landlord bank account
+      if (landlordBankAccount) {
+        pages[4].drawText(landlordBankAccount, {
+          x: 410,
+          y: height - 349,
+          size: 10,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+        pages[4].drawText(landlordBankAccount, {
+          x: 304,
+          y: height - 371,
+          size: 10,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+      }
+
+      // Add bank
+      if (bank) {
+        pages[4].drawText(bank, {
+          x: 410,
+          y: height - 338,
+          size: 10,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+        pages[4].drawText(bank, {
+          x: 304,
+          y: height - 361,
+          size: 10,
+          font: helveticaFont,
+          color: rgb(0, 0, 0),
+        });
+      }
+
       pdfDoc.removePage(2);
 
       const pdfBytes = await pdfDoc.save();
@@ -1100,27 +1150,27 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
             placeholder="Enter text to add to PDF"
           />
         </div>
-        <div className="input-group">
-          <label htmlFor="pdf-text-2">The Landlord:</label>
-          <input
-            type="text"
-            id="pdf-text-2"
-            value={inputText2}
-            onChange={(e) => setInputText2(e.target.value)}
-            placeholder="Enter text to add to PDF"
-            className="landlord-input"
-          />
-        </div>
-        <div className="input-group">
-          <label htmlFor="landLordId">Landlord ID:</label>
-          <input
-            type="text"
-            id="landLordId"
-            value={landLordId}
-            onChange={(e) => setLandLordId(e.target.value)}
-            placeholder="Enter ID"
-            className="landlord-id-input"
-          />
+        <div className="input-group-row-container">
+          <div className="input-group input-group-70">
+            <label htmlFor="pdf-text-2">The Landlord:</label>
+            <input
+              type="text"
+              id="pdf-text-2"
+              value={inputText2}
+              onChange={(e) => setInputText2(e.target.value)}
+              placeholder="Enter text to add to PDF"
+            />
+          </div>
+          <div className="input-group input-group-30">
+            <label htmlFor="landLordId">Landlord ID:</label>
+            <input
+              type="text"
+              id="landLordId"
+              value={landLordId}
+              onChange={(e) => setLandLordId(e.target.value)}
+              placeholder="Enter ID"
+            />
+          </div>
         </div>
         <div className="input-group">
           <label htmlFor="pdf-text-3">Landlord Address:</label>
@@ -1132,15 +1182,27 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
             placeholder="Enter text to add to PDF"
           />
         </div>
-        <div className="input-group">
-          <label htmlFor="pdf-text-4">Tenant:</label>
-          <input
-            type="text"
-            id="pdf-text-4"
-            value={inputText4}
-            onChange={(e) => setInputText4(e.target.value)}
-            placeholder="Enter text to add to PDF"
-          />
+        <div className="input-group-row-container">
+          <div className="input-group input-group-70">
+            <label htmlFor="pdf-text-4">The Tenant:</label>
+            <input
+              type="text"
+              id="pdf-text-4"
+              value={inputText4}
+              onChange={(e) => setInputText4(e.target.value)}
+              placeholder="Enter text to add to PDF"
+            />
+          </div>
+          <div className="input-group input-group-30">
+            <label htmlFor="tenantId">Tenant ID:</label>
+            <input
+              type="text"
+              id="tenantId"
+              value={tenantId}
+              onChange={(e) => setTenantId(e.target.value)}
+              placeholder="Enter ID"
+            />
+          </div>
         </div>
         <div className="input-group">
           <label htmlFor="pdf-text-5">Tenant Address:</label>
@@ -1439,6 +1501,28 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               value={otherFurniture}
               onChange={(e) => setOtherFurniture(e.target.value)}
               placeholder="Enter other furniture"
+            />
+          </div>
+        </div>
+        <div className="bank-row">
+          <div className="input-group">
+            <label htmlFor="landlord-bank-account">Landlord Bank Account:</label>
+            <input
+              type="text"
+              id="landlord-bank-account"
+              value={landlordBankAccount}
+              onChange={(e) => setLandlordBankAccount(e.target.value)}
+              placeholder="Enter landlord bank account"
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="bank">Bank:</label>
+            <input
+              type="text"
+              id="bank"
+              value={bank}
+              onChange={(e) => setBank(e.target.value)}
+              placeholder="Enter bank"
             />
           </div>
         </div>
