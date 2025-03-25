@@ -48,6 +48,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const [inputDate2, setInputDate2] = useState('');
   const [dateFrom, setDateFrom] = useState('');
   const [dateTo, setDateTo] = useState('');
+  const [remarksFields, setRemarksFields] = useState<string[]>(['']);
 
   const getMonthInEnglish = (dateString: string): string => {
     const date = new Date(dateString);
@@ -99,6 +100,10 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const generatePDF = async () => {
     try {
       setIsLoading(true);
+
+      // Log the remarks array
+      console.log('Remarks Array:', remarksFields.filter(remark => remark.trim() !== ''));
+
       const response = await fetch('/src/assets/Tenancy_Agreement_Template_20250311.pdf');
       const pdfBuffer = await response.arrayBuffer();
       
@@ -824,14 +829,14 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           start: { x: 430, y: height - 108 },
           end: { x: 480, y: height - 108 },
           thickness: 1,
-          color: rgb(1, 0, 0),
+          color: lineColor,
         });
         // Draw red line zone2
         pages[4].drawLine({
           start: { x: 436, y: height - 152 },
           end: { x: 475, y: height - 152 },
           thickness: 1,
-          color: rgb(1, 0, 0),
+          color: lineColor,
         });
         //Display zone3 & 4
         pages[4].drawText(breakClause3, {
@@ -839,14 +844,14 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 126,
           size: 10,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
         pages[4].drawText(breakClause3, {
           x: 104,
           y: height - 169,
           size: 10,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
       } else if (breakClause3 === '14') {
         // Draw red line zone1
@@ -854,26 +859,26 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           start: { x: 412, y: height - 108 },
           end: { x: 430, y: height - 108 },
           thickness: 1,
-          color: rgb(1, 0, 0),
+          color: lineColor,
         });
         pages[4].drawLine({
           start: { x: 447, y: height - 108 },
           end: { x: 480, y: height - 108 },
           thickness: 1,
-          color: rgb(1, 0, 0),
+          color: lineColor,
         });
         // Draw red line zone2
         pages[4].drawLine({
           start: { x: 419, y: height - 152 },
           end: { x: 435, y: height - 152 },
           thickness: 1,
-          color: rgb(1, 0, 0),
+          color: lineColor,
         });
         pages[4].drawLine({
           start: { x: 452, y: height - 152 },
           end: { x: 475, y: height - 152 },
           thickness: 1,
-          color: rgb(1, 0, 0),
+          color: lineColor,
         });
         //Display zone3 & 4
         pages[4].drawText(breakClause3, {
@@ -881,14 +886,14 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 126,
           size: 10,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
         pages[4].drawText(breakClause3, {
           x: 104,
           y: height - 169,
           size: 10,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
       } else if (breakClause3 === 'other' && breakClause3Other) {
         // Display other value zone 1
@@ -896,28 +901,28 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           start: { x: 412, y: height - 108 },
           end: { x: 446, y: height - 108 },
           thickness: 1,
-          color: rgb(1, 0, 0),
+          color: lineColor,
         });
         pages[4].drawText(breakClause3Other, {
           x: 457,
           y: height - 111,
           size: 10,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
         // Display other value zone 2
         pages[4].drawLine({
           start: { x: 419, y: height - 152 },
           end: { x: 451, y: height - 152 },
           thickness: 1,
-          color: rgb(1, 0, 0),
+          color: lineColor,
         });
         pages[4].drawText(breakClause3Other, {
           x: 457,
           y: height - 155,
           size: 10,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
         //Display zone3 & 4
         pages[4].drawText(breakClause3Other, {
@@ -925,14 +930,14 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 126,
           size: 10,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
         pages[4].drawText(breakClause3Other, {
           x: 104,
           y: height - 169,
           size: 10,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
       }
 
@@ -943,7 +948,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 248,
           size: 12,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
       }
 
@@ -953,7 +958,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 248,
           size: 12,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
       }
 
@@ -963,7 +968,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 248,
           size: 12,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
       }
 
@@ -973,7 +978,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 248,
           size: 12,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
       }
 
@@ -983,7 +988,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 284,
           size: 12,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
       }
 
@@ -993,7 +998,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 284,
           size: 12,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
       }
 
@@ -1003,7 +1008,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 284,
           size: 12,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
       }
 
@@ -1013,7 +1018,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 284,
           size: 12,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
       }
 
@@ -1023,7 +1028,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 320,
           size: 12,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
       }
 
@@ -1033,7 +1038,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 320,
           size: 12,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
       }
 
@@ -1043,7 +1048,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 320,
           size: 12,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
       }
 
@@ -1053,7 +1058,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 320,
           size: 12,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
       }
 
@@ -1064,14 +1069,14 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 349,
           size: 10,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
         pages[4].drawText(landlordBankAccount, {
           x: 304,
           y: height - 371,
           size: 10,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
       }
 
@@ -1082,14 +1087,39 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           y: height - 338,
           size: 10,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
         });
         pages[4].drawText(bank, {
           x: 304,
           y: height - 361,
           size: 10,
           font: helveticaFont,
-          color: rgb(0, 0, 0),
+          color: fontColor,
+        });
+      }
+
+      // Add remarks
+      const filteredRemarks = remarksFields.filter(remark => remark.trim() !== '');
+      if (filteredRemarks.length > 0) {
+        // Add a title for remarks
+        pages[4].drawText('Remarks:', {
+          x: 50,
+          y: height - 420,
+          size: 12,
+          font: helveticaFont,
+          color: fontColor,
+        });
+
+        // Add each remark with proper spacing
+        filteredRemarks.forEach((remark, index) => {
+          pages[4].drawText(`${index + 2}. ${remark}`, {
+            x: 50,
+            y: height - 440 - (index * 20),
+            maxWidth: 550, 
+            size: 10,
+            font: helveticaFont,
+            color: fontColor,
+          });
         });
       }
 
@@ -1125,6 +1155,22 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
     if (url) {
       setShowPreview(true);
     }
+  };
+
+  const handleAddRemark = () => {
+    setRemarksFields([...remarksFields, '']);
+  };
+
+  const handleRemoveRemark = (index: number) => {
+    const newRemarksFields = [...remarksFields];
+    newRemarksFields.splice(index, 1);
+    setRemarksFields(newRemarksFields);
+  };
+
+  const handleRemarkChange = (index: number, value: string) => {
+    const newRemarksFields = [...remarksFields];
+    newRemarksFields[index] = value;
+    setRemarksFields(newRemarksFields);
   };
 
   return (
@@ -1525,6 +1571,33 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               placeholder="Enter bank"
             />
           </div>
+        </div>
+        <div className="remarks-group">
+          <label>Remarks:</label>
+          {remarksFields.map((remark, index) => (
+            <div key={index} className="remark-input-group">
+              <textarea
+                value={remark}
+                onChange={(e) => handleRemarkChange(index, e.target.value)}
+                placeholder={`Remark ${index + 1}`}
+                rows={3}
+              />
+              {index > 0 && (
+                <button
+                  className="remove-remark-btn"
+                  onClick={() => handleRemoveRemark(index)}
+                >
+                  ×
+                </button>
+              )}
+            </div>
+          ))}
+          <button
+            className="add-remark-btn"
+            onClick={handleAddRemark}
+          >
+            +
+          </button>
         </div>
         <div className="controls">
           <button 
