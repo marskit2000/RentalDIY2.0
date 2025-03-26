@@ -1101,26 +1101,39 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
       // Add remarks
       const filteredRemarks = remarksFields.filter(remark => remark.trim() !== '');
       if (filteredRemarks.length > 0) {
-        // Add a title for remarks
-        pages[4].drawText('Remarks:', {
-          x: 50,
-          y: height - 420,
-          size: 12,
-          font: helveticaFont,
+
+        let remarksStr = "";
+        const breakSymbol = "\n";
+        
+        filteredRemarks.forEach((remark, index) => {
+          remarksStr += `${index + 2}.${remark}${breakSymbol}`;
+        });
+        console.log(remarksStr);
+        const chiIpsum = "具尾抓蝸，動原坐跟乞右扒豆三！內抄着見視經兒升？見教西追蛋遠害林方紅少高住米荷洋她卜，神升司怪壯喝書弓朋外火發課汗婆：黃王男下新後丁，室葉黑。書唱親午手前具土裏田結前干發許友語，房裏耳？右你手飽造。";
+        const ipsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+        console.log(chiIpsum);
+
+        pages[4].drawText(chiIpsum, {
+          x: 120,
+          y: height - 392,
+          maxWidth: 452,
+          lineHeight: 23,
+          size: 10,
+          font: chineseFont,
           color: fontColor,
         });
 
         // Add each remark with proper spacing
-        filteredRemarks.forEach((remark, index) => {
-          pages[4].drawText(`${index + 2}. ${remark}`, {
-            x: 50,
-            y: height - 440 - (index * 20),
-            maxWidth: 550, 
-            size: 10,
-            font: helveticaFont,
-            color: fontColor,
-          });
-        });
+        // filteredRemarks.forEach((remark, index) => {
+        //   pages[4].drawText(`${index + 2}. ${remark}`, {
+        //     x: 50,
+        //     y: height - 440 - (index * 20),
+        //     maxWidth: 550, 
+        //     size: 10,
+        //     font: helveticaFont,
+        //     color: fontColor,
+        //   });
+        // });
       }
 
       pdfDoc.removePage(2);
