@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './PdfGenerateSection.css';
-import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
+import { PDFDocument, rgb, StandardFonts, degrees } from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit'
 import { toChinese, toChineseWithUnits } from 'chinese-number-format';
 
@@ -99,7 +99,41 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
     return `${day}/${month}/${year}`;
   };
 
-  const generatePDF = async () => {
+  const addWatermark = (
+    page: any, 
+    text: string, 
+    font: any, 
+    options?: {
+      size?: number;
+      color?: any;
+      opacity?: number;
+      angle?: number;
+      xOffset?: number;
+      yOffset?: number;
+    }
+  ) => {
+    const { width, height } = page.getSize();
+    const {
+      size = 100,
+      color = rgb(0.8, 0.8, 0.8),
+      opacity = 0.3,
+      angle = 45,
+      xOffset = 0,
+      yOffset = 0
+    } = options || {};
+
+    page.drawText(text, {
+      x: width / 2 + xOffset,
+      y: height / 2 + yOffset,
+      size,
+      font,
+      color,
+      opacity,
+      rotate: degrees(angle),
+    });
+  };
+
+  const generatePDF = async (isPreview: boolean = false) => {
     try {
       setIsLoading(true);
 
@@ -118,10 +152,24 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
 
 
       const pages = pdfDoc.getPages();
-      const { height } = pages[0].getSize()
+      const { width, height } = pages[0].getSize()
 
       const fontColor = rgb(0, 0, 0);
       const lineColor = rgb(0, 0, 0);
+      
+      // Add SAMPLE watermark to all pages
+      if(isPreview) {
+        pages.forEach(page => {
+          addWatermark(page, 'SAMPLE', helveticaFont, {
+            size: 100,
+            color: rgb(0.3, 0.3, 0.3),
+            opacity: 0.3,
+            angle: 45,
+            xOffset: -150,
+            yOffset: 0,
+          });
+        });
+      }
       
       // Add date information if date is provided
       if (inputDate2.trim()) {
@@ -1224,7 +1272,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   };
 
   const handlePreview = async () => {
-    const url = await generatePDF();
+    const url = await generatePDF(true);
     if (url) {
       setShowPreview(true);
     }
