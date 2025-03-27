@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Rental Agreement DIY</h1>
-        <div>NavBar</div>
+        <div>NavBar to be developed</div>
       </header>
       <main className="App-main">
         <PdfGenerateSection />
