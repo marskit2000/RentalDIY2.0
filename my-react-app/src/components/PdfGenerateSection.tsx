@@ -101,9 +101,6 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
     try {
       setIsLoading(true);
 
-      // Log the remarks array
-      console.log('Remarks Array:', remarksFields.filter(remark => remark.trim() !== ''));
-
       const response = await fetch('/src/assets/Tenancy_Agreement_Template_20250311.pdf');
       const pdfBuffer = await response.arrayBuffer();
       
@@ -1098,23 +1095,62 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
         });
       }
 
-      // Add remarks
+    
+      //Check Chinese Chars
+      const hasChinese = (input: string) => {
+        const REGEX_CHINESE = /[\u4e00-\u9fff]|[\u3400-\u4dbf]|[\u{20000}-\u{2a6df}]|[\u{2a700}-\u{2b73f}]|[\u{2b740}-\u{2b81f}]|[\u{2b820}-\u{2ceaf}]|[\uf900-\ufaff]|[\u3300-\u33ff]|[\ufe30-\ufe4f]|[\uf900-\ufaff]|[\u{2f800}-\u{2fa1f}]/u;
+        return REGEX_CHINESE.test(input);
+      }
+
+      //Split remarks into 20 char chunks
+      const splitRemarks = (input: string, chunkSize: number) => {
+        const chunks = [];
+        for (let i = 0; i < input.length; i += chunkSize) {
+          chunks.push(input.slice(i, i + chunkSize));
+        }
+        return chunks;
+      }
+
+      //chinese remarks one row length
+      const chineseRowLength = 43;
+
+      //Chinese remarks chunks join with \n
+      const joinRemarks = (input: string, chunkSize: number) => {
+        const chunks = splitRemarks(input, chunkSize);
+        return chunks.join("\n");
+      }
+
+      // Add filtered remarks
       const filteredRemarks = remarksFields.filter(remark => remark.trim() !== '');
+
+      // Remake Chinese remarks
+      filteredRemarks.forEach((remark, index) => {
+        if(hasChinese(remark)) {
+          const remakeRemark = joinRemarks(remark, chineseRowLength);
+          console.log(remark);
+          filteredRemarks[index] = remakeRemark;
+          console.log(filteredRemarks[index]);
+        }
+      });
+
+      console.log(filteredRemarks[0]);
+
+      //Add remarks on PDF
       if (filteredRemarks.length > 0) {
 
         let remarksStr = "";
         const breakSymbol = "\n";
         
-        filteredRemarks.forEach((remark, index) => {
-          remarksStr += `${index + 2}.${remark}${breakSymbol}`;
-        });
-        console.log(remarksStr);
-        const chiIpsum = "具尾抓蝸，動原坐跟乞右扒豆三！內抄着見視經兒升？見教西追蛋遠害林方紅少高住米荷洋她卜，神升司怪壯喝書弓朋外火發課汗婆：黃王男下新後丁，室葉黑。書唱親午手前具土裏田結前干發許友語，房裏耳？右你手飽造。";
-        const ipsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-        console.log(chiIpsum);
+        // filteredRemarks.forEach((remark, index) => {
+        //   remarksStr += `${index + 2}.${remark}${breakSymbol}`;
+        // });
 
-        pages[4].drawText(chiIpsum, {
-          x: 120,
+        filteredRemarks.forEach((remark, index) => {
+          remarksStr += `${remark}${breakSymbol}`;
+        });
+
+        pages[4].drawText(remarksStr, {
+          x: 126,
           y: height - 392,
           maxWidth: 452,
           lineHeight: 23,
