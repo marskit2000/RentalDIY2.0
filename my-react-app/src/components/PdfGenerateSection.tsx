@@ -102,6 +102,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const addWatermark = (
     page: any, 
     text: string, 
+    text2: string,
     font: any, 
     options?: {
       size?: number;
@@ -129,7 +130,16 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
       font,
       color,
       opacity,
-      rotate: degrees(angle),
+      rotate: degrees(angle)
+    });
+
+    //Red Watermark at the top right
+    page.drawText(text2, {
+      x: width - 280,
+      y: height - 20,
+      size: 14,
+      font,
+      color: rgb(1, 0, 0)
     });
   };
 
@@ -159,14 +169,16 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
       
       // Add SAMPLE watermark to all pages
       if(isPreview) {
+
+        const warnText = "This is a preview of the Rental Agreement."
         pages.forEach(page => {
-          addWatermark(page, 'SAMPLE', helveticaFont, {
-            size: 100,
+          addWatermark(page, 'PREVIEW', warnText, helveticaFont, {
+            size: 120,
             color: rgb(0.3, 0.3, 0.3),
             opacity: 0.3,
             angle: 45,
             xOffset: -150,
-            yOffset: 0,
+            yOffset: -120,
           });
         });
       }
