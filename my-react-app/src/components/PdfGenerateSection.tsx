@@ -1269,18 +1269,28 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
             placeholder="Enter text to add to PDF"
           />
         </div>
+        <div className="input-group">
+          <label htmlFor="pdf-text-2">The Landlord:</label>
+          <input
+            type="text"
+            id="pdf-text-2"
+            value={inputText2}
+            onChange={(e) => setInputText2(e.target.value)}
+            placeholder="Enter text to add to PDF"
+          />
+        </div>
         <div className="input-group-row-container">
-          <div className="input-group input-group-70">
-            <label htmlFor="pdf-text-2">The Landlord:</label>
+          <div className="input-group input-group-50">
+            <label htmlFor="landlordTel">Landlord Tel:</label>
             <input
               type="text"
-              id="pdf-text-2"
-              value={inputText2}
-              onChange={(e) => setInputText2(e.target.value)}
-              placeholder="Enter text to add to PDF"
+              id="landlordTel"
+              value={landlordTel}
+              onChange={(e) => setLandlordTel(e.target.value)}
+              placeholder="Enter Tel"
             />
           </div>
-          <div className="input-group input-group-30">
+          <div className="input-group input-group-50">
             <label htmlFor="landLordId">Landlord ID:</label>
             <input
               type="text"
@@ -1292,16 +1302,6 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           </div>
         </div>
         <div className="input-group">
-          <label htmlFor="landlordTel">Landlord Tel:</label>
-          <input
-            type="text"
-            id="landlordTel"
-            value={landlordTel}
-            onChange={(e) => setLandlordTel(e.target.value)}
-            placeholder="Enter Tel"
-          />
-        </div>
-        <div className="input-group">
           <label htmlFor="pdf-text-3">Landlord Address:</label>
           <input
             type="text"
@@ -1311,18 +1311,28 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
             placeholder="Enter text to add to PDF"
           />
         </div>
-        <div className="input-group-row-container">
-          <div className="input-group input-group-70">
-            <label htmlFor="pdf-text-4">The Tenant:</label>
-            <input
-              type="text"
-              id="pdf-text-4"
-              value={inputText4}
-              onChange={(e) => setInputText4(e.target.value)}
+        <div className="input-group">
+          <label htmlFor="pdf-text-4">The Tenant:</label>
+          <input
+            type="text"
+            id="pdf-text-4"
+            value={inputText4}
+            onChange={(e) => setInputText4(e.target.value)}
               placeholder="Enter text to add to PDF"
             />
+        </div>
+        <div className="input-group-row-container">
+          <div className="input-group input-group-50">
+            <label htmlFor="tenantTel">Tenant Tel:</label>
+            <input
+              type="text"
+              id="tenantTel"
+              value={tenantTel}
+              onChange={(e) => setTenantTel(e.target.value)}
+              placeholder="Enter Tel"
+            />
           </div>
-          <div className="input-group input-group-30">
+          <div className="input-group input-group-50">
             <label htmlFor="tenantId">Tenant ID:</label>
             <input
               type="text"
@@ -1333,16 +1343,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
             />
           </div>
         </div>
-        <div className="input-group">
-          <label htmlFor="tenantTel">Tenant Tel:</label>
-          <input
-            type="text"
-            id="tenantTel"
-            value={tenantTel}
-            onChange={(e) => setTenantTel(e.target.value)}
-            placeholder="Enter Tel"
-          />
-        </div>
+        
         <div className="input-group">
           <label htmlFor="pdf-text-5">Tenant Address:</label>
           <input

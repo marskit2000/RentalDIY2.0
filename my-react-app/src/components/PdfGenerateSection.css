@@ -34,8 +34,6 @@
 
 .right-section {
   flex: 2;
-  border-left: 1px solid #e0e0e0;
-
   align-self: stretch;
   overflow: visible;
   display: flex;
@@ -146,6 +144,10 @@
 
 .input-group-30 {
   flex: 0.3;
+}
+
+.input-group-50 {
+  flex: 0.5;
 }
 
 .fee-row {
