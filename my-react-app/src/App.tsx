@@ -1,4 +1,4 @@
-import './App.css'
+import './App.css';
 import PdfGenerateSection from './components/PdfGenerateSection'
 
 function App() {
@@ -6,8 +6,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Rental Agreement DIY</h1>
+        <div>NavBar</div>
       </header>
-      <main>
+      <main className="App-main">
         <PdfGenerateSection />
       </main>
     </div>

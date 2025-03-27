@@ -1169,7 +1169,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
         //   remarksStr += `${index + 2}.${remark}${breakSymbol}`;
         // });
 
-        filteredRemarks.forEach((remark, index) => {
+        filteredRemarks.forEach((remark) => {
           remarksStr += `${remark}${breakSymbol}`;
         });
 
@@ -1713,7 +1713,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
         {showPreview && pdfUrl ? (
           <div className="pdf-preview">
             <iframe 
-              src={pdfUrl+"#toolbar=0&zoom=150"} 
+              src={pdfUrl+"#toolbar=0&view=FitH"} 
               title="PDF Preview"
             />
           </div>
