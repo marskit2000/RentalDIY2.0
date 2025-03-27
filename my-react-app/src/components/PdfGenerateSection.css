@@ -514,10 +514,26 @@
   border: none;
 }
 
+
+
 /* Show button on tablet and smaller screens */
 @media screen and (max-width: 1366px) {
   .scroll-to-top-btn {
     display: flex;
+  }
+
+  .scroll-to-top-btn:hover {
+    background-color: #2b66dd;
+    transform: translateY(-2px);
+  }
+  
+  .scroll-to-top-btn:active {
+    transform: translateY(0);
+  }
+  
+  .scroll-to-top-btn:focus {
+    outline: none;
+    border: none;
   }
 }
 
