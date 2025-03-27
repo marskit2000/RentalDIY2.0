@@ -476,6 +476,51 @@
   background-color: #0069d9;
 }
 
+/* Scroll to top button */
+.scroll-to-top-btn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #2b66dd;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.scroll-to-top-btn:hover {
+  background-color: #2b66dd;
+  transform: translateY(-2px);
+}
+
+.scroll-to-top-btn:active {
+  transform: translateY(0);
+}
+
+.scroll-to-top-btn:focus {
+  outline: none;
+  border: none;
+}
+
+/* Show button on tablet and smaller screens */
+@media screen and (max-width: 1366px) {
+  .scroll-to-top-btn {
+    display: flex;
+  }
+}
+
 @media screen and (max-width: 1366px) {
   .pdf-generate-section {
     flex-direction: column;

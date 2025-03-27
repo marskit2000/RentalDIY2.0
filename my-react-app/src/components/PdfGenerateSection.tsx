@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './PdfGenerateSection.css';
 import { PDFDocument, rgb, StandardFonts, degrees } from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit'
@@ -51,6 +51,23 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const [dateFrom, setDateFrom] = useState('');
   const [dateTo, setDateTo] = useState('');
   const [remarksFields, setRemarksFields] = useState<string[]>(['']);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   const getMonthInEnglish = (dateString: string): string => {
     const date = new Date(dateString);
@@ -1792,6 +1809,15 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           </div>
         )}
       </div>
+      {showScrollTop && (
+        <button 
+          className="scroll-to-top-btn"
+          onClick={scrollToTop}
+          aria-label="Scroll to top"
+        >
+          ↑
+        </button>
+      )}
     </div>
   );
 };
