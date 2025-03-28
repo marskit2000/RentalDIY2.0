@@ -3,7 +3,7 @@ export const zhCN = {
   appTitle: '租赁协议生成器',
   
   // Form Labels
-  'Please fill in the following information': '请填写以下信息',
+  'Please fill in the following information:': '请填写以下信息',
   agreementDate: '签署日期',
   propertyAddress: '物业',
   landlord: '业主',
