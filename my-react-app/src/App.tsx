@@ -12,6 +12,7 @@ function AppContent() {
       <header className="App-header">
         <h1>{t(language, 'appTitle')}</h1>
         <div className="header-right">
+          <div>Nav Bar to be developed</div>
           <LanguageSelector />
         </div>
       </header>
