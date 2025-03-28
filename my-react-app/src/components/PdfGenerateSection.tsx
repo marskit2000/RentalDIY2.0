@@ -1822,7 +1822,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
                 <line x1="12" y1="18" x2="12" y2="12"></line>
                 <line x1="9" y1="15" x2="15" y2="15"></line>
               </svg>
-              <p>{t(language, 'Click the Preview button to view the PDF here')}</p>
+              <p>{t(language, 'previewPlaceholder')}</p>
             </div>
           </div>
         )}
