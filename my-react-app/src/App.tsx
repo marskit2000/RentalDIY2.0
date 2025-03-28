@@ -1,18 +1,33 @@
 import './App.css';
-import PdfGenerateSection from './components/PdfGenerateSection'
+import PdfGenerateSection from './components/PdfGenerateSection';
+import LanguageSelector from './components/LanguageSelector';
+import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
+import { t } from './translations';
 
-function App() {
+function AppContent() {
+  const { language } = useLanguage();
+
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Rental Agreement DIY</h1>
-        <div>NavBar to be developed</div>
+        <h1>{t(language, 'appTitle')}</h1>
+        <div className="header-right">
+          <LanguageSelector />
+        </div>
       </header>
       <main className="App-main">
         <PdfGenerateSection />
       </main>
     </div>
-  )
+  );
 }
 
-export default App
+function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
+  );
+}
+
+export default App;

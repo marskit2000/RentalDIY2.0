@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './PdfGenerateSection.css';
-import { PDFDocument, rgb, StandardFonts, degrees } from 'pdf-lib';
+import { PDFDocument, rgb, StandardFonts, degrees, PDFPage } from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit'
 import { toChinese, toChineseWithUnits } from 'chinese-number-format';
+import { useLanguage } from '../contexts/LanguageContext';
+import { t } from '../translations';
 
 interface PdfGenerateSectionProps {
   // Add props here as needed
@@ -52,6 +54,14 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const [dateTo, setDateTo] = useState('');
   const [remarksFields, setRemarksFields] = useState<string[]>(['']);
   const [showScrollTop, setShowScrollTop] = useState(false);
+
+  const { language } = useLanguage();
+
+  // Debug language changes
+  useEffect(() => {
+    console.log('Language changed to:', language);
+    console.log('Translation for "landlord":', t(language, 'landlord'));
+  }, [language]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -116,48 +126,55 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
     return `${day}/${month}/${year}`;
   };
 
-  const addWatermark = (
-    page: any, 
-    text: string, 
-    text2: string,
+  // Function to add watermark to PDF page
+  const addWatermark = async (
+    page: PDFPage,
+    text: string,
+    subText: string,
     font: any, 
-    options?: {
+    options: {
       size?: number;
       color?: any;
       opacity?: number;
       angle?: number;
       xOffset?: number;
       yOffset?: number;
-    }
+    } = {}
   ) => {
-    const { width, height } = page.getSize();
     const {
-      size = 100,
-      color = rgb(0.8, 0.8, 0.8),
+      size = 50,
+      color = rgb(0.95, 0.1, 0.1),
       opacity = 0.3,
-      angle = 45,
+      angle = -45,
       xOffset = 0,
-      yOffset = 0
-    } = options || {};
+      yOffset = 0,
+    } = options;
 
+    const { height } = page.getSize();
+    
+    // Draw the main watermark text
     page.drawText(text, {
-      x: width / 2 + xOffset,
+      x: page.getWidth() / 2 - font.widthOfTextAtSize(text, size) / 2 + xOffset,
       y: height / 2 + yOffset,
       size,
       font,
       color,
       opacity,
-      rotate: degrees(angle)
+      rotate: degrees(angle),
     });
 
-    //Red Watermark at the top right
-    page.drawText(text2, {
-      x: width - 280,
-      y: height - 20,
-      size: 14,
-      font,
-      color: rgb(1, 0, 0)
-    });
+    // Draw the sub-text if provided
+    if (subText) {
+      page.drawText(subText, {
+        x: page.getWidth() / 2 - font.widthOfTextAtSize(subText, size / 3) / 2 + xOffset,
+        y: height / 2 - size + yOffset,
+        size: size / 3,
+        font,
+        color,
+        opacity,
+        rotate: degrees(angle),
+      });
+    }
   };
 
   const generatePDF = async (isPreview: boolean = false) => {
@@ -179,23 +196,19 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
 
 
       const pages = pdfDoc.getPages();
-      const { width, height } = pages[0].getSize()
+      const { height } = pages[0].getSize()
 
       const fontColor = rgb(0, 0, 0);
       const lineColor = rgb(0, 0, 0);
       
       // Add SAMPLE watermark to all pages
       if(isPreview) {
-
-        const warnText = "This is a preview of the Rental Agreement."
+        const warnText = t(language, 'previewWarning');
         pages.forEach(page => {
           addWatermark(page, 'PREVIEW', warnText, helveticaFont, {
             size: 120,
-            color: rgb(0.3, 0.3, 0.3),
-            opacity: 0.3,
-            angle: 45,
-            xOffset: -150,
-            yOffset: -120,
+            opacity: 0.15,
+            angle: -45,
           });
         });
       }
@@ -1326,251 +1339,256 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   return (
     <div className="pdf-generate-section">
       <div className="left-section">  
-        <p className="input-group-heading">Please fill in the following information:</p>
+        <p className="input-group-heading">{t(language, 'Please fill in the following information:')}</p>
         <div className="input-group">
-          <label htmlFor="pdf-date-2">Sign Date:</label>
+          <label htmlFor="pdf-date-2">{t(language, 'agreementDate')}</label>
           <input
             type="date"
             id="pdf-date-2"
             value={inputDate2}
             onChange={(e) => setInputDate2(e.target.value)}
+            placeholder={t(language, 'enterDate')}
           />
         </div>
         <div className="input-group">
-          <label htmlFor="pdf-text-1">The Premises:</label>
+          <label htmlFor="pdf-text-1">{t(language, 'propertyAddress')}</label>
           <input
             type="text"
             id="pdf-text-1"
             value={inputText1}
             onChange={(e) => setInputText1(e.target.value)}
-            placeholder="Enter text to add to PDF"
+            placeholder={t(language, 'enterPropertyAddress')}
           />
         </div>
         <div className="input-group">
-          <label htmlFor="pdf-text-2">The Landlord:</label>
+          <label htmlFor="pdf-text-2">{t(language, 'landlord')}</label>
           <input
             type="text"
             id="pdf-text-2"
             value={inputText2}
             onChange={(e) => setInputText2(e.target.value)}
-            placeholder="Enter text to add to PDF"
+            placeholder={t(language, 'enterLandlordName')}
           />
         </div>
         <div className="input-group-row-container">
           <div className="input-group input-group-50">
-            <label htmlFor="landlordTel">Landlord Tel:</label>
+            <label htmlFor="landlordTel">{t(language, 'landlordTel')}</label>
             <input
               type="text"
               id="landlordTel"
               value={landlordTel}
               onChange={(e) => setLandlordTel(e.target.value)}
-              placeholder="Enter Tel"
+              placeholder={t(language, 'enterTel')}
             />
           </div>
           <div className="input-group input-group-50">
-            <label htmlFor="landLordId">Landlord ID:</label>
+            <label htmlFor="landLordId">{t(language, 'landlordId')}</label>
             <input
               type="text"
               id="landLordId"
               value={landLordId}
               onChange={(e) => setLandLordId(e.target.value)}
-              placeholder="Enter ID"
+              placeholder={t(language, 'enterID')}
             />
           </div>
         </div>
         <div className="input-group">
-          <label htmlFor="pdf-text-3">Landlord Address:</label>
+          <label htmlFor="pdf-text-3">{t(language, 'landlordAddress')}</label>
           <input
             type="text"
             id="pdf-text-3"
             value={inputText3}
             onChange={(e) => setInputText3(e.target.value)}
-            placeholder="Enter text to add to PDF"
+            placeholder={t(language, 'enterAddress')}
           />
         </div>
         <div className="input-group">
-          <label htmlFor="pdf-text-4">The Tenant:</label>
+          <label htmlFor="pdf-text-4">{t(language, 'tenant')}</label>
           <input
             type="text"
             id="pdf-text-4"
             value={inputText4}
             onChange={(e) => setInputText4(e.target.value)}
-              placeholder="Enter text to add to PDF"
-            />
+            placeholder={t(language, 'enterTenantName')}
+          />
         </div>
         <div className="input-group-row-container">
           <div className="input-group input-group-50">
-            <label htmlFor="tenantTel">Tenant Tel:</label>
+            <label htmlFor="tenantTel">{t(language, 'tenantTel')}</label>
             <input
               type="text"
               id="tenantTel"
               value={tenantTel}
               onChange={(e) => setTenantTel(e.target.value)}
-              placeholder="Enter Tel"
+              placeholder={t(language, 'enterTel')}
             />
           </div>
           <div className="input-group input-group-50">
-            <label htmlFor="tenantId">Tenant ID:</label>
+            <label htmlFor="tenantId">{t(language, 'tenantId')}</label>
             <input
               type="text"
               id="tenantId"
               value={tenantId}
               onChange={(e) => setTenantId(e.target.value)}
-              placeholder="Enter ID"
+              placeholder={t(language, 'enterID')}
             />
           </div>
         </div>
         
         <div className="input-group">
-          <label htmlFor="pdf-text-5">Tenant Address:</label>
+          <label htmlFor="pdf-text-5">{t(language, 'tenantAddress')}</label>
           <input
             type="text"
             id="pdf-text-5"
             value={inputText5}
             onChange={(e) => setInputText5(e.target.value)}
-            placeholder="Enter text to add to PDF"
+            placeholder={t(language, 'enterAddress')}
           />
         </div>
         <div className="date-range-group">
           <div className="input-group">
-            <label htmlFor="date-from">From:</label>
+            <label htmlFor="date-from">{t(language, 'from')}</label>
             <input
               type="date"
               id="date-from"
               value={dateFrom}
               onChange={(e) => setDateFrom(e.target.value)}
+              placeholder={t(language, 'enterDate')}
             />
           </div>
           <div className="input-group">
-            <label htmlFor="date-to">To:</label>
+            <label htmlFor="date-to">{t(language, 'to')}</label>
             <input
               type="date"
               id="date-to"
               value={dateTo}
               onChange={(e) => setDateTo(e.target.value)}
+              placeholder={t(language, 'enterDate')}
             />
           </div>
         </div>
         <div className="input-group">
-          <label htmlFor="rent-amount">Rent:</label>
+          <label htmlFor="rent-amount">{t(language, 'rentalAmount')}</label>
           <input
             type="number"
             id="rent-amount"
             value={rentAmount}
             onChange={(e) => setRentAmount(e.target.value)}
-            placeholder="Enter rent amount"
+            placeholder={t(language, 'enterAmount')}
             min="0"
             step="0.01"
           />
         </div>
         <div className="input-group">
-          <label htmlFor="security-deposit">Security Deposit:</label>
+          <label htmlFor="security-deposit">{t(language, 'depositAmount')}</label>
           <input
             type="number"
             id="security-deposit"
             value={securityDeposit}
             onChange={(e) => setSecurityDeposit(e.target.value)}
-            placeholder="Enter security deposit amount"
+            placeholder={t(language, 'enterAmount')}
             min="0"
             step="0.01"
           />
         </div>
         <div className="input-group">
-          <label htmlFor="property-use">Property Use:</label>
+          <label htmlFor="property-use">{t(language, 'propertyUse')}</label>
           <select
             id="property-use"
             value={propertyUse}
             onChange={(e) => setPropertyUse(e.target.value)}
           >
-            <option value="residential">Residential</option>
-            <option value="commercial">Commercial</option>
-            <option value="office">Office</option>
-            <option value="shop">Shop</option>
-            <option value="industrial">Industrial</option>
+            <option value="residential">{t(language, 'residential')}</option>
+            <option value="commercial">{t(language, 'commercial')}</option>
+            <option value="office">{t(language, 'office')}</option>
+            <option value="shop">{t(language, 'shop')}</option>
+            <option value="industrial">{t(language, 'industrial')}</option>
           </select>
         </div>
         <div className="fee-row">
           <div className="input-group">
-            <label htmlFor="management-fee">Management Fee:</label>
+            <label htmlFor="management-fee">{t(language, 'managementFee')}</label>
             <select
               id="management-fee"
               value={managementFee}
               onChange={(e) => setManagementFee(e.target.value)}
             >
-              <option value="landlord">Landlord</option>
-              <option value="tenant">Tenant</option>
+              <option value="landlord">{t(language, 'landlord')}</option>
+              <option value="tenant">{t(language, 'tenant')}</option>
             </select>
           </div>
           <div className="input-group">
-            <label htmlFor="government-rates">Government Rates:</label>
+            <label htmlFor="government-rates">{t(language, 'governmentRates')}</label>
             <select
               id="government-rates"
               value={governmentRates}
               onChange={(e) => setGovernmentRates(e.target.value)}
             >
-              <option value="landlord">Landlord</option>
-              <option value="tenant">Tenant</option>
+              <option value="landlord">{t(language, 'landlord')}</option>
+              <option value="tenant">{t(language, 'tenant')}</option>
             </select>
           </div>
           <div className="input-group">
-            <label htmlFor="government-rent">Government Rent:</label>
+            <label htmlFor="government-rent">{t(language, 'governmentRent')}</label>
             <select
               id="government-rent"
               value={governmentRent}
               onChange={(e) => setGovernmentRent(e.target.value)}
             >
-              <option value="landlord">Landlord</option>
-              <option value="tenant">Tenant</option>
+              <option value="landlord">{t(language, 'landlord')}</option>
+              <option value="tenant">{t(language, 'tenant')}</option>
             </select>
           </div>
         </div>
         <div className="date-range-group">
           <div className="input-group">
-            <label htmlFor="rent-free-from">Rent Free From:</label>
+            <label htmlFor="rent-free-from">{t(language, 'rentFreeFrom')}</label>
             <input
               type="date"
               id="rent-free-from"
               value={rentFreeFrom}
               onChange={(e) => setRentFreeFrom(e.target.value)}
+              placeholder={t(language, 'enterDate')}
             />
           </div>
           <div className="input-group">
-            <label htmlFor="rent-free-to">Rent Free To:</label>
+            <label htmlFor="rent-free-to">{t(language, 'rentFreeTo')}</label>
             <input
               type="date"
               id="rent-free-to"
               value={rentFreeTo}
               onChange={(e) => setRentFreeTo(e.target.value)}
+              placeholder={t(language, 'enterDate')}
             />
           </div>
         </div>
         <div className="break-clause-row">
           <div className="input-group">
-            <label htmlFor="break-clause-1">Break Clause 1:</label>
+            <label htmlFor="break-clause-1">{t(language, 'breakClause1')}</label>
             <select
               id="break-clause-1"
               value={breakClause1}
               onChange={(e) => setBreakClause1(e.target.value)}
             >
-              <option value="landlord">Landlord</option>
-              <option value="tenant">Tenant</option>
-              <option value="either">Either Party</option>
+              <option value="landlord">{t(language, 'landlord')}</option>
+              <option value="tenant">{t(language, 'tenant')}</option>
+              <option value="either">{t(language, 'either')}</option>
             </select>
           </div>
           <div className="input-group">
-            <label htmlFor="break-clause-2">Break Clause 2:</label>
+            <label htmlFor="break-clause-2">{t(language, 'breakClause2')}</label>
             <input
               type="number"
               id="break-clause-2"
               value={breakClause2}
               onChange={(e) => setBreakClause2(e.target.value)}
-              placeholder="Enter a number"
+              placeholder={t(language, 'enterNumber')}
               min="0"
               step="1"
             />
           </div>
           <div className="input-group break-clause-3-group">
-            <label htmlFor="break-clause-3">Break Clause 3:</label>
+            <label htmlFor="break-clause-3">{t(language, 'breakClause3')}</label>
             <div className="break-clause-3-inputs">
               <select
                 id="break-clause-3"
@@ -1579,7 +1597,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               >
                 <option value="12">12</option>
                 <option value="14">14</option>
-                <option value="other">Others</option>
+                <option value="other">{t(language, 'other')}</option>
               </select>
               {breakClause3 === 'other' && (
                 <input
@@ -1587,7 +1605,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
                   id="break-clause-3-other"
                   value={breakClause3Other}
                   onChange={(e) => setBreakClause3Other(e.target.value)}
-                  placeholder="Enter a number"
+                  placeholder={t(language, 'enterNumber')}
                   min="0"
                   step="1"
                 />
@@ -1597,160 +1615,160 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
         </div>
         <div className="furniture-row">
           <div className="input-group">
-            <label htmlFor="air-conditioner">Air Conditioner:</label>
+            <label htmlFor="air-conditioner">{t(language, 'airConditioner')}</label>
             <input
               type="text"
               id="air-conditioner"
               value={airConditioner}
               onChange={(e) => setAirConditioner(e.target.value)}
-              placeholder="Enter number of air conditioners"
+              placeholder={t(language, 'enterQuantity')}
             />
           </div>
           <div className="input-group">
-            <label htmlFor="ventilator">Ventilator:</label>
+            <label htmlFor="ventilator">{t(language, 'ventilator')}</label>
             <input
               type="text"
               id="ventilator"
               value={ventilator}
               onChange={(e) => setVentilator(e.target.value)}
-              placeholder="Enter number of ventilators"
+              placeholder={t(language, 'enterQuantity')}
             />
           </div>
           <div className="input-group">
-            <label htmlFor="oil-ventilator">Oil Ventilator:</label>
+            <label htmlFor="oil-ventilator">{t(language, 'oilVentilator')}</label>
             <input
               type="text"
               id="oil-ventilator"
               value={oilVentilator}
               onChange={(e) => setOilVentilator(e.target.value)}
-              placeholder="Enter number of oil ventilators"
+              placeholder={t(language, 'enterQuantity')}
             />
           </div>
           <div className="input-group">
-            <label htmlFor="water-heater">Water Heater:</label>
+            <label htmlFor="water-heater">{t(language, 'waterHeater')}</label>
             <input
               type="text"
               id="water-heater"
               value={waterHeater}
               onChange={(e) => setWaterHeater(e.target.value)}
-              placeholder="Enter number of water heaters"
+              placeholder={t(language, 'enterQuantity')}
             />
           </div>
         </div>
         <div className="furniture-row">
           <div className="input-group">
-            <label htmlFor="gas-stove">Gas Stove:</label>
+            <label htmlFor="gas-stove">{t(language, 'gasStove')}</label>
             <input
               type="text"
               id="gas-stove"
               value={gasStove}
               onChange={(e) => setGasStove(e.target.value)}
-              placeholder="Enter number of gas stoves"
+              placeholder={t(language, 'enterQuantity')}
             />
           </div>
           <div className="input-group">
-            <label htmlFor="lightings">Lightings:</label>
+            <label htmlFor="lightings">{t(language, 'lightings')}</label>
             <input
               type="text"
               id="lightings"
               value={lightings}
               onChange={(e) => setLightings(e.target.value)}
-              placeholder="Enter number of lightings"
+              placeholder={t(language, 'enterQuantity')}
             />
           </div>
           <div className="input-group">
-            <label htmlFor="refrigerator">Refrigerator:</label>
+            <label htmlFor="refrigerator">{t(language, 'refrigerator')}</label>
             <input
               type="text"
               id="refrigerator"
               value={refrigerator}
               onChange={(e) => setRefrigerator(e.target.value)}
-              placeholder="Enter number of refrigerators"
+              placeholder={t(language, 'enterQuantity')}
             />
           </div>
           <div className="input-group">
-            <label htmlFor="washing-machine">Washing Machine:</label>
+            <label htmlFor="washing-machine">{t(language, 'washingMachine')}</label>
             <input
               type="text"
               id="washing-machine"
               value={washingMachine}
               onChange={(e) => setWashingMachine(e.target.value)}
-              placeholder="Enter number of washing machines"
+              placeholder={t(language, 'enterQuantity')}
             />
           </div>
         </div>
         <div className="furniture-row">
           <div className="input-group">
-            <label htmlFor="bed">Bed:</label>
+            <label htmlFor="bed">{t(language, 'bed')}</label>
             <input
               type="text"
               id="bed"
               value={bed}
               onChange={(e) => setBed(e.target.value)}
-              placeholder="Enter number of beds"
+              placeholder={t(language, 'enterQuantity')}
             />
           </div>
           <div className="input-group">
-            <label htmlFor="wardrobe">Wardrobe:</label>
+            <label htmlFor="wardrobe">{t(language, 'wardrobe')}</label>
             <input
               type="text"
               id="wardrobe"
               value={wardrobe}
               onChange={(e) => setWardrobe(e.target.value)}
-              placeholder="Enter number of wardrobes"
+              placeholder={t(language, 'enterQuantity')}
             />
           </div>
           <div className="input-group">
-            <label htmlFor="settee">Settee:</label>
+            <label htmlFor="settee">{t(language, 'settee')}</label>
             <input
               type="text"
               id="settee"
               value={settee}
               onChange={(e) => setSettee(e.target.value)}
-              placeholder="Enter number of settees"
+              placeholder={t(language, 'enterQuantity')}
             />
           </div>
           <div className="input-group">
-            <label htmlFor="other-furniture">Others:</label>
+            <label htmlFor="other-furniture">{t(language, 'otherFurniture')}</label>
             <input
               type="text"
               id="other-furniture"
               value={otherFurniture}
               onChange={(e) => setOtherFurniture(e.target.value)}
-              placeholder="Enter other furniture"
+              placeholder={t(language, 'enterOtherFixtures')}
             />
           </div>
         </div>
         <div className="bank-row">
           <div className="input-group">
-            <label htmlFor="landlord-bank-account">Landlord Bank Account:</label>
+            <label htmlFor="landlord-bank-account">{t(language, 'landlordBankAccount')}</label>
             <input
               type="text"
               id="landlord-bank-account"
               value={landlordBankAccount}
               onChange={(e) => setLandlordBankAccount(e.target.value)}
-              placeholder="Enter landlord bank account"
+              placeholder={t(language, 'enterAccountNumber')}
             />
           </div>
           <div className="input-group">
-            <label htmlFor="bank">Bank:</label>
+            <label htmlFor="bank">{t(language, 'bank')}</label>
             <input
               type="text"
               id="bank"
               value={bank}
               onChange={(e) => setBank(e.target.value)}
-              placeholder="Enter bank"
+              placeholder={t(language, 'enterBank')}
             />
           </div>
         </div>
         <div className="remarks-group">
-          <label>Remarks:</label>
+          <label>{t(language, 'remarks')}</label>
           {remarksFields.map((remark, index) => (
             <div key={index} className="remark-input-group">
               <textarea
                 value={remark}
                 onChange={(e) => handleRemarkChange(index, e.target.value)}
-                placeholder={`Remark ${index + 1}`}
+                placeholder={t(language, 'enterRemarks')}
                 rows={3}
               />
               {index > 0 && (
@@ -1776,14 +1794,14 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
             onClick={handleGeneratePDF}
             disabled={isLoading}
           >
-            {isLoading ? 'Generating...' : 'Generate PDF'}
+            {isLoading ? t(language, 'generating') : t(language, 'generate')}
           </button>
           <button 
             className="preview-btn" 
             onClick={handlePreview}
             disabled={isLoading}
           >
-            Preview
+            {t(language, 'preview')}
           </button>
         </div>
       </div>
@@ -1792,7 +1810,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           <div className="pdf-preview">
             <iframe 
               src={pdfUrl+"#toolbar=0&view=FitH"} 
-              title="PDF Preview"
+              title={t(language, 'PDF Preview')}
             />
           </div>
         ) : (
@@ -1804,7 +1822,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
                 <line x1="12" y1="18" x2="12" y2="12"></line>
                 <line x1="9" y1="15" x2="15" y2="15"></line>
               </svg>
-              <p>Click the Preview button to view the PDF here</p>
+              <p>{t(language, 'Click the Preview button to view the PDF here')}</p>
             </div>
           </div>
         )}
@@ -1813,7 +1831,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
         <button 
           className="scroll-to-top-btn"
           onClick={scrollToTop}
-          aria-label="Scroll to top"
+          aria-label={t(language, 'Scroll to top')}
         >
           ↑
         </button>
