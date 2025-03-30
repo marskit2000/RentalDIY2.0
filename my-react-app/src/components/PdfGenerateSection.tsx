@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './PdfGenerateSection.css';
-import { PDFDocument, rgb, StandardFonts, degrees, PDFPage } from 'pdf-lib';
+import { PDFDocument, rgb, StandardFonts, degrees, PDFPage, Color, PDFFont } from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit'
 import { toChinese, toChineseWithUnits } from 'chinese-number-format';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -56,6 +56,12 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   const { language } = useLanguage();
+
+  //Color Type
+// type RGB = `rgb(${number}, ${number}, ${number})`;
+// type RGBA = `rgba(${number}, ${number}, ${number}, ${number})`;
+// type HEX = `#${string}`;
+// type Color = RGB | RGBA | HEX | undefined;
 
   // Debug language changes
   useEffect(() => {
@@ -131,10 +137,10 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
     page: PDFPage,
     text: string,
     subText: string,
-    font: any, 
+    font: PDFFont, 
     options: {
       size?: number;
-      color?: any;
+      color?: Color;
       opacity?: number;
       angle?: number;
       xOffset?: number;
