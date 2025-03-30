@@ -6,6 +6,7 @@ import { toChinese, toChineseWithUnits } from 'chinese-number-format';
 import { useLanguage } from '../contexts/LanguageContext';
 import { t } from '../translations';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface PdfGenerateSectionProps {
   // Add props here as needed
 }
