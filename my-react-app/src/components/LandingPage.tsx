@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { t } from '../translations';
 import './LandingPage.css';
+import HeroImageTwo from './HeroImageTwo';
 
 const LandingPage: React.FC = () => {
   const navigate = useNavigate();
@@ -22,15 +23,7 @@ const LandingPage: React.FC = () => {
             {t(language, 'getStarted')}
           </button>
         </div>
-        <div className="hero-image">
-          <div className="document-illustration">
-            <div className="document-header"></div>
-            <div className="document-line"></div>
-            <div className="document-line"></div>
-            <div className="document-line"></div>
-            <div className="document-signature"></div>
-          </div>
-        </div>
+        <HeroImageTwo />
       </section>
 
       <section className="features-section">

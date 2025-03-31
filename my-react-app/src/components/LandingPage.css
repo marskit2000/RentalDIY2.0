@@ -9,11 +9,19 @@
   align-items: center;
   justify-content: space-between;
   padding: 80px 10%;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background-image: linear-gradient(rgba(143, 143, 143, 0.5), rgba(39, 39, 39, 0.5)),url('../assets/images/Hong_Kong_Island_Skyline_a.jpg');
+  background-size: cover;
+  background-position: center;
+  background-color: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   min-height: 80vh;
+  max-height: 80vh;
+
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .hero-content {
+  
   flex: 1;
   max-width: 600px;
 }
@@ -21,7 +29,7 @@
 .hero-content h1 {
   font-size: 3.5rem;
   margin-bottom: 1.5rem;
-  color: #2c3e50;
+  color: #ffffff;
   line-height: 1.2;
 }
 
@@ -29,7 +37,7 @@
   font-size: 1.25rem;
   margin-bottom: 2rem;
   line-height: 1.6;
-  color: #34495e;
+  color: #ffffff;
 }
 
 .cta-button {
@@ -50,62 +58,7 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
-.hero-image {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.document-illustration {
-  width: 300px;
-  height: 400px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  padding: 30px;
-  position: relative;
-  transform: rotate(3deg);
-  transition: all 0.3s ease;
-}
-
-.document-illustration:hover {
-  transform: rotate(0deg) scale(1.05);
-}
-
-.document-header {
-  height: 40px;
-  background-color: #e0e0e0;
-  border-radius: 5px;
-  margin-bottom: 20px;
-}
-
-.document-line {
-  height: 15px;
-  background-color: #f0f0f0;
-  border-radius: 3px;
-  margin-bottom: 15px;
-  width: 100%;
-}
-
-.document-line:nth-child(3) {
-  width: 80%;
-}
-
-.document-line:nth-child(4) {
-  width: 60%;
-}
-
-.document-signature {
-  position: absolute;
-  bottom: 40px;
-  right: 40px;
-  width: 120px;
-  height: 40px;
-  background: linear-gradient(90deg, #4ca1af, transparent);
-  border-radius: 20px;
-  opacity: 0.7;
-}
 
 /* Features Section */
 .features-section {
