@@ -10,6 +10,8 @@ export const en = {
   landingTitle: 'Create Professional Rental Agreements in Minutes',
   landingSubtitle: 'Our easy-to-use tool helps landlords and tenants generate legally-sound rental agreements with just a few clicks.',
   getStarted: 'Get Started',
+  pricing: 'Pricing',
+  pricingSubtitle: 'Choose the plan that works for you',
   
   // Features Section
   featuresTitle: 'Why Choose Our Tool',

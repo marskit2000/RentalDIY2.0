@@ -10,6 +10,8 @@ export const zhCN = {
   landingTitle: '几分钟内创建专业租赁协议',
   landingSubtitle: '我们易于使用的工具帮助房东和租户只需点击几下即可生成合法有效的租赁协议。',
   getStarted: '立即开始',
+  pricing: '价格',
+  pricingSubtitle: '选择适合您的方案',
   
   // Features Section
   featuresTitle: '为什么选择我们的工具',

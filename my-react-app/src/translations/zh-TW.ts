@@ -10,6 +10,8 @@ export const zhTW = {
   landingTitle: '幾分鐘內創建專業租賃協議',
   landingSubtitle: '我們易於使用的工具幫助房東和租戶只需點擊幾下即可生成合法有效的租賃協議。',
   getStarted: '立即開始',
+  pricing: '價格',
+  pricingSubtitle: '選擇適合您的方案',
   
   // Features Section
   featuresTitle: '為什麼選擇我們的工具',

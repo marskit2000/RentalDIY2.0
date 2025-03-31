@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PdfGenerateSection from './components/PdfGenerateSection';
 import LandingPage from './components/LandingPage';
+import Pricing from './components/Pricing';
 import Navbar from './components/Navbar';
 import LanguageSelector from './components/LanguageSelector';
 import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
@@ -24,6 +25,7 @@ function AppContent() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/rental-agreement" element={<PdfGenerateSection />} />
+            <Route path="/pricing" element={<Pricing />} />
           </Routes>
         </main>
       </div>
