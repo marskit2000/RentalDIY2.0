@@ -17,8 +17,8 @@ function AppContent() {
         <header className="App-header">
           <h1>{t(language, 'appTitle')}</h1>
           <div className="header-right">
-            <Navbar />
             <LanguageSelector />
+            <Navbar />
           </div>
         </header>
         <main className="App-main">
