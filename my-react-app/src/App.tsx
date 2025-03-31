@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import LanguageSelector from './components/LanguageSelector';
 import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
 import { t } from './translations';
+import { Link } from 'react-router-dom';
 
 function AppContent() {
   const { language } = useLanguage();
@@ -15,7 +16,9 @@ function AppContent() {
     <Router>
       <div className="App">
         <header className="App-header">
-          <h1>{t(language, 'appTitle')}</h1>
+          <Link to="/" className="App-Title-Link">
+            <h1>{t(language, 'appTitle')}</h1>
+          </Link>  
           <div className="header-right">
             <div className="header-right-desktop">
               <Navbar />
