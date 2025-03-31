@@ -17,8 +17,14 @@ function AppContent() {
         <header className="App-header">
           <h1>{t(language, 'appTitle')}</h1>
           <div className="header-right">
-            <LanguageSelector />
-            <Navbar />
+            <div className="header-right-desktop">
+              <Navbar />
+              <LanguageSelector />
+            </div>
+            <div className="header-right-mobile">
+              <LanguageSelector />
+              <Navbar />
+            </div>
           </div>
         </header>
         <main className="App-main">

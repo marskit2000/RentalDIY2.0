@@ -78,7 +78,7 @@
 
 .nav-item {
   height: 80px;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
 }
 
 .nav-link {
@@ -86,11 +86,13 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.75rem;
   height: 100%;
   font-weight: 500;
+  font-size: 0.9rem;
   transition: all 0.3s ease;
   position: relative;
+  white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -113,16 +115,74 @@
   width: 100%;
 }
 
-@media screen and (max-width: 960px) {
-  .navbar-container {
-    padding: 0 30px;
+/* Tablet styles */
+@media screen and (max-width: 768px) {
+  .hamburger-icon {
+    display: flex;
+    margin-left: 10px;
   }
-
-  .navbar-logo {
-    font-size: 1.5rem;
+  
+  .navbar {
+    width: auto;
+    height: auto;
+    min-height: 40px;
+    position: static;
+  }
+  
+  .navbar-container {
+    width: auto;
+    height: auto;
+    padding: 0;
+    justify-content: flex-end;
+    position: static;
+  }
+  
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: auto;
+    position: fixed;
+    top: 40px;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: all 0.5s ease;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 10px 0;
+    margin: 0;
+    z-index: 2000;
+  }
+  
+  .nav-menu.active {
+    top: 80px;
+    opacity: 1;
+    left: 0;
+    width: 100vw;
+  }
+  
+  .nav-item {
+    height: auto;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav-link {
+    text-align: center;
+    padding: 1.2rem;
+    width: 100%;
+    display: block;
+    height: auto;
+    font-size: 1rem;
+  }
+  
+  .nav-link::after {
+    display: none;
   }
 }
 
+/* Mobile styles */
 @media screen and (max-width: 425px) {
   .hamburger-icon {
     display: flex;
