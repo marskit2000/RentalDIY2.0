@@ -152,6 +152,7 @@
     padding: 10px 0;
     margin: 0;
     z-index: 2000;
+    pointer-events: none;
   }
   
   .nav-menu.active {
@@ -159,6 +160,7 @@
     opacity: 1;
     left: 0;
     width: 100vw;
+    pointer-events: auto;
   }
   
   .nav-item {
@@ -219,6 +221,7 @@
     padding: 10px 0;
     margin: 0;
     z-index: 2000;
+    pointer-events: none;
   }
   
   .nav-menu.active {
@@ -226,6 +229,7 @@
     opacity: 1;
     left: 0;
     width: 100vw;
+    pointer-events: auto;
   }
   
   .nav-item {
