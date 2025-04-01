@@ -3,7 +3,7 @@
 }
 
 .language-selector select {
-  padding: 6px 10px;
+  padding: 10px 10px;
   border-radius: 4px;
   border: 1px solid #ccc;
   background-color: white;
@@ -26,15 +26,18 @@
 @media (max-width: 425px) {
   .language-selector {
     margin-left: 0;
+    margin-right: 10px;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    height: 2rem;
   }
   
   .language-selector select {
-    width: 80%;
-    max-width: 200px;
-    padding: 8px 12px;
-    font-size: 16px; /* Larger font size for better touch targets */
+    width: 100%;
+    max-width: 120px;
+    padding: 8px 8px;
+    font-size: 12px;
+    font-weight: bold;
   }
 }

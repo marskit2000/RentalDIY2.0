@@ -2,6 +2,41 @@ export const zhTW = {
   // Header
   appTitle: '租賃協議生成器',
   
+  // Navigation
+  home: '首頁',
+  rentalAgreement: '租賃協議',
+  
+  // Landing Page
+  landingTitle: '幾分鐘內創建專業租賃協議',
+  landingSubtitle: '我們易於使用的工具幫助房東和租戶只需點擊幾下即可生成合法有效的租賃協議。',
+  getStarted: '立即開始',
+  pricing: '價格',
+  pricingSubtitle: '選擇適合您的方案',
+  
+  // Features Section
+  featuresTitle: '為什麼選擇我們的工具',
+  feature1Title: '易於使用',
+  feature1Description: '簡單的表單界面，無需法律專業知識即可使用。',
+  feature2Title: '多語言支持',
+  feature2Description: '可以用英文、繁體中文和簡體中文創建協議。',
+  feature3Title: '移動設備友好',
+  feature3Description: '從任何設備隨時隨地生成和下載協議。',
+  feature4Title: '安全與隱私',
+  feature4Description: '您的數據永遠不會離開您的瀏覽器 - 完全保證隱私。',
+  
+  // How It Works Section
+  howItWorksTitle: '如何使用',
+  step1Title: '填寫表單',
+  step1Description: '輸入有關物業、房東、租戶和條款的所有必要詳細信息。',
+  step2Title: '審核協議',
+  step2Description: '預覽生成的協議並進行必要的調整。',
+  step3Title: '下載並簽署',
+  step3Description: '下載PDF，打印出來，並讓所有相關方簽署以使其正式生效。',
+  
+  // CTA Section
+  ctaTitle: '準備好創建您的租賃協議了嗎？',
+  ctaDescription: '只需幾分鐘即可生成專業、合法有效的租賃協議。',
+  
   // Form Labels
   'Please fill in the following information:': '請填寫以下資料',
   agreementDate: '簽署日期',
