@@ -1,5 +1,14 @@
 import * as pdfjsLib from 'pdfjs-dist'
 
+// Set the worker source
+if (typeof window !== 'undefined') {
+    // Use a web worker from the same origin
+    pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
+      'pdfjs-dist/build/pdf.worker.mjs',
+      import.meta.url
+    ).toString();
+  }
+
 export const convertToImage = async (pdfPath: string) => {
     try {
         
@@ -41,6 +50,7 @@ export const convertToImage = async (pdfPath: string) => {
         
         // Wait for all images to be processed
         const convertedImages = await Promise.all(imagePromises);
+        console.log(convertedImages);
         return convertedImages;
       } catch (err) {
         console.error('Error converting PDF to images:', err);
