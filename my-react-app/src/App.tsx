@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PdfGenerateSection from './components/PdfGenerateSection';
-import PdfGenerateSectionImage from './components/PdfGenerateSectionImage';
+import PdfGenerateSectionImage from './components/PdfGenerateSection';
 import LandingPage from './components/LandingPage';
 import Pricing from './components/Pricing';
 import Navbar from './components/Navbar';
@@ -34,7 +34,7 @@ function AppContent() {
         <main className="App-main">
           <Routes>
             <Route path="/" element={<LandingPage />} />
-            <Route path="/rental-agreement" element={<PdfGenerateSectionImage />} />
+            <Route path="/rental-agreement" element={<PdfGenerateSection />} />
             <Route path="/pricing" element={<Pricing />} />
           </Routes>
         </main>

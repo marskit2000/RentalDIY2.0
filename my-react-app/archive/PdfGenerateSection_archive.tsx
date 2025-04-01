@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import './PdfGenerateSectionImage.css';
+import './PdfGenerateSection.css';
 import { PDFDocument, rgb, StandardFonts, degrees, PDFPage, Color, PDFFont } from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit'
 import { toChinese, toChineseWithUnits } from 'chinese-number-format';
-import { useLanguage } from '../contexts/LanguageContext';
-import { t } from '../translations';
-import { convertToImage } from '../convertToImage';
+import { useLanguage } from '../src/contexts/LanguageContext';
+import { t } from '../src/translations';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface PdfGenerateSectionProps {
   // Add props here as needed
 }
 
-const PdfGenerateSectionImage: React.FC<PdfGenerateSectionProps> = () => {
+const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
   const [showPreview, setShowPreview] = useState(false);
@@ -59,10 +58,11 @@ const PdfGenerateSectionImage: React.FC<PdfGenerateSectionProps> = () => {
 
   const { language } = useLanguage();
 
-  //ConvertToImage State
-  const [images, setImages] = useState<string[]>([]);
-  const [imageLoading, setImageLoading] = useState<boolean>(false);
-  const [imageError, setImageError] = useState<string | null>(null);
+  //Color Type
+// type RGB = `rgb(${number}, ${number}, ${number})`;
+// type RGBA = `rgba(${number}, ${number}, ${number}, ${number})`;
+// type HEX = `#${string}`;
+// type Color = RGB | RGBA | HEX | undefined;
 
   // Debug language changes
   useEffect(() => {
@@ -1225,7 +1225,7 @@ const PdfGenerateSectionImage: React.FC<PdfGenerateSectionProps> = () => {
 
       //Split remarks into 20 char chunks
       const splitRemarks = (input: string, chunkSize: number) => {
-        const chunks = [];
+        let chunks = [] as string[];
         for (let i = 0; i < input.length; i += chunkSize) {
           chunks.push(input.slice(i, i + chunkSize));
         }
@@ -1299,23 +1299,8 @@ const PdfGenerateSectionImage: React.FC<PdfGenerateSectionProps> = () => {
 
       const blob = new Blob([pdfBytes], { type: 'application/pdf' });
       const url = window.URL.createObjectURL(blob);
-
-      // Convert PDF to images
-
-      try {
-        setImageLoading(true);
-        setImageError(null);
-        setImages([]);
-        const images = await convertToImage(url);
-        setImages(images || []);
-        return url;
-      } catch (error) {
-        console.error('Error converting PDF to images:', error);
-        setImageError('Failed to convert PDF to images');
-      } finally {
-        setImageLoading(false);
-      }
-  
+      setPdfUrl(url);
+      return url;
     } catch (error) {
       console.error('Error generating PDF:', error);
       alert('Error generating PDF. Please check the console for details.');
@@ -1828,14 +1813,12 @@ const PdfGenerateSectionImage: React.FC<PdfGenerateSectionProps> = () => {
         </div>
       </div>
       <div className="right-section">
-        {showPreview ? (
+        {showPreview && pdfUrl ? (
           <div className="pdf-preview">
-            {images.map((image, index) => (
-              <div key={index} className="image-item">
-                <h3>Page {index + 1}</h3>
-                <img src={image} alt={`Page ${index + 1}`} />
-              </div>
-            ))}
+            <iframe 
+              src={pdfUrl+"#toolbar=0&view=FitH"} 
+              title={t(language, 'PDF Preview')}
+            />
           </div>
         ) : (
           <div className="preview-placeholder">
@@ -1864,4 +1847,4 @@ const PdfGenerateSectionImage: React.FC<PdfGenerateSectionProps> = () => {
   );
 };
 
-export default PdfGenerateSectionImage;
+export default PdfGenerateSection;
