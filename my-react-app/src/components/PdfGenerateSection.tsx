@@ -65,13 +65,68 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const [remarksFields, setRemarksFields] = useState<string[]>(savedValues.remarksFields);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
-  //ConvertToImage State - used by the preview function
+  // ConvertToImage State - used by the preview function
   const [images, setImages] = useState<string[]>([]);
-  // These variables are used by the preview functionality for upcoming features
+  // These variables are used in the handlePreview function when passed to generatePDF
+  // The linter doesn't recognize they're being used because they're passed as props to another function
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [imageLoading, setImageLoading] = useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [imageError, setImageError] = useState<string | null>(null);
+
+  // Helper function to reset all form values to defaults
+  const resetFormValues = (showConfirmation = true) => {
+    // Reset all form values to defaults
+    const defaultValues = resetPdfInputValues();
+    
+    // Update all state values to defaults
+    setInputText1(defaultValues.inputText1);
+    setInputText2(defaultValues.inputText2);
+    setInputText3(defaultValues.inputText3);
+    setInputText4(defaultValues.inputText4);
+    setInputText5(defaultValues.inputText5);
+    setRentAmount(defaultValues.rentAmount);
+    setSecurityDeposit(defaultValues.securityDeposit);
+    setPropertyUse(defaultValues.propertyUse);
+    setManagementFee(defaultValues.managementFee);
+    setGovernmentRates(defaultValues.governmentRates);
+    setGovernmentRent(defaultValues.governmentRent);
+    setRentFreeFrom(defaultValues.rentFreeFrom);
+    setRentFreeTo(defaultValues.rentFreeTo);
+    setBreakClause1(defaultValues.breakClause1);
+    setBreakClause2(defaultValues.breakClause2);
+    setBreakClause3(defaultValues.breakClause3);
+    setBreakClause3Other(defaultValues.breakClause3Other);
+    setAirConditioner(defaultValues.airConditioner);
+    setVentilator(defaultValues.ventilator);
+    setOilVentilator(defaultValues.oilVentilator);
+    setWaterHeater(defaultValues.waterHeater);
+    setGasStove(defaultValues.gasStove);
+    setLightings(defaultValues.lightings);
+    setRefrigerator(defaultValues.refrigerator);
+    setWashingMachine(defaultValues.washingMachine);
+    setBed(defaultValues.bed);
+    setWardrobe(defaultValues.wardrobe);
+    setSettee(defaultValues.settee);
+    setOtherFurniture(defaultValues.otherFurniture);
+    setLandLordId(defaultValues.landLordId);
+    setLandlordTel(defaultValues.landlordTel);
+    setTenantId(defaultValues.tenantId);
+    setTenantTel(defaultValues.tenantTel);
+    setLandlordBankAccount(defaultValues.landlordBankAccount);
+    setBank(defaultValues.bank);
+    setInputDate2(defaultValues.inputDate2);
+    setDateFrom(defaultValues.dateFrom);
+    setDateTo(defaultValues.dateTo);
+    setRemarksFields(defaultValues.remarksFields);
+    
+    // Show confirmation message if requested
+    if (showConfirmation) {
+      alert(t(language, 'resetConfirmation') || 'Form has been reset to default values.');
+    }
+    
+    return defaultValues;
+  };
 
   // Create a debounced update function with 500ms delay
   const debouncedUpdate = useCallback(() => {
@@ -122,10 +177,11 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   };
 
   const handleGeneratePDF = async () => {
+    setIsLoading(true);
+    
     try {
-      setIsLoading(true);
-      
-      const params: PdfGenerationParams = {
+      const pdfBytes = await generatePDF({
+        isPreview: false,
         inputDate2,
         inputText1,
         inputText2,
@@ -166,20 +222,45 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
         dateTo,
         remarksFields,
         language,
-        t
-      };
+        t,
+        setImageLoading,
+        setImageError,
+        setImages
+      });
       
-      const url = await generatePDF(params);
-      
-      if (url) {
+      // Check if pdfBytes is not null before creating a Blob
+      if (pdfBytes) {
+        // Create a blob from the PDF bytes
+        const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+        
+        // Create a URL for the blob
+        const url = URL.createObjectURL(blob);
+        
+        // Create a link element
         const link = document.createElement('a');
         link.href = url;
-        link.download = "filled_tenancy_agreement.pdf";
+        link.download = 'rental_agreement.pdf';
+        
+        // Append the link to the body
+        document.body.appendChild(link);
+        
+        // Click the link to download the file
         link.click();
+        
+        // Clean up by removing the link
+        document.body.removeChild(link);
+        
+        // Reset form values without showing the standard reset confirmation
+        resetFormValues(false);
+        
+        // Show success message
+        alert(t(language, 'pdfGeneratedAndReset') || 'PDF generated successfully. Form has been reset.');
+      } else {
+        throw new Error('Failed to generate PDF');
       }
     } catch (error) {
       console.error('Error generating PDF:', error);
-      alert('Error generating PDF. Please check the console for details.');
+      alert(t(language, 'pdfError') || 'Error generating PDF. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -241,62 +322,19 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
       
       if (url) {
         setShowPreview(true);
+      } else {
+        throw new Error('Failed to generate PDF preview');
       }
     } catch (error) {
       console.error('Error generating PDF preview:', error);
-      alert('Error generating PDF preview. Please check the console for details.');
+      alert(t(language, 'pdfPreviewError') || 'Error generating PDF preview. Please try again.');
     } finally {
       setIsLoading(false);
     }
   };
 
   const handleReset = () => {
-    // Reset all form values to defaults
-    const defaultValues = resetPdfInputValues();
-    
-    // Update all state values
-    setInputText1(defaultValues.inputText1);
-    setInputText2(defaultValues.inputText2);
-    setInputText3(defaultValues.inputText3);
-    setInputText4(defaultValues.inputText4);
-    setInputText5(defaultValues.inputText5);
-    setRentAmount(defaultValues.rentAmount);
-    setSecurityDeposit(defaultValues.securityDeposit);
-    setPropertyUse(defaultValues.propertyUse);
-    setManagementFee(defaultValues.managementFee);
-    setGovernmentRates(defaultValues.governmentRates);
-    setGovernmentRent(defaultValues.governmentRent);
-    setRentFreeFrom(defaultValues.rentFreeFrom);
-    setRentFreeTo(defaultValues.rentFreeTo);
-    setBreakClause1(defaultValues.breakClause1);
-    setBreakClause2(defaultValues.breakClause2);
-    setBreakClause3(defaultValues.breakClause3);
-    setBreakClause3Other(defaultValues.breakClause3Other);
-    setAirConditioner(defaultValues.airConditioner);
-    setVentilator(defaultValues.ventilator);
-    setOilVentilator(defaultValues.oilVentilator);
-    setWaterHeater(defaultValues.waterHeater);
-    setGasStove(defaultValues.gasStove);
-    setLightings(defaultValues.lightings);
-    setRefrigerator(defaultValues.refrigerator);
-    setWashingMachine(defaultValues.washingMachine);
-    setBed(defaultValues.bed);
-    setWardrobe(defaultValues.wardrobe);
-    setSettee(defaultValues.settee);
-    setOtherFurniture(defaultValues.otherFurniture);
-    setLandLordId(defaultValues.landLordId);
-    setLandlordTel(defaultValues.landlordTel);
-    setTenantId(defaultValues.tenantId);
-    setTenantTel(defaultValues.tenantTel);
-    setLandlordBankAccount(defaultValues.landlordBankAccount);
-    setBank(defaultValues.bank);
-    setInputDate2(defaultValues.inputDate2);
-    setDateFrom(defaultValues.dateFrom);
-    setDateTo(defaultValues.dateTo);
-    setRemarksFields(defaultValues.remarksFields);
-    
-    // Show confirmation message
-    alert(t(language, 'resetConfirmation') || 'Form has been reset to default values.');
+    resetFormValues();
   };
 
   const handleAddRemark = () => {

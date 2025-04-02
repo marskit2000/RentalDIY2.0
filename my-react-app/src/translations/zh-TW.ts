@@ -112,6 +112,12 @@ export const zhTW = {
   generating: '生成中...',
   reset: '重置',
   
+  // Messages
+  pdfGeneratedAndReset: 'PDF已成功生成。表單已重置。',
+  pdfError: '生成PDF時出錯。請重試。',
+  pdfPreviewError: '生成PDF預覽時出錯。請重試。',
+  resetConfirmation: '表單已重置為默認值。',
+  
   // Language Selector
   language: '語言',
   english: '英文',

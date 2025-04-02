@@ -112,6 +112,12 @@ export const zhCN = {
   generating: '生成中...',
   reset: '重置',
   
+  // Messages
+  pdfGeneratedAndReset: 'PDF已成功生成。表单已重置。',
+  pdfError: '生成PDF时出错。请重试。',
+  pdfPreviewError: '生成PDF预览时出错。请重试。',
+  resetConfirmation: '表单已重置为默认值。',
+  
   // Language Selector
   language: '语言',
   english: '英文',
