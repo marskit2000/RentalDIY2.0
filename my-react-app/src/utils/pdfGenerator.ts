@@ -116,15 +116,15 @@ export const defaultPdfInputValues: PdfInputValues = {
 };
 
 /**
- * Load saved PDF input values from session storage
- * @returns PdfInputValues object from session storage or default values if none exist
+ * Load saved PDF input values from localStorage
+ * @returns PdfInputValues object from localStorage or default values if none exist
  */
 export const loadPdfInputValues = (): PdfInputValues => {
   if (typeof window === 'undefined') {
     return defaultPdfInputValues;
   }
   
-  const savedValues = sessionStorage.getItem(PDF_INPUT_VALUES_KEY);
+  const savedValues = localStorage.getItem(PDF_INPUT_VALUES_KEY);
   if (!savedValues) {
     return defaultPdfInputValues;
   }
@@ -138,7 +138,7 @@ export const loadPdfInputValues = (): PdfInputValues => {
 };
 
 /**
- * Update PDF input values and save to session storage
+ * Update PDF input values and save to localStorage
  * @param newValues Partial PdfInputValues object with values to update
  * @returns Updated PdfInputValues object
  */
@@ -151,7 +151,7 @@ export const updatePdfInputValues = (newValues: Partial<PdfInputValues>): PdfInp
   const updatedValues = { ...currentValues, ...newValues };
   
   try {
-    sessionStorage.setItem(PDF_INPUT_VALUES_KEY, JSON.stringify(updatedValues));
+    localStorage.setItem(PDF_INPUT_VALUES_KEY, JSON.stringify(updatedValues));
     return updatedValues;
   } catch (error) {
     console.error('Error saving PDF input values to session storage:', error);
@@ -169,7 +169,7 @@ export const resetPdfInputValues = (): PdfInputValues => {
   }
   
   try {
-    sessionStorage.removeItem(PDF_INPUT_VALUES_KEY);
+    localStorage.removeItem(PDF_INPUT_VALUES_KEY);
     return defaultPdfInputValues;
   } catch (error) {
     console.error('Error resetting PDF input values in session storage:', error);
