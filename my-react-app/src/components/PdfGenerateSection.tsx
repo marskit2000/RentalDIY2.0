@@ -792,6 +792,11 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           <button 
             className="reset-btn" 
             onClick={handleReset}
+            onTouchStart={(e) => {
+              // Prevent default to avoid any delay
+              e.preventDefault();
+              handleReset();
+            }}
           >
             {t(language, 'reset') || 'Reset Form'}
           </button>
@@ -799,6 +804,12 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
             <button 
               className="generate-btn" 
               onClick={handleGeneratePDF}
+              onTouchStart={(e) => {
+                if (isLoading) return;
+                // Prevent default to avoid any delay
+                e.preventDefault();
+                handleGeneratePDF();
+              }}
               disabled={isLoading}
             >
               {isLoading ? (t(language, 'generating') || 'Generating...') : (t(language, 'generatePDF') || 'Generate PDF')}
@@ -806,6 +817,12 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
             <button 
               className="preview-btn"
               onClick={handlePreview}
+              onTouchStart={(e) => {
+                if (isLoading) return;
+                // Prevent default to avoid any delay
+                e.preventDefault();
+                handlePreview();
+              }}
               disabled={isLoading}
             >
               {t(language, 'preview') || 'Preview'}
