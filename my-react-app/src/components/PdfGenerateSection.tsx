@@ -7,6 +7,7 @@ import {
   PdfGenerationParams, 
   updatePdfInputValues, 
   loadPdfInputValues,
+  resetPdfInputValues,
   PdfInputValues
 } from '../utils/pdfGenerator';
 
@@ -66,7 +67,10 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
 
   //ConvertToImage State - used by the preview function
   const [images, setImages] = useState<string[]>([]);
+  // These variables are used by the preview functionality for upcoming features
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [imageLoading, setImageLoading] = useState<boolean>(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [imageError, setImageError] = useState<string | null>(null);
 
   // Create a debounced update function with 500ms delay
@@ -244,6 +248,55 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleReset = () => {
+    // Reset all form values to defaults
+    const defaultValues = resetPdfInputValues();
+    
+    // Update all state values
+    setInputText1(defaultValues.inputText1);
+    setInputText2(defaultValues.inputText2);
+    setInputText3(defaultValues.inputText3);
+    setInputText4(defaultValues.inputText4);
+    setInputText5(defaultValues.inputText5);
+    setRentAmount(defaultValues.rentAmount);
+    setSecurityDeposit(defaultValues.securityDeposit);
+    setPropertyUse(defaultValues.propertyUse);
+    setManagementFee(defaultValues.managementFee);
+    setGovernmentRates(defaultValues.governmentRates);
+    setGovernmentRent(defaultValues.governmentRent);
+    setRentFreeFrom(defaultValues.rentFreeFrom);
+    setRentFreeTo(defaultValues.rentFreeTo);
+    setBreakClause1(defaultValues.breakClause1);
+    setBreakClause2(defaultValues.breakClause2);
+    setBreakClause3(defaultValues.breakClause3);
+    setBreakClause3Other(defaultValues.breakClause3Other);
+    setAirConditioner(defaultValues.airConditioner);
+    setVentilator(defaultValues.ventilator);
+    setOilVentilator(defaultValues.oilVentilator);
+    setWaterHeater(defaultValues.waterHeater);
+    setGasStove(defaultValues.gasStove);
+    setLightings(defaultValues.lightings);
+    setRefrigerator(defaultValues.refrigerator);
+    setWashingMachine(defaultValues.washingMachine);
+    setBed(defaultValues.bed);
+    setWardrobe(defaultValues.wardrobe);
+    setSettee(defaultValues.settee);
+    setOtherFurniture(defaultValues.otherFurniture);
+    setLandLordId(defaultValues.landLordId);
+    setLandlordTel(defaultValues.landlordTel);
+    setTenantId(defaultValues.tenantId);
+    setTenantTel(defaultValues.tenantTel);
+    setLandlordBankAccount(defaultValues.landlordBankAccount);
+    setBank(defaultValues.bank);
+    setInputDate2(defaultValues.inputDate2);
+    setDateFrom(defaultValues.dateFrom);
+    setDateTo(defaultValues.dateTo);
+    setRemarksFields(defaultValues.remarksFields);
+    
+    // Show confirmation message
+    alert(t(language, 'resetConfirmation') || 'Form has been reset to default values.');
   };
 
   const handleAddRemark = () => {
@@ -713,19 +766,27 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
         </div>
         <div className="controls">
           <button 
-            className="generate-btn" 
-            onClick={handleGeneratePDF}
-            disabled={isLoading}
+            className="reset-btn" 
+            onClick={handleReset}
           >
-            {isLoading ? t(language, 'generating') : t(language, 'generate')}
+            {t(language, 'reset') || 'Reset Form'}
           </button>
-          <button 
-            className="preview-btn" 
-            onClick={handlePreview}
-            disabled={isLoading}
-          >
-            {t(language, 'preview')}
-          </button>
+          <div className="button-group-right">
+            <button 
+              className="generate-btn" 
+              onClick={handleGeneratePDF}
+              disabled={isLoading}
+            >
+              {isLoading ? (t(language, 'generating') || 'Generating...') : (t(language, 'generatePDF') || 'Generate PDF')}
+            </button>
+            <button 
+              className="preview-btn"
+              onClick={handlePreview}
+              disabled={isLoading}
+            >
+              {t(language, 'preview') || 'Preview'}
+            </button>
+          </div>
         </div>
       </div>
       <div className="right-section">

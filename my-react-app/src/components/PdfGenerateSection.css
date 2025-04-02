@@ -359,39 +359,58 @@
 
 .controls {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 15px 0;
 }
 
-.generate-btn, .preview-btn {
-  padding: 0.75rem 1.5rem;
+.button-group-right {
+  display: flex;
+  gap: 10px;
+}
+
+.reset-btn {
+  background-color: #d9534f;
   color: white;
   border: none;
+  padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.2s;
 }
 
-.generate-btn {
-  background-color: #007bff;
+.reset-btn:hover {
+  background-color: #c9302c;
 }
 
 .preview-btn {
-  background-color: #28a745;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.generate-btn:hover {
-  background-color: #0056b3;
+.generate-btn {
+  background-color: #5cb85c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .preview-btn:hover {
-  background-color: #218838;
+  background-color: #0069d9;
 }
 
-.generate-btn:disabled, .preview-btn:disabled {
-  background-color: #ccc;
+.generate-btn:hover {
+  background-color: #4cae4c;
+}
+
+.preview-btn:disabled,
+.generate-btn:disabled {
+  background-color: #cccccc;
   cursor: not-allowed;
 }
 

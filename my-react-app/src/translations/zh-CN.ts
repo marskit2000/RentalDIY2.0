@@ -108,8 +108,9 @@ export const zhCN = {
   // Buttons
   preview: '预览',
   download: '下载',
-  generate: '生成PDF',
+  generatePDF: '生成PDF',
   generating: '生成中...',
+  reset: '重置',
   
   // Language Selector
   language: '语言',

@@ -108,8 +108,9 @@ export const en = {
   // Buttons
   preview: 'Preview',
   download: 'Download',
-  generate: 'Generate PDF',
+  generatePDF: 'Generate PDF',
   generating: 'Generating...',
+  reset: 'Reset',
   
   // Language Selector
   language: 'Language',

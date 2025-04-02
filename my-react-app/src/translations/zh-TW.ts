@@ -108,8 +108,9 @@ export const zhTW = {
   // Buttons
   preview: '預覽',
   download: '下載',
-  generate: '生成PDF',
+  generatePDF: '生成PDF',
   generating: '生成中...',
+  reset: '重置',
   
   // Language Selector
   language: '語言',
