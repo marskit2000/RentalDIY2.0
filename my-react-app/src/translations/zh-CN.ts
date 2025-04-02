@@ -117,6 +117,12 @@ export const zhCN = {
   pdfError: '生成PDF时出错。请重试。',
   pdfPreviewError: '生成PDF预览时出错。请重试。',
   resetConfirmation: '表单已重置为默认值。',
+
+  // Confirm Reset Modal
+  resetConfirmationTitle: '确认重置',
+  resetConfirmationMessage: '您确定要将所有表单字段重置为默认值吗？',
+  cancel: '取消',
+  confirm: '重置',
   
   // Language Selector
   language: '语言',

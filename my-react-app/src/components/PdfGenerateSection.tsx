@@ -10,6 +10,7 @@ import {
   resetPdfInputValues,
   PdfInputValues
 } from '../utils/pdfGenerator';
+import ConfirmationModal from './ui/ConfirmationModal';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface PdfGenerateSectionProps {
@@ -64,6 +65,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const [dateTo, setDateTo] = useState(savedValues.dateTo);
   const [remarksFields, setRemarksFields] = useState<string[]>(savedValues.remarksFields);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [showResetModal, setShowResetModal] = useState(false);
 
   // ConvertToImage State - used by the preview function
   const [images, setImages] = useState<string[]>([]);
@@ -301,10 +303,24 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   };
 
   const handleReset = () => {
+    // Show confirmation modal instead of immediately resetting
+    setShowResetModal(true);
+  };
+
+  const confirmReset = () => {
+    // Close the modal
+    setShowResetModal(false);
+    
+    // Perform the reset
     resetFormValues();
     
-    // Show confirmation message
-    alert(t(language, 'resetConfirmation') || 'Form has been reset to default values.');
+    // // Show confirmation message
+    // alert(t(language, 'resetConfirmation') || 'Form has been reset to default values.');
+  };
+
+  const cancelReset = () => {
+    // Just close the modal without resetting
+    setShowResetModal(false);
   };
 
   const handleAddRemark = () => {
@@ -830,6 +846,16 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           ↑
         </button>
       )}
+      
+      <ConfirmationModal
+        isOpen={showResetModal}
+        title={t(language, 'resetConfirmationTitle') || 'Confirm Reset'}
+        message={t(language, 'resetConfirmationMessage') || 'Are you sure you want to reset all form fields to their default values?'}
+        confirmText={t(language, 'confirm') || 'Reset'}
+        cancelText={t(language, 'cancel') || 'Cancel'}
+        onConfirm={confirmReset}
+        onCancel={cancelReset}
+      />
     </div>
   );
 };
