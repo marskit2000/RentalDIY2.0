@@ -121,6 +121,52 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
     });
   };
 
+  const resetFormValues = () => {
+    // Reset all form values to defaults
+    const defaultValues = resetPdfInputValues();
+        
+    // Update all state values
+    setInputText1(defaultValues.inputText1);
+    setInputText2(defaultValues.inputText2);
+    setInputText3(defaultValues.inputText3);
+    setInputText4(defaultValues.inputText4);
+    setInputText5(defaultValues.inputText5);
+    setRentAmount(defaultValues.rentAmount);
+    setSecurityDeposit(defaultValues.securityDeposit);
+    setPropertyUse(defaultValues.propertyUse);
+    setManagementFee(defaultValues.managementFee);
+    setGovernmentRates(defaultValues.governmentRates);
+    setGovernmentRent(defaultValues.governmentRent);
+    setRentFreeFrom(defaultValues.rentFreeFrom);
+    setRentFreeTo(defaultValues.rentFreeTo);
+    setBreakClause1(defaultValues.breakClause1);
+    setBreakClause2(defaultValues.breakClause2);
+    setBreakClause3(defaultValues.breakClause3);
+    setBreakClause3Other(defaultValues.breakClause3Other);
+    setAirConditioner(defaultValues.airConditioner);
+    setVentilator(defaultValues.ventilator);
+    setOilVentilator(defaultValues.oilVentilator);
+    setWaterHeater(defaultValues.waterHeater);
+    setGasStove(defaultValues.gasStove);
+    setLightings(defaultValues.lightings);
+    setRefrigerator(defaultValues.refrigerator);
+    setWashingMachine(defaultValues.washingMachine);
+    setBed(defaultValues.bed);
+    setWardrobe(defaultValues.wardrobe);
+    setSettee(defaultValues.settee);
+    setOtherFurniture(defaultValues.otherFurniture);
+    setLandLordId(defaultValues.landLordId);
+    setLandlordTel(defaultValues.landlordTel);
+    setTenantId(defaultValues.tenantId);
+    setTenantTel(defaultValues.tenantTel);
+    setLandlordBankAccount(defaultValues.landlordBankAccount);
+    setBank(defaultValues.bank);
+    setInputDate2(defaultValues.inputDate2);
+    setDateFrom(defaultValues.dateFrom);
+    setDateTo(defaultValues.dateTo);
+    setRemarksFields(defaultValues.remarksFields);
+  };
+
   const handleGeneratePDF = async () => {
     try {
       setIsLoading(true);
@@ -182,6 +228,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
       alert('Error generating PDF. Please check the console for details.');
     } finally {
       setIsLoading(false);
+      resetFormValues();
     }
   };
 
@@ -251,49 +298,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   };
 
   const handleReset = () => {
-    // Reset all form values to defaults
-    const defaultValues = resetPdfInputValues();
-    
-    // Update all state values
-    setInputText1(defaultValues.inputText1);
-    setInputText2(defaultValues.inputText2);
-    setInputText3(defaultValues.inputText3);
-    setInputText4(defaultValues.inputText4);
-    setInputText5(defaultValues.inputText5);
-    setRentAmount(defaultValues.rentAmount);
-    setSecurityDeposit(defaultValues.securityDeposit);
-    setPropertyUse(defaultValues.propertyUse);
-    setManagementFee(defaultValues.managementFee);
-    setGovernmentRates(defaultValues.governmentRates);
-    setGovernmentRent(defaultValues.governmentRent);
-    setRentFreeFrom(defaultValues.rentFreeFrom);
-    setRentFreeTo(defaultValues.rentFreeTo);
-    setBreakClause1(defaultValues.breakClause1);
-    setBreakClause2(defaultValues.breakClause2);
-    setBreakClause3(defaultValues.breakClause3);
-    setBreakClause3Other(defaultValues.breakClause3Other);
-    setAirConditioner(defaultValues.airConditioner);
-    setVentilator(defaultValues.ventilator);
-    setOilVentilator(defaultValues.oilVentilator);
-    setWaterHeater(defaultValues.waterHeater);
-    setGasStove(defaultValues.gasStove);
-    setLightings(defaultValues.lightings);
-    setRefrigerator(defaultValues.refrigerator);
-    setWashingMachine(defaultValues.washingMachine);
-    setBed(defaultValues.bed);
-    setWardrobe(defaultValues.wardrobe);
-    setSettee(defaultValues.settee);
-    setOtherFurniture(defaultValues.otherFurniture);
-    setLandLordId(defaultValues.landLordId);
-    setLandlordTel(defaultValues.landlordTel);
-    setTenantId(defaultValues.tenantId);
-    setTenantTel(defaultValues.tenantTel);
-    setLandlordBankAccount(defaultValues.landlordBankAccount);
-    setBank(defaultValues.bank);
-    setInputDate2(defaultValues.inputDate2);
-    setDateFrom(defaultValues.dateFrom);
-    setDateTo(defaultValues.dateTo);
-    setRemarksFields(defaultValues.remarksFields);
+    resetFormValues();
     
     // Show confirmation message
     alert(t(language, 'resetConfirmation') || 'Form has been reset to default values.');
