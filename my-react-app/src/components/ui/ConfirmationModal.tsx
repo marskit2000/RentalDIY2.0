@@ -25,8 +25,16 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
 }) => {
   if (!isOpen) return null;
 
+  // Handle background click to close the modal
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Only trigger if the click was directly on the overlay (not its children)
+    if (e.target === e.currentTarget) {
+      onCancel();
+    }
+  };
+
   return (
-    <div className="modal-overlay">
+    <div className="modal-overlay" onClick={handleOverlayClick}>
       <div className="modal-content">
         <h3>{title}</h3>
         <p>{message}</p>
