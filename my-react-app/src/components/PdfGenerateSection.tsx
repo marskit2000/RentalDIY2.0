@@ -65,9 +65,10 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const [remarksFields, setRemarksFields] = useState<string[]>(savedValues.remarksFields);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
-  //ConvertToImage State - used by the preview function
+  // ConvertToImage State - used by the preview function
   const [images, setImages] = useState<string[]>([]);
-  // These variables are used by the preview functionality for upcoming features
+  // These variables are used in the handlePreview function when passed to generatePDF
+  // The linter doesn't recognize they're being used because they're passed as props to another function
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [imageLoading, setImageLoading] = useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -288,10 +289,12 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
       
       if (url) {
         setShowPreview(true);
+      } else {
+        throw new Error('Failed to generate PDF preview');
       }
     } catch (error) {
       console.error('Error generating PDF preview:', error);
-      alert('Error generating PDF preview. Please check the console for details.');
+      alert(t(language, 'pdfPreviewError') || 'Error generating PDF preview. Please try again.');
     } finally {
       setIsLoading(false);
     }

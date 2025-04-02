@@ -112,6 +112,12 @@ export const en = {
   generating: 'Generating...',
   reset: 'Reset',
   
+  // Messages
+  pdfGeneratedAndReset: 'PDF generated successfully. Form has been reset.',
+  pdfError: 'Error generating PDF. Please try again.',
+  pdfPreviewError: 'Error generating PDF preview. Please try again.',
+  resetConfirmation: 'Form has been reset to default values.',
+  
   // Language Selector
   language: 'Language',
   english: 'English',
