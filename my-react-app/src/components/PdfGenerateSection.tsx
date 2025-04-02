@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './PdfGenerateSection.css';
 import { useLanguage } from '../contexts/LanguageContext';
 import { t } from '../translations';
-import { generatePDF, PdfGenerationParams } from '../utils/pdfGenerator';
+import { 
+  generatePDF, 
+  PdfGenerationParams, 
+  updatePdfInputValues, 
+  loadPdfInputValues,
+  PdfInputValues
+} from '../utils/pdfGenerator';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface PdfGenerateSectionProps {
@@ -10,62 +16,90 @@ interface PdfGenerateSectionProps {
 }
 
 const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
+  const { language } = useLanguage();
+  
+  // Load saved values from session storage or use defaults
+  const savedValues = loadPdfInputValues();
+  
   const [isLoading, setIsLoading] = useState(false);
-  // const [pdfUrl, setPdfUrl] = useState<string | null>(null);
   const [showPreview, setShowPreview] = useState(false);
-  const [inputText1, setInputText1] = useState('');
-  const [inputText2, setInputText2] = useState('');
-  const [inputText3, setInputText3] = useState('');
-  const [inputText4, setInputText4] = useState('');
-  const [inputText5, setInputText5] = useState('');
-  const [rentAmount, setRentAmount] = useState('');
-  const [securityDeposit, setSecurityDeposit] = useState('');
-  const [propertyUse, setPropertyUse] = useState('residential');
-  const [managementFee, setManagementFee] = useState('landlord');
-  const [governmentRates, setGovernmentRates] = useState('landlord');
-  const [governmentRent, setGovernmentRent] = useState('landlord');
-  const [rentFreeFrom, setRentFreeFrom] = useState('');
-  const [rentFreeTo, setRentFreeTo] = useState('');
-  const [breakClause1, setBreakClause1] = useState('landlord');
-  const [breakClause2, setBreakClause2] = useState('');
-  const [breakClause3, setBreakClause3] = useState('12');
-  const [breakClause3Other, setBreakClause3Other] = useState('');
-  const [airConditioner, setAirConditioner] = useState('');
-  const [ventilator, setVentilator] = useState('');
-  const [oilVentilator, setOilVentilator] = useState('');
-  const [waterHeater, setWaterHeater] = useState('');
-  const [gasStove, setGasStove] = useState('');
-  const [lightings, setLightings] = useState('');
-  const [refrigerator, setRefrigerator] = useState('');
-  const [washingMachine, setWashingMachine] = useState('');
-  const [bed, setBed] = useState('');
-  const [wardrobe, setWardrobe] = useState('');
-  const [settee, setSettee] = useState('');
-  const [otherFurniture, setOtherFurniture] = useState('');
-  const [landLordId, setLandLordId] = useState('');
-  const [landlordTel, setLandlordTel] = useState('');
-  const [tenantId, setTenantId] = useState('');
-  const [tenantTel, setTenantTel] = useState('');
-  const [landlordBankAccount, setLandlordBankAccount] = useState('');
-  const [bank, setBank] = useState('');
-  const [inputDate2, setInputDate2] = useState('');
-  const [dateFrom, setDateFrom] = useState('');
-  const [dateTo, setDateTo] = useState('');
-  const [remarksFields, setRemarksFields] = useState<string[]>(['']);
+  const [inputText1, setInputText1] = useState(savedValues.inputText1);
+  const [inputText2, setInputText2] = useState(savedValues.inputText2);
+  const [inputText3, setInputText3] = useState(savedValues.inputText3);
+  const [inputText4, setInputText4] = useState(savedValues.inputText4);
+  const [inputText5, setInputText5] = useState(savedValues.inputText5);
+  const [rentAmount, setRentAmount] = useState(savedValues.rentAmount);
+  const [securityDeposit, setSecurityDeposit] = useState(savedValues.securityDeposit);
+  const [propertyUse, setPropertyUse] = useState(savedValues.propertyUse);
+  const [managementFee, setManagementFee] = useState(savedValues.managementFee);
+  const [governmentRates, setGovernmentRates] = useState(savedValues.governmentRates);
+  const [governmentRent, setGovernmentRent] = useState(savedValues.governmentRent);
+  const [rentFreeFrom, setRentFreeFrom] = useState(savedValues.rentFreeFrom);
+  const [rentFreeTo, setRentFreeTo] = useState(savedValues.rentFreeTo);
+  const [breakClause1, setBreakClause1] = useState(savedValues.breakClause1);
+  const [breakClause2, setBreakClause2] = useState(savedValues.breakClause2);
+  const [breakClause3, setBreakClause3] = useState(savedValues.breakClause3);
+  const [breakClause3Other, setBreakClause3Other] = useState(savedValues.breakClause3Other);
+  const [airConditioner, setAirConditioner] = useState(savedValues.airConditioner);
+  const [ventilator, setVentilator] = useState(savedValues.ventilator);
+  const [oilVentilator, setOilVentilator] = useState(savedValues.oilVentilator);
+  const [waterHeater, setWaterHeater] = useState(savedValues.waterHeater);
+  const [gasStove, setGasStove] = useState(savedValues.gasStove);
+  const [lightings, setLightings] = useState(savedValues.lightings);
+  const [refrigerator, setRefrigerator] = useState(savedValues.refrigerator);
+  const [washingMachine, setWashingMachine] = useState(savedValues.washingMachine);
+  const [bed, setBed] = useState(savedValues.bed);
+  const [wardrobe, setWardrobe] = useState(savedValues.wardrobe);
+  const [settee, setSettee] = useState(savedValues.settee);
+  const [otherFurniture, setOtherFurniture] = useState(savedValues.otherFurniture);
+  const [landLordId, setLandLordId] = useState(savedValues.landLordId);
+  const [landlordTel, setLandlordTel] = useState(savedValues.landlordTel);
+  const [tenantId, setTenantId] = useState(savedValues.tenantId);
+  const [tenantTel, setTenantTel] = useState(savedValues.tenantTel);
+  const [landlordBankAccount, setLandlordBankAccount] = useState(savedValues.landlordBankAccount);
+  const [bank, setBank] = useState(savedValues.bank);
+  const [inputDate2, setInputDate2] = useState(savedValues.inputDate2);
+  const [dateFrom, setDateFrom] = useState(savedValues.dateFrom);
+  const [dateTo, setDateTo] = useState(savedValues.dateTo);
+  const [remarksFields, setRemarksFields] = useState<string[]>(savedValues.remarksFields);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
-  const { language } = useLanguage();
-
-  //ConvertToImage State
+  //ConvertToImage State - used by the preview function
   const [images, setImages] = useState<string[]>([]);
   const [imageLoading, setImageLoading] = useState<boolean>(false);
   const [imageError, setImageError] = useState<string | null>(null);
 
-  // Debug language changes
-  useEffect(() => {
-    console.log('Language changed to:', language);
-    console.log('Translation for "landlord":', t(language, 'landlord'));
-  }, [language]);
+  // Create a debounced update function with 500ms delay
+  const debouncedUpdate = useCallback(() => {
+    let timeoutId: number | null = null;
+    
+    return (updates: Partial<PdfInputValues>) => {
+      if (timeoutId) {
+        window.clearTimeout(timeoutId);
+      }
+      
+      timeoutId = window.setTimeout(() => {
+        updatePdfInputValues(updates);
+        timeoutId = null;
+      }, 500);
+    };
+  }, [])();
+
+  // Generic change handler for input fields
+  const handleInputChange = useCallback((fieldName: keyof PdfInputValues, value: any, setter: React.Dispatch<React.SetStateAction<any>>) => {
+    setter(value);
+    debouncedUpdate({ [fieldName]: value } as Partial<PdfInputValues>);
+  }, [debouncedUpdate]);
+
+  // Handle remarks changes separately due to array structure
+  const handleRemarkChange = useCallback((index: number, value: string) => {
+    setRemarksFields(prev => {
+      const newFields = [...prev];
+      newFields[index] = value;
+      debouncedUpdate({ remarksFields: newFields });
+      return newFields;
+    });
+  }, [debouncedUpdate]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -213,19 +247,16 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   };
 
   const handleAddRemark = () => {
-    setRemarksFields([...remarksFields, '']);
+    const newRemarksFields = [...remarksFields, ''];
+    setRemarksFields(newRemarksFields);
+    debouncedUpdate({ remarksFields: newRemarksFields });
   };
 
   const handleRemoveRemark = (index: number) => {
     const newRemarksFields = [...remarksFields];
     newRemarksFields.splice(index, 1);
     setRemarksFields(newRemarksFields);
-  };
-
-  const handleRemarkChange = (index: number, value: string) => {
-    const newRemarksFields = [...remarksFields];
-    newRemarksFields[index] = value;
-    setRemarksFields(newRemarksFields);
+    debouncedUpdate({ remarksFields: newRemarksFields });
   };
 
   return (
@@ -238,7 +269,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
             type="date"
             id="pdf-date-2"
             value={inputDate2}
-            onChange={(e) => setInputDate2(e.target.value)}
+            onChange={(e) => handleInputChange('inputDate2', e.target.value, setInputDate2)}
             placeholder={t(language, 'enterDate')}
           />
         </div>
@@ -248,7 +279,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
             type="text"
             id="pdf-text-1"
             value={inputText1}
-            onChange={(e) => setInputText1(e.target.value)}
+            onChange={(e) => handleInputChange('inputText1', e.target.value, setInputText1)}
             placeholder={t(language, 'enterPropertyAddress')}
           />
         </div>
@@ -258,7 +289,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
             type="text"
             id="pdf-text-2"
             value={inputText2}
-            onChange={(e) => setInputText2(e.target.value)}
+            onChange={(e) => handleInputChange('inputText2', e.target.value, setInputText2)}
             placeholder={t(language, 'enterLandlordName')}
           />
         </div>
@@ -269,7 +300,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               type="text"
               id="landlordTel"
               value={landlordTel}
-              onChange={(e) => setLandlordTel(e.target.value)}
+              onChange={(e) => handleInputChange('landlordTel', e.target.value, setLandlordTel)}
               placeholder={t(language, 'enterTel')}
             />
           </div>
@@ -279,7 +310,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               type="text"
               id="landLordId"
               value={landLordId}
-              onChange={(e) => setLandLordId(e.target.value)}
+              onChange={(e) => handleInputChange('landLordId', e.target.value, setLandLordId)}
               placeholder={t(language, 'enterID')}
             />
           </div>
@@ -290,7 +321,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
             type="text"
             id="pdf-text-3"
             value={inputText3}
-            onChange={(e) => setInputText3(e.target.value)}
+            onChange={(e) => handleInputChange('inputText3', e.target.value, setInputText3)}
             placeholder={t(language, 'enterAddress')}
           />
         </div>
@@ -300,7 +331,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
             type="text"
             id="pdf-text-4"
             value={inputText4}
-            onChange={(e) => setInputText4(e.target.value)}
+            onChange={(e) => handleInputChange('inputText4', e.target.value, setInputText4)}
             placeholder={t(language, 'enterTenantName')}
           />
         </div>
@@ -311,7 +342,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               type="text"
               id="tenantTel"
               value={tenantTel}
-              onChange={(e) => setTenantTel(e.target.value)}
+              onChange={(e) => handleInputChange('tenantTel', e.target.value, setTenantTel)}
               placeholder={t(language, 'enterTel')}
             />
           </div>
@@ -321,7 +352,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               type="text"
               id="tenantId"
               value={tenantId}
-              onChange={(e) => setTenantId(e.target.value)}
+              onChange={(e) => handleInputChange('tenantId', e.target.value, setTenantId)}
               placeholder={t(language, 'enterID')}
             />
           </div>
@@ -333,7 +364,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
             type="text"
             id="pdf-text-5"
             value={inputText5}
-            onChange={(e) => setInputText5(e.target.value)}
+            onChange={(e) => handleInputChange('inputText5', e.target.value, setInputText5)}
             placeholder={t(language, 'enterAddress')}
           />
         </div>
@@ -344,7 +375,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               type="date"
               id="date-from"
               value={dateFrom}
-              onChange={(e) => setDateFrom(e.target.value)}
+              onChange={(e) => handleInputChange('dateFrom', e.target.value, setDateFrom)}
               placeholder={t(language, 'enterDate')}
             />
           </div>
@@ -354,7 +385,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               type="date"
               id="date-to"
               value={dateTo}
-              onChange={(e) => setDateTo(e.target.value)}
+              onChange={(e) => handleInputChange('dateTo', e.target.value, setDateTo)}
               placeholder={t(language, 'enterDate')}
             />
           </div>
@@ -365,7 +396,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
             type="number"
             id="rent-amount"
             value={rentAmount}
-            onChange={(e) => setRentAmount(e.target.value)}
+            onChange={(e) => handleInputChange('rentAmount', e.target.value, setRentAmount)}
             placeholder={t(language, 'enterAmount')}
             min="0"
             step="0.01"
@@ -377,7 +408,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
             type="number"
             id="security-deposit"
             value={securityDeposit}
-            onChange={(e) => setSecurityDeposit(e.target.value)}
+            onChange={(e) => handleInputChange('securityDeposit', e.target.value, setSecurityDeposit)}
             placeholder={t(language, 'enterAmount')}
             min="0"
             step="0.01"
@@ -388,7 +419,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           <select
             id="property-use"
             value={propertyUse}
-            onChange={(e) => setPropertyUse(e.target.value)}
+            onChange={(e) => handleInputChange('propertyUse', e.target.value, setPropertyUse)}
           >
             <option value="residential">{t(language, 'residential')}</option>
             <option value="commercial">{t(language, 'commercial')}</option>
@@ -403,7 +434,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
             <select
               id="management-fee"
               value={managementFee}
-              onChange={(e) => setManagementFee(e.target.value)}
+              onChange={(e) => handleInputChange('managementFee', e.target.value, setManagementFee)}
             >
               <option value="landlord">{t(language, 'landlord')}</option>
               <option value="tenant">{t(language, 'tenant')}</option>
@@ -414,7 +445,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
             <select
               id="government-rates"
               value={governmentRates}
-              onChange={(e) => setGovernmentRates(e.target.value)}
+              onChange={(e) => handleInputChange('governmentRates', e.target.value, setGovernmentRates)}
             >
               <option value="landlord">{t(language, 'landlord')}</option>
               <option value="tenant">{t(language, 'tenant')}</option>
@@ -425,7 +456,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
             <select
               id="government-rent"
               value={governmentRent}
-              onChange={(e) => setGovernmentRent(e.target.value)}
+              onChange={(e) => handleInputChange('governmentRent', e.target.value, setGovernmentRent)}
             >
               <option value="landlord">{t(language, 'landlord')}</option>
               <option value="tenant">{t(language, 'tenant')}</option>
@@ -439,7 +470,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               type="date"
               id="rent-free-from"
               value={rentFreeFrom}
-              onChange={(e) => setRentFreeFrom(e.target.value)}
+              onChange={(e) => handleInputChange('rentFreeFrom', e.target.value, setRentFreeFrom)}
               placeholder={t(language, 'enterDate')}
             />
           </div>
@@ -449,7 +480,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               type="date"
               id="rent-free-to"
               value={rentFreeTo}
-              onChange={(e) => setRentFreeTo(e.target.value)}
+              onChange={(e) => handleInputChange('rentFreeTo', e.target.value, setRentFreeTo)}
               placeholder={t(language, 'enterDate')}
             />
           </div>
@@ -460,7 +491,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
             <select
               id="break-clause-1"
               value={breakClause1}
-              onChange={(e) => setBreakClause1(e.target.value)}
+              onChange={(e) => handleInputChange('breakClause1', e.target.value, setBreakClause1)}
             >
               <option value="landlord">{t(language, 'landlord')}</option>
               <option value="tenant">{t(language, 'tenant')}</option>
@@ -473,7 +504,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               type="number"
               id="break-clause-2"
               value={breakClause2}
-              onChange={(e) => setBreakClause2(e.target.value)}
+              onChange={(e) => handleInputChange('breakClause2', e.target.value, setBreakClause2)}
               placeholder={t(language, 'enterNumber')}
               min="0"
               step="1"
@@ -485,7 +516,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               <select
                 id="break-clause-3"
                 value={breakClause3}
-                onChange={(e) => setBreakClause3(e.target.value)}
+                onChange={(e) => handleInputChange('breakClause3', e.target.value, setBreakClause3)}
               >
                 <option value="12">12</option>
                 <option value="14">14</option>
@@ -496,7 +527,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
                   type="number"
                   id="break-clause-3-other"
                   value={breakClause3Other}
-                  onChange={(e) => setBreakClause3Other(e.target.value)}
+                  onChange={(e) => handleInputChange('breakClause3Other', e.target.value, setBreakClause3Other)}
                   placeholder={t(language, 'enterNumber')}
                   min="0"
                   step="1"
@@ -512,7 +543,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               type="text"
               id="air-conditioner"
               value={airConditioner}
-              onChange={(e) => setAirConditioner(e.target.value)}
+              onChange={(e) => handleInputChange('airConditioner', e.target.value, setAirConditioner)}
               placeholder={t(language, 'enterQuantity')}
             />
           </div>
@@ -522,7 +553,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               type="text"
               id="ventilator"
               value={ventilator}
-              onChange={(e) => setVentilator(e.target.value)}
+              onChange={(e) => handleInputChange('ventilator', e.target.value, setVentilator)}
               placeholder={t(language, 'enterQuantity')}
             />
           </div>
@@ -532,7 +563,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               type="text"
               id="oil-ventilator"
               value={oilVentilator}
-              onChange={(e) => setOilVentilator(e.target.value)}
+              onChange={(e) => handleInputChange('oilVentilator', e.target.value, setOilVentilator)}
               placeholder={t(language, 'enterQuantity')}
             />
           </div>
@@ -542,7 +573,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               type="text"
               id="water-heater"
               value={waterHeater}
-              onChange={(e) => setWaterHeater(e.target.value)}
+              onChange={(e) => handleInputChange('waterHeater', e.target.value, setWaterHeater)}
               placeholder={t(language, 'enterQuantity')}
             />
           </div>
@@ -554,7 +585,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               type="text"
               id="gas-stove"
               value={gasStove}
-              onChange={(e) => setGasStove(e.target.value)}
+              onChange={(e) => handleInputChange('gasStove', e.target.value, setGasStove)}
               placeholder={t(language, 'enterQuantity')}
             />
           </div>
@@ -564,7 +595,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               type="text"
               id="lightings"
               value={lightings}
-              onChange={(e) => setLightings(e.target.value)}
+              onChange={(e) => handleInputChange('lightings', e.target.value, setLightings)}
               placeholder={t(language, 'enterQuantity')}
             />
           </div>
@@ -574,7 +605,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               type="text"
               id="refrigerator"
               value={refrigerator}
-              onChange={(e) => setRefrigerator(e.target.value)}
+              onChange={(e) => handleInputChange('refrigerator', e.target.value, setRefrigerator)}
               placeholder={t(language, 'enterQuantity')}
             />
           </div>
@@ -584,7 +615,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               type="text"
               id="washing-machine"
               value={washingMachine}
-              onChange={(e) => setWashingMachine(e.target.value)}
+              onChange={(e) => handleInputChange('washingMachine', e.target.value, setWashingMachine)}
               placeholder={t(language, 'enterQuantity')}
             />
           </div>
@@ -596,7 +627,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               type="text"
               id="bed"
               value={bed}
-              onChange={(e) => setBed(e.target.value)}
+              onChange={(e) => handleInputChange('bed', e.target.value, setBed)}
               placeholder={t(language, 'enterQuantity')}
             />
           </div>
@@ -606,7 +637,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               type="text"
               id="wardrobe"
               value={wardrobe}
-              onChange={(e) => setWardrobe(e.target.value)}
+              onChange={(e) => handleInputChange('wardrobe', e.target.value, setWardrobe)}
               placeholder={t(language, 'enterQuantity')}
             />
           </div>
@@ -616,7 +647,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               type="text"
               id="settee"
               value={settee}
-              onChange={(e) => setSettee(e.target.value)}
+              onChange={(e) => handleInputChange('settee', e.target.value, setSettee)}
               placeholder={t(language, 'enterQuantity')}
             />
           </div>
@@ -626,7 +657,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               type="text"
               id="other-furniture"
               value={otherFurniture}
-              onChange={(e) => setOtherFurniture(e.target.value)}
+              onChange={(e) => handleInputChange('otherFurniture', e.target.value, setOtherFurniture)}
               placeholder={t(language, 'enterOtherFixtures')}
             />
           </div>
@@ -638,7 +669,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               type="text"
               id="landlord-bank-account"
               value={landlordBankAccount}
-              onChange={(e) => setLandlordBankAccount(e.target.value)}
+              onChange={(e) => handleInputChange('landlordBankAccount', e.target.value, setLandlordBankAccount)}
               placeholder={t(language, 'enterAccountNumber')}
             />
           </div>
@@ -648,7 +679,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
               type="text"
               id="bank"
               value={bank}
-              onChange={(e) => setBank(e.target.value)}
+              onChange={(e) => handleInputChange('bank', e.target.value, setBank)}
               placeholder={t(language, 'enterBank')}
             />
           </div>

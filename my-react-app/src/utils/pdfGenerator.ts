@@ -64,6 +64,119 @@ export interface PdfGenerationParams {
   setImages?: (images: string[]) => void;
 }
 
+// Type for input values (excluding function props)
+export type PdfInputValues = Omit<PdfGenerationParams, 't' | 'setImageLoading' | 'setImageError' | 'setImages' | 'language' | 'isPreview'>;
+
+// Session storage key
+const PDF_INPUT_VALUES_KEY = 'pdfInputValues';
+
+/**
+ * Default values for PDF generation input fields
+ */
+export const defaultPdfInputValues: PdfInputValues = {
+  inputDate2: '',
+  inputText1: '',
+  inputText2: '',
+  inputText3: '',
+  inputText4: '',
+  inputText5: '',
+  rentAmount: '',
+  securityDeposit: '',
+  propertyUse: 'residential',
+  managementFee: 'landlord',
+  governmentRates: 'landlord',
+  governmentRent: 'landlord',
+  rentFreeFrom: '',
+  rentFreeTo: '',
+  breakClause1: 'landlord',
+  breakClause2: '',
+  breakClause3: '12',
+  breakClause3Other: '',
+  airConditioner: '',
+  ventilator: '',
+  oilVentilator: '',
+  waterHeater: '',
+  gasStove: '',
+  lightings: '',
+  refrigerator: '',
+  washingMachine: '',
+  bed: '',
+  wardrobe: '',
+  settee: '',
+  otherFurniture: '',
+  landLordId: '',
+  landlordTel: '',
+  tenantId: '',
+  tenantTel: '',
+  landlordBankAccount: '',
+  bank: '',
+  dateFrom: '',
+  dateTo: '',
+  remarksFields: ['']
+};
+
+/**
+ * Load saved PDF input values from session storage
+ * @returns PdfInputValues object from session storage or default values if none exist
+ */
+export const loadPdfInputValues = (): PdfInputValues => {
+  if (typeof window === 'undefined') {
+    return defaultPdfInputValues;
+  }
+  
+  const savedValues = sessionStorage.getItem(PDF_INPUT_VALUES_KEY);
+  if (!savedValues) {
+    return defaultPdfInputValues;
+  }
+  
+  try {
+    return JSON.parse(savedValues) as PdfInputValues;
+  } catch (error) {
+    console.error('Error parsing PDF input values from session storage:', error);
+    return defaultPdfInputValues;
+  }
+};
+
+/**
+ * Update PDF input values and save to session storage
+ * @param newValues Partial PdfInputValues object with values to update
+ * @returns Updated PdfInputValues object
+ */
+export const updatePdfInputValues = (newValues: Partial<PdfInputValues>): PdfInputValues => {
+  if (typeof window === 'undefined') {
+    return defaultPdfInputValues;
+  }
+  
+  const currentValues = loadPdfInputValues();
+  const updatedValues = { ...currentValues, ...newValues };
+  
+  try {
+    sessionStorage.setItem(PDF_INPUT_VALUES_KEY, JSON.stringify(updatedValues));
+    return updatedValues;
+  } catch (error) {
+    console.error('Error saving PDF input values to session storage:', error);
+    return updatedValues;
+  }
+};
+
+/**
+ * Reset PDF input values to defaults and clear from session storage
+ * @returns Default PdfInputValues object
+ */
+export const resetPdfInputValues = (): PdfInputValues => {
+  if (typeof window === 'undefined') {
+    return defaultPdfInputValues;
+  }
+  
+  try {
+    sessionStorage.removeItem(PDF_INPUT_VALUES_KEY);
+    return defaultPdfInputValues;
+  } catch (error) {
+    console.error('Error resetting PDF input values in session storage:', error);
+    return defaultPdfInputValues;
+  }
+};
+
 export const generatePDF = async (params: PdfGenerationParams) => {
   const {
     isPreview = false,
