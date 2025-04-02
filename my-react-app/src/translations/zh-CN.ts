@@ -108,8 +108,21 @@ export const zhCN = {
   // Buttons
   preview: '预览',
   download: '下载',
-  generate: '生成PDF',
+  generatePDF: '生成PDF',
   generating: '生成中...',
+  reset: '重置',
+  
+  // Messages
+  pdfGeneratedAndReset: 'PDF已成功生成。表单已重置。',
+  pdfError: '生成PDF时出错。请重试。',
+  pdfPreviewError: '生成PDF预览时出错。请重试。',
+  resetConfirmation: '表单已重置为默认值。',
+
+  // Confirm Reset Modal
+  resetConfirmationTitle: '确认重置',
+  resetConfirmationMessage: '您确定要将所有表单字段重置为默认值吗？',
+  cancel: '取消',
+  confirm: '重置',
   
   // Language Selector
   language: '语言',

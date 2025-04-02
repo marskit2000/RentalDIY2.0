@@ -108,8 +108,22 @@ export const en = {
   // Buttons
   preview: 'Preview',
   download: 'Download',
-  generate: 'Generate PDF',
+  generatePDF: 'Generate PDF',
   generating: 'Generating...',
+  reset: 'Reset',
+  
+  // Messages
+  pdfGeneratedAndReset: 'PDF generated successfully. Form has been reset.',
+  pdfError: 'Error generating PDF. Please try again.',
+  pdfPreviewError: 'Error generating PDF preview. Please try again.',
+  resetConfirmation: 'Form has been reset to default values.',
+
+  //Confirm Reset Modal
+  resetConfirmationTitle: 'Confirm Reset',
+  resetConfirmationMessage: 'Are you sure you want to reset all form fields to their default values?',
+  cancel: 'Cancel',
+  confirm: 'Reset',
+
   
   // Language Selector
   language: 'Language',

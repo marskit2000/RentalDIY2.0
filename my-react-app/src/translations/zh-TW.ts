@@ -108,8 +108,21 @@ export const zhTW = {
   // Buttons
   preview: '預覽',
   download: '下載',
-  generate: '生成PDF',
+  generatePDF: '生成PDF',
   generating: '生成中...',
+  reset: '重置',
+  
+  // Messages
+  pdfGeneratedAndReset: 'PDF已成功生成。表單已重置。',
+  pdfError: '生成PDF時出錯。請重試。',
+  pdfPreviewError: '生成PDF預覽時出錯。請重試。',
+  resetConfirmation: '表單已重置為默認值。',
+
+  // Confirm Reset Modal
+  resetConfirmationTitle: '確認重置',
+  resetConfirmationMessage: '您確定要將所有表單字段重置為默認值嗎？',
+  cancel: '取消',
+  confirm: '重置',
   
   // Language Selector
   language: '語言',
