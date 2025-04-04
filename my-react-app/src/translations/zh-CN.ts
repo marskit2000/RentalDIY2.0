@@ -134,5 +134,14 @@ export const zhCN = {
   previewWarning: '这是租赁协议的预览版本',
 
   // Preview Placeholder
-  previewPlaceholder: '点击预览按钮预览租赁协议'
+  previewPlaceholder: '点击预览按钮预览租赁协议',
+  
+  // Payment Success
+  paymentSuccessful: '支付成功！',
+  paymentThankYou: '感谢您的支付。您的租赁协议已成功处理。',
+  transactionDetails: '交易详情',
+  transactionId: '交易ID',
+  date: '日期',
+  returnToHome: '返回首页',
+  downloadRentalAgreement: '下载租赁协议'
 };

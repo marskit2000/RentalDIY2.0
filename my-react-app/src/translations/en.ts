@@ -135,5 +135,14 @@ export const en = {
   previewWarning: 'This is a preview of the Rental Agreement.',
   
   // Preview Placeholder
-  previewPlaceholder: 'Click the Preview button to view the Rental Agreement here'
+  previewPlaceholder: 'Click the Preview button to view the Rental Agreement here',
+  
+  // Payment Success
+  paymentSuccessful: 'Payment Successful!',
+  paymentThankYou: 'Thank you for your payment. Your rental agreement has been processed successfully.',
+  transactionDetails: 'Transaction Details',
+  transactionId: 'Transaction ID',
+  date: 'Date',
+  returnToHome: 'Return to Home',
+  downloadRentalAgreement: 'Download Rental Agreement'
 };

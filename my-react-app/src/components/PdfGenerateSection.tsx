@@ -11,6 +11,7 @@ import {
   PdfInputValues
 } from '../utils/pdfGenerator';
 import ConfirmationModal from './ui/ConfirmationModal';
+import { Navigate } from 'react-router-dom';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface PdfGenerateSectionProps {
@@ -93,7 +94,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   }, [])();
 
   // Generic change handler for input fields
-  const handleInputChange = useCallback((fieldName: keyof PdfInputValues, value: any, setter: React.Dispatch<React.SetStateAction<any>>) => {
+  const handleInputChange = useCallback(<T extends string | number | boolean | string[]>(fieldName: keyof PdfInputValues, value: T, setter: React.Dispatch<React.SetStateAction<T>>) => {
     setter(value);
     debouncedUpdate({ [fieldName]: value } as Partial<PdfInputValues>);
   }, [debouncedUpdate]);
@@ -335,6 +336,10 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
     setRemarksFields(newRemarksFields);
     debouncedUpdate({ remarksFields: newRemarksFields });
   };
+
+  const handleRedirectToCheckout = () => {
+    
+  }
 
   return (
     <div className="pdf-generate-section">
@@ -803,16 +808,19 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           <div className="button-group-right">
             <button 
               className="generate-btn" 
-              onClick={handleGeneratePDF}
+              // onClick={handleGeneratePDF}
+              onClick={handleRedirectToCheckout}
               onTouchStart={(e) => {
-                if (isLoading) return;
+                // if (isLoading) return;
                 // Prevent default to avoid any delay
                 e.preventDefault();
-                handleGeneratePDF();
+                // handleGeneratePDF();
+                handleRedirectToCheckout();
               }}
-              disabled={isLoading}
+              // disabled={isLoading}
             >
-              {isLoading ? (t(language, 'generating') || 'Generating...') : (t(language, 'generatePDF') || 'Generate PDF')}
+              {/* {isLoading ? (t(language, 'generating') || 'Generating...') : (t(language, 'generatePDF') || 'Generate PDF')} */}
+              {(t(language, 'generatePDF') || 'Generate PDF')}
             </button>
             <button 
               className="preview-btn"

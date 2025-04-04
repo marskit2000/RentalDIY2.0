@@ -134,5 +134,14 @@ export const zhTW = {
   previewWarning: '這是租賃協議的預覽版本',
 
   // Preview Placeholder
-  previewPlaceholder: '點擊預覽按鈕預覽租賃協議'
+  previewPlaceholder: '點擊預覽按鈕預覽租賃協議',
+  
+  // Payment Success
+  paymentSuccessful: '支付成功！',
+  paymentThankYou: '感謝您的支付。您的租賃協議已成功處理。',
+  transactionDetails: '交易詳情',
+  transactionId: '交易ID',
+  date: '日期',
+  returnToHome: '返回首頁',
+  downloadRentalAgreement: '下載租賃協議'
 };
