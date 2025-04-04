@@ -1,7 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PdfGenerateSection from './components/PdfGenerateSection';
-import PdfGenerateSectionImage from './components/PdfGenerateSection';
 import LandingPage from './components/LandingPage';
 import Pricing from './components/Pricing';
 import Navbar from './components/Navbar';
