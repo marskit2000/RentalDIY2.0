@@ -143,5 +143,18 @@ export const zhTW = {
   transactionId: '交易ID',
   date: '日期',
   returnToHome: '返回首頁',
-  downloadRentalAgreement: '下載租賃協議'
+  downloadRentalAgreement: '下載租賃協議',
+
+  //Edit Button
+  edit: '編輯',
+
+  //Check out left div headings
+  orderSummary: '訂單摘要',
+  propertyDetails: '物業详情',
+  financialDetails: '財務详情',
+  partiesInvolved: '当事人',
+  breakClause: '提前终止条款',
+  bankDetails: '銀行详情',
+  fixtures: '设施与设备',
+  otherDetails: '其他详情',
 };

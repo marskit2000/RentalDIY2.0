@@ -8,6 +8,7 @@ const app = express();
 app.use(express.static('public'));
 
 const YOUR_DOMAIN = 'http://localhost:8888';
+const IP_DOMAIN = 'http://192.168.1.61:8888';
 
 app.post('/create-checkout-session', async (req, res) => {
   const session = await stripe.checkout.sessions.create({
@@ -20,9 +21,9 @@ app.post('/create-checkout-session', async (req, res) => {
       },
     ],
     mode: 'payment',
-    return_url: `${YOUR_DOMAIN}/return?session_id={CHECKOUT_SESSION_ID}`,
+    return_url: `${IP_DOMAIN}/return?session_id={CHECKOUT_SESSION_ID}`,
   });
-
+  
   res.send({clientSecret: session.client_secret});
 });
 

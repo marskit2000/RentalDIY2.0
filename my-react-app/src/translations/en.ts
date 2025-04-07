@@ -144,5 +144,18 @@ export const en = {
   transactionId: 'Transaction ID',
   date: 'Date',
   returnToHome: 'Return to Home',
-  downloadRentalAgreement: 'Download Rental Agreement'
+  downloadRentalAgreement: 'Download Rental Agreement',
+
+  //Edit Button
+  edit: 'Edit',
+
+  //Check out left div headings
+  orderSummary: 'Order Summary',
+  propertyDetails: 'Property Details',
+  financialDetails: 'Financial Details',
+  partiesInvolved: 'Parties Involved',
+  breakClause: 'Break Clause',
+  bankDetails: 'Bank Details',
+  fixtures: 'Fixtures & Fittings',
+  otherDetails: 'Other Details',
 };

@@ -143,5 +143,18 @@ export const zhCN = {
   transactionId: '交易ID',
   date: '日期',
   returnToHome: '返回首页',
-  downloadRentalAgreement: '下载租赁协议'
+  downloadRentalAgreement: '下载租赁协议',
+
+  //Edit Button
+  edit: '编辑',
+
+  //Check out left div headings
+  orderSummary: '订单摘要',
+  propertyDetails: '物业详情',
+  financialDetails: '财务详情',
+  partiesInvolved: '当事人',
+  breakClause: '提前终止条款',
+  bankDetails: '银行详情',
+  fixtures: '设施与设备',
+  otherDetails: '其他详情',
 };

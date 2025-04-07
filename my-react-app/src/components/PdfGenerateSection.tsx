@@ -67,6 +67,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const [remarksFields, setRemarksFields] = useState<string[]>(savedValues.remarksFields);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [showResetModal, setShowResetModal] = useState(false);
+  const [redirectToCheckout, setRedirectToCheckout] = useState(false);
 
   // ConvertToImage State - used by the preview function
   const [images, setImages] = useState<string[]>([]);
@@ -338,7 +339,29 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   };
 
   const handleRedirectToCheckout = () => {
+    // Save form values before redirecting
+    const currentValues: PdfInputValues = {
+      inputText1, inputText2, inputText3, inputText4, inputText5,
+      rentAmount, securityDeposit, propertyUse, managementFee,
+      governmentRates, governmentRent, rentFreeFrom, rentFreeTo,
+      breakClause1, breakClause2, breakClause3, breakClause3Other,
+      airConditioner, ventilator, oilVentilator, waterHeater,
+      gasStove, lightings, refrigerator, washingMachine,
+      bed, wardrobe, settee, otherFurniture,
+      landLordId, landlordTel, tenantId, tenantTel,
+      landlordBankAccount, bank, inputDate2, dateFrom, dateTo,
+      remarksFields
+    };
     
+    // Save the current form state to localStorage
+    updatePdfInputValues(currentValues);
+    
+    // Set state to trigger redirection
+    setRedirectToCheckout(true);
+  }
+
+  if (redirectToCheckout) {
+    return <Navigate to="/checkout" />;
   }
 
   return (
@@ -808,18 +831,15 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           <div className="button-group-right">
             <button 
               className="generate-btn" 
-              // onClick={handleGeneratePDF}
               onClick={handleRedirectToCheckout}
               onTouchStart={(e) => {
                 // if (isLoading) return;
                 // Prevent default to avoid any delay
                 e.preventDefault();
-                // handleGeneratePDF();
                 handleRedirectToCheckout();
               }}
               // disabled={isLoading}
             >
-              {/* {isLoading ? (t(language, 'generating') || 'Generating...') : (t(language, 'generatePDF') || 'Generate PDF')} */}
               {(t(language, 'generatePDF') || 'Generate PDF')}
             </button>
             <button 
