@@ -29,10 +29,17 @@ const Checkout = () => {
     // Create a Checkout Session
     return fetch("/create-checkout-session", {
       method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        // Add any parameters you want to send
+        language: language === "zh-CN" ? "zh" : language,
+      })
     })
       .then((res) => res.json())
       .then((data) => data.clientSecret);
-  }, []);
+  }, [language]);
 
   const options = { fetchClientSecret };
 

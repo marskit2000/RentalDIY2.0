@@ -158,4 +158,9 @@ export const en = {
   bankDetails: 'Bank Details',
   fixtures: 'Fixtures & Fittings',
   otherDetails: 'Other Details',
+
+  //Checkout Headings and Text
+  checkoutTitle: 'Checkout',
+  checkoutSubtitle: 'Please review your information and complete the payment to generate your rental agreement.',
+  payment: 'Payment',
 };

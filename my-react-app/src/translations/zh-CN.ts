@@ -157,4 +157,9 @@ export const zhCN = {
   bankDetails: '银行详情',
   fixtures: '设施与设备',
   otherDetails: '其他详情',
+
+  //Checkout Headings and Text
+  checkoutTitle: '结算',
+  checkoutSubtitle: '请审核您的信息并完成支付以生成租赁协议',
+  payment: '付款',
 };

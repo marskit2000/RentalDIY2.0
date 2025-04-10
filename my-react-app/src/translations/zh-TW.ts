@@ -157,4 +157,9 @@ export const zhTW = {
   bankDetails: '銀行详情',
   fixtures: '设施与设备',
   otherDetails: '其他详情',
+
+  //Checkout Headings and Text
+  checkoutTitle: '結算',
+  checkoutSubtitle: '請審核您的資訊並完成付款以產生租賃協議',
+  payment: '付款',
 };
