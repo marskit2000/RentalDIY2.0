@@ -95,10 +95,6 @@ const Checkout = () => {
         <div className="checkout-summary">
           <div className="summary-header">
             <h2>{t(language, 'orderSummary') || 'Order Summary'}</h2>
-            <button className="edit-button" onClick={handleEditClick}>
-              <span className="edit-icon">✎</span>
-              {t(language, 'edit') || 'Edit'}
-            </button>
           </div>
           
           <div className="summary-content">
@@ -180,6 +176,12 @@ const Checkout = () => {
                 </div>
               </div>
             )}
+          </div>
+          <div className="summary-footer">
+            <button className="edit-button" onClick={handleEditClick}>
+              <span className="edit-icon">✎</span>
+              {t(language, 'edit') || 'Edit'}
+            </button>
           </div>
         </div>
 
