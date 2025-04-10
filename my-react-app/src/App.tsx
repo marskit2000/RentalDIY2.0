@@ -40,7 +40,7 @@ function AppContent() {
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/return" element={<Return />} />
-            <Route path="/payment-success" element={<PaymentSuccess />} />
+            <Route path="/payment-success" element={<PaymentSuccess email={''} />} />
           </Routes>
         </main>
       </div>
