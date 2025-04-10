@@ -8,7 +8,7 @@ import './Checkout.css';
 import { useLanguage } from '../contexts/LanguageContext';
 import { t } from '../translations';
 import { loadPdfInputValues, PdfInputValues } from '../utils/pdfGenerator';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // Make sure to call `loadStripe` outside of a component's render to avoid
 // recreating the `Stripe` object on every render.
