@@ -49,8 +49,20 @@ const Checkout = () => {
     if (Array.isArray(value)) {
       return value.filter(item => item.trim() !== '').join(', ') || '-';
     }
+    
+    // Check if the value might be a translation key
+    // This assumes that translation keys don't contain spaces
+    // and are typically shorter than displayed values
+    if (typeof value === 'string' && !value.includes(' ') && value.length < 30) {
+      const translated = t(language, value);
+      if (translated && translated !== value) {
+        return translated;
+      }
+    }
+    
     return value || '-';
   };
+
 
   // Helper function to get translated field names
   const getFieldLabel = (key: string) => {

@@ -583,7 +583,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #2b66dd;
+  background-color: #3c7181;
   color: white;
   border: none;
   outline: none;
@@ -599,7 +599,7 @@
 }
 
 .scroll-to-top-btn:hover {
-  background-color: #2b66dd;
+  background-color: #2f5a66;
   transform: translateY(-2px);
 }
 
