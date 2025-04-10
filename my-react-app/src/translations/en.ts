@@ -163,4 +163,8 @@ export const en = {
   checkoutTitle: 'Checkout',
   checkoutSubtitle: 'Please review your information and complete the payment to generate your rental agreement.',
   payment: 'Payment',
+  
+  //Payment Return Page
+  paymentDeclined: 'The payment was declined. No transaction has been made. Redirecting back to the checkout page...',
+  redirecting: 'Redirecting...',
 };

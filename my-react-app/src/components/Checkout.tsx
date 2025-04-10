@@ -1,4 +1,4 @@
-import { useCallback, useState, useEffect } from "react";
+import { useCallback, useState, useEffect, useRef } from "react";
 import { loadStripe } from '@stripe/stripe-js';
 import {
   EmbeddedCheckoutProvider,
@@ -18,11 +18,56 @@ const Checkout = () => {
   const { language } = useLanguage();
   const [formValues, setFormValues] = useState<PdfInputValues | null>(null);
   const navigate = useNavigate();
+  const summaryRef = useRef<HTMLDivElement>(null);
+  const paymentRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
     // Load saved form values from localStorage
     const savedValues = loadPdfInputValues();
     setFormValues(savedValues);
+  }, []);
+
+  // Effect to synchronize heights between summary and payment sections
+  useEffect(() => {
+    // Function to check if we're on mobile view
+    const isMobileView = () => {
+      return window.innerWidth <= 768; // Standard breakpoint for mobile devices
+    };
+
+    const syncHeights = () => {
+      if (summaryRef.current && paymentRef.current) {
+        // Only apply height sync on non-mobile screens
+        if (!isMobileView()) {
+          const paymentHeight = paymentRef.current.offsetHeight;
+          if (paymentHeight > 600) {
+            summaryRef.current.style.height = `${paymentHeight}px`;
+          } else {
+            summaryRef.current.style.height = '600px';
+          }
+        } else {
+          // Reset height on mobile view
+          summaryRef.current.style.height = 'auto';
+        }
+      }
+    };
+
+    // Initial sync
+    syncHeights();
+
+    // Set up observer to watch for height changes in the payment form
+    const resizeObserver = new ResizeObserver(syncHeights);
+    if (paymentRef.current) {
+      resizeObserver.observe(paymentRef.current);
+    }
+
+    // Also listen for window resize events to handle orientation changes
+    window.addEventListener('resize', syncHeights);
+
+    // Cleanup
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener('resize', syncHeights);
+    };
   }, []);
 
   const fetchClientSecret = useCallback(() => {
@@ -92,7 +137,7 @@ const Checkout = () => {
       </div>
 
       <div className="checkout-content">
-        <div className="checkout-summary">
+        <div className="checkout-summary" ref={summaryRef}>
           <div className="summary-header">
             <h2>{t(language, 'orderSummary') || 'Order Summary'}</h2>
           </div>
@@ -185,7 +230,7 @@ const Checkout = () => {
           </div>
         </div>
 
-        <div className="checkout-payment">
+        <div className="checkout-payment" ref={paymentRef}>
           <div className="payment-header">
             <h2>{t(language, 'payment') || 'Payment'}</h2>
           </div>

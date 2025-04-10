@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Return.css';
 import PaymentSuccess from "./PaymentSuccess";
+import { useLanguage } from '../contexts/LanguageContext';
+import { t } from '../translations';
 
 const Return = () => {
     const [status, setStatus] = useState(null);
     const [customerEmail, setCustomerEmail] = useState('');
+    const [showAlert, setShowAlert] = useState(false);
+    const { language } = useLanguage();
+    const navigate = useNavigate();
   
     useEffect(() => {
       const queryString = window.location.search;
@@ -21,9 +26,36 @@ const Return = () => {
     }, []);
   
     if (status === 'open') {
+      // Show alert and redirect after delay
+      useEffect(() => {
+        if (status === 'open') {
+          setShowAlert(true);
+          const timer = setTimeout(() => {
+            navigate('/checkout');
+          }, 3000); // Redirect after 3 seconds
+          
+          return () => clearTimeout(timer);
+        }
+      }, [status, navigate]);
+      
       return (
-        <Navigate to="/checkout" />
-      )
+        <div className="return-container">
+          {showAlert && (
+            <div className="alert-dropdown">
+              <div className="alert-content">
+                <div className="alert-icon">⚠️</div>
+                <div className="alert-message">
+                  {t(language, 'paymentDeclined') || 'The payment was declined. No transaction has been made. Redirecting back to the checkout page...'}
+                </div>
+              </div>
+            </div>
+          )}
+          <div className="return-content">
+            <div className="loading-spinner"></div>
+            <p>{t(language, 'redirecting') || 'Redirecting...'}</p>
+          </div>
+        </div>
+      );
     }
   
     if (status === 'complete') {

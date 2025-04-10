@@ -35,7 +35,7 @@
   display: flex;
   gap: 3rem;
   flex-wrap: wrap;
-  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .checkout-summary {
@@ -46,6 +46,10 @@
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 600px;
+  height: auto;
 }
 
 .summary-header {
@@ -93,7 +97,7 @@
 
 .summary-content {
   padding: 1.5rem;
-  max-height: 600px;
+  flex: 1;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #4a6da7 #f0f0f0;
@@ -177,6 +181,7 @@
   text-align: center;
   border-top: 1px solid #eaeaea;
   background-color: #f9f9f9;
+  margin-top: auto;
 }
 
 .checkout-payment {
@@ -187,6 +192,8 @@
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .payment-header {
@@ -203,6 +210,9 @@
 
 .payment-content {
   padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .payment-amount {
@@ -222,13 +232,17 @@
 }
 
 .payment-form {
-  min-height: 400px;
+  flex: 1;
+  font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Embedded Checkout Styles */
 #checkout {
   width: 100%;
-  height: 600px;
+  min-height: 600px;
+  height: auto;
   border-radius: 4px;
 }
 

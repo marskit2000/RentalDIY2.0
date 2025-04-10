@@ -162,4 +162,8 @@ export const zhTW = {
   checkoutTitle: '結算',
   checkoutSubtitle: '請審核您的資訊並完成付款以產生租賃協議',
   payment: '付款',
+  
+  //Payment Return Page
+  paymentDeclined: '付款被拒絕。未進行任何交易。正在重定向回結算頁面...',
+  redirecting: '正在重定向...',
 };

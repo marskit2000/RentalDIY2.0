@@ -162,4 +162,8 @@ export const zhCN = {
   checkoutTitle: '结算',
   checkoutSubtitle: '请审核您的信息并完成支付以生成租赁协议',
   payment: '付款',
+  
+  //Payment Return Page
+  paymentDeclined: '支付被拒绝。未进行任何交易。正在重定向回结算页面...',
+  redirecting: '正在重定向...',
 };
