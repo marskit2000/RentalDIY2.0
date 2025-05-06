@@ -54,6 +54,18 @@ const LandingPage: React.FC = () => {
         </div>
       </section>
 
+      {/* Google AdSense Section */}
+      <section className="ad-container">
+        <div className="ad-label">{t(language, 'advertisementLabel') || 'Advertisement'}</div>
+        <GoogleAdsense 
+          client="ca-pub-6348470051332056" // Replace with your AdSense Publisher ID
+          slot="7094024363" // Replace with your AdSense Ad Slot ID
+          format="auto"
+          responsive={true}
+          style={{ display: 'block', width: '100%' }}
+        />
+      </section>
+
       <section className="how-it-works-section">
         <h2>{t(language, 'howItWorksTitle')}</h2>
         <div className="steps-container">
@@ -83,17 +95,7 @@ const LandingPage: React.FC = () => {
         </button>
       </section>
 
-      {/* Google AdSense Section */}
-      <section className="ad-container">
-        <div className="ad-label">{t(language, 'advertisementLabel') || 'Advertisement'}</div>
-        <GoogleAdsense 
-          client="ca-pub-6348470051332056" // Replace with your AdSense Publisher ID
-          slot="7094024363" // Replace with your AdSense Ad Slot ID
-          format="auto"
-          responsive={true}
-          style={{ display: 'block', width: '100%' }}
-        />
-      </section>
+      
     </div>
   );
 };
