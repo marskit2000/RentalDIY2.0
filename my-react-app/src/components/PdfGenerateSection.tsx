@@ -21,6 +21,8 @@ interface PdfGenerateSectionProps {
 const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const { language } = useLanguage();
   
+  const isFreeMode = true;
+  
   // Load saved values from session storage or use defaults
   const savedValues = loadPdfInputValues();
   
@@ -68,6 +70,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [showResetModal, setShowResetModal] = useState(false);
   const [redirectToCheckout, setRedirectToCheckout] = useState(false);
+  const [redirectToDownload, setRedirectToDownload] = useState(false);
 
   // ConvertToImage State - used by the preview function
   const [images, setImages] = useState<string[]>([]);
@@ -362,6 +365,31 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
 
   if (redirectToCheckout) {
     return <Navigate to="/checkout" />;
+  }
+
+  function handleRedirectToReturn() {
+    // Save form values before redirecting
+    const currentValues: PdfInputValues = {
+      inputText1, inputText2, inputText3, inputText4, inputText5,
+      rentAmount, securityDeposit, propertyUse, managementFee,
+      governmentRates, governmentRent, rentFreeFrom, rentFreeTo,
+      breakClause1, breakClause2, breakClause3, breakClause3Other,
+      airConditioner, ventilator, oilVentilator, waterHeater,
+      gasStove, lightings, refrigerator, washingMachine,
+      bed, wardrobe, settee, otherFurniture,
+      landLordId, landlordTel, tenantId, tenantTel,
+      landlordBankAccount, bank, inputDate2, dateFrom, dateTo,
+      remarksFields
+    };
+    
+    // Save the current form state to localStorage
+    updatePdfInputValues(currentValues);
+    
+    setRedirectToDownload(true);
+  }
+
+  if (redirectToDownload) {
+    return <Navigate to="/pricing" />;
   }
 
   return (
@@ -831,12 +859,12 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           <div className="button-group-right">
             <button 
               className="generate-btn" 
-              onClick={handleRedirectToCheckout}
+              onClick={isFreeMode ? handleRedirectToReturn : handleRedirectToCheckout}
               onTouchStart={(e) => {
                 // if (isLoading) return;
                 // Prevent default to avoid any delay
                 e.preventDefault();
-                handleRedirectToCheckout();
+                isFreeMode ? handleRedirectToReturn() : handleRedirectToCheckout(); 
               }}
               // disabled={isLoading}
             >
