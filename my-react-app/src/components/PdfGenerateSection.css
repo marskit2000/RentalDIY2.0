@@ -39,7 +39,7 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  pointer-events: none;
+  /* Removed pointer-events: none as it was disabling interactions */
 }
 
 .input-group {

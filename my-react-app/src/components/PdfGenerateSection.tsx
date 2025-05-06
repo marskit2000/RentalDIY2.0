@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import './PdfGenerateSection.css';
+import { Navigate } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { t } from '../translations';
 import { 
@@ -11,8 +11,9 @@ import {
   PdfInputValues
 } from '../utils/pdfGenerator';
 import ConfirmationModal from './ui/ConfirmationModal';
-import { Navigate } from 'react-router-dom';
 import AdSenseSection from './AdSenseSection';
+import AdInterstitialModal from './AdInterstitialModal';
+import './PdfGenerateSection.css';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface PdfGenerateSectionProps {
@@ -71,15 +72,13 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [showResetModal, setShowResetModal] = useState(false);
   const [redirectToCheckout, setRedirectToCheckout] = useState(false);
-  const [redirectToDownload, setRedirectToDownload] = useState(false);
+  const [showAdModal, setShowAdModal] = useState(false);
 
   // ConvertToImage State - used by the preview function
   const [images, setImages] = useState<string[]>([]);
   // These variables are used in the handlePreview function when passed to generatePDF
-  // The linter doesn't recognize they're being used because they're passed as props to another function
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // We need these state setters for the generatePDF function, even though the linter doesn't recognize it
   const [imageLoading, setImageLoading] = useState<boolean>(false);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [imageError, setImageError] = useState<string | null>(null);
 
   // Create a debounced update function with 500ms delay
@@ -363,13 +362,14 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
     // Set state to trigger redirection
     setRedirectToCheckout(true);
   }
-
+  
+  // Add the redirect to checkout if the state is true
   if (redirectToCheckout) {
     return <Navigate to="/checkout" />;
   }
 
-  const handleRedirectToReturn = async () => {
-    // Save form values before generating PDF
+  const handleRedirectToReturn = () => {
+    // Save form values before showing ad modal
     const currentValues: PdfInputValues = {
       inputText1, inputText2, inputText3, inputText4, inputText5,
       rentAmount, securityDeposit, propertyUse, managementFee,
@@ -386,7 +386,12 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
     // Save the current form state to localStorage
     updatePdfInputValues(currentValues);
     
-    // Generate PDF directly instead of redirecting
+    // Show ad modal instead of generating PDF immediately
+    setShowAdModal(true);
+  }
+  
+  // Function to handle PDF generation after ad interaction
+  const handleGeneratePDFAfterAd = async () => {
     try {
       setIsLoading(true);
       
@@ -994,6 +999,15 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
         cancelText={t(language, 'cancel') || 'Cancel'}
         onConfirm={confirmReset}
         onCancel={cancelReset}
+      />
+      
+      {/* Ad Interstitial Modal */}
+      <AdInterstitialModal
+        isOpen={showAdModal}
+        onClose={() => setShowAdModal(false)}
+        onContinue={handleGeneratePDFAfterAd}
+        client="ca-pub-3940256099942544" // Use your Google AdSense client ID
+        slot="7094024363" // Use your preferred ad slot
       />
     </div>
   );

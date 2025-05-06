@@ -170,4 +170,13 @@ export const en = {
   
   // Advertisement
   advertisementLabel: 'Advertisement',
+  
+  // Ad Modal
+  adModalTitle: 'Almost there!',
+  adModalDescription: 'Your PDF is ready. Please wait a moment or interact with the ad below to download.',
+  adModalCountdown: 'Download available in',
+  adModalContinue: 'Download PDF',
+  adModalSkip: 'I\'ve seen the ad',
+  second: 'second',
+  seconds: 'seconds'
 };

@@ -169,4 +169,13 @@ export const zhTW = {
   
   // Advertisement
   advertisementLabel: '廣告',
+  
+  // Ad Modal
+  adModalTitle: '即將完成！',
+  adModalDescription: '您的PDF已準備好。請稍等片刻或與下方廣告互動以下載。',
+  adModalCountdown: '下載將在以下時間內可用',
+  adModalContinue: '下載PDF',
+  adModalSkip: '我已經看過廣告',
+  second: '秒',
+  seconds: '秒'
 };

@@ -1,0 +1,129 @@
+.ad-interstitial-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.ad-interstitial-modal-container {
+  background-color: white;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 20px;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.ad-interstitial-modal-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+}
+
+.ad-interstitial-modal-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.ad-interstitial-modal-header h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.ad-interstitial-modal-header p {
+  font-size: 16px;
+  color: #666;
+}
+
+.ad-interstitial-modal-content {
+  margin-bottom: 20px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 10px;
+  min-height: 250px;
+  cursor: pointer;
+}
+
+.ad-interstitial-modal-footer {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.ad-interstitial-countdown {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.ad-interstitial-skip-button {
+  padding: 8px 16px;
+  background-color: #f0f0f0;
+  color: #666;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ad-interstitial-skip-button:hover {
+  background-color: #e0e0e0;
+}
+
+.ad-interstitial-continue-button {
+  padding: 12px 24px;
+  background: linear-gradient(90deg, #4ca1af, #2c3e50);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ad-interstitial-continue-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .ad-interstitial-modal-container {
+    width: 95%;
+    padding: 15px;
+  }
+  
+  .ad-interstitial-modal-header h2 {
+    font-size: 20px;
+  }
+  
+  .ad-interstitial-modal-header p {
+    font-size: 14px;
+  }
+  
+  .ad-interstitial-continue-button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
