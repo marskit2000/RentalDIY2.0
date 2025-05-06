@@ -12,6 +12,7 @@ import {
 } from '../utils/pdfGenerator';
 import ConfirmationModal from './ui/ConfirmationModal';
 import { Navigate } from 'react-router-dom';
+import AdSenseSection from './AdSenseSection';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface PdfGenerateSectionProps {
@@ -367,8 +368,8 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
     return <Navigate to="/checkout" />;
   }
 
-  function handleRedirectToReturn() {
-    // Save form values before redirecting
+  const handleRedirectToReturn = async () => {
+    // Save form values before generating PDF
     const currentValues: PdfInputValues = {
       inputText1, inputText2, inputText3, inputText4, inputText5,
       rentAmount, securityDeposit, propertyUse, managementFee,
@@ -385,16 +386,81 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
     // Save the current form state to localStorage
     updatePdfInputValues(currentValues);
     
-    setRedirectToDownload(true);
+    // Generate PDF directly instead of redirecting
+    try {
+      setIsLoading(true);
+      
+      const params: PdfGenerationParams = {
+        inputDate2,
+        inputText1,
+        inputText2,
+        inputText3,
+        inputText4,
+        inputText5,
+        rentAmount,
+        securityDeposit,
+        propertyUse,
+        managementFee,
+        governmentRates,
+        governmentRent,
+        rentFreeFrom,
+        rentFreeTo,
+        breakClause1,
+        breakClause2,
+        breakClause3,
+        breakClause3Other,
+        airConditioner,
+        ventilator,
+        oilVentilator,
+        waterHeater,
+        gasStove,
+        lightings,
+        refrigerator,
+        washingMachine,
+        bed,
+        wardrobe,
+        settee,
+        otherFurniture,
+        landLordId,
+        landlordTel,
+        tenantId,
+        tenantTel,
+        landlordBankAccount,
+        bank,
+        dateFrom,
+        dateTo,
+        remarksFields,
+        language,
+        t
+      };
+      
+      const url = await generatePDF(params);
+      
+      if (url) {
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = "filled_tenancy_agreement.pdf";
+        link.click();
+        
+        // Reset form after successful PDF generation
+        resetFormValues();
+        alert(t(language, 'pdfGeneratedAndReset') || 'PDF generated successfully. Form has been reset.');
+      }
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      alert(t(language, 'pdfError') || 'Error generating PDF. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   }
 
-  if (redirectToDownload) {
-    return <Navigate to="/pricing" />;
-  }
+  // No longer need to redirect to pricing page as we're generating the PDF directly
 
   return (
     <div className="pdf-generate-section">
       <div className="left-section">  
+        {/* Google AdSense Section */}
+        <AdSenseSection slot='2060948289'/>
         <p className="input-group-heading">{t(language, 'Please fill in the following information:')}</p>
         <div className="input-group">
           <label htmlFor="pdf-date-2">{t(language, 'agreementDate')}</label>

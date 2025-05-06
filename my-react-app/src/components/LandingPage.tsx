@@ -4,8 +4,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { t } from '../translations';
 import './LandingPage.css';
 import HeroImageTwo from './HeroImageTwo';
-import GoogleAdsense from './GoogleAdsense';
-import './GoogleAdsense.css';
+import AdSenseSection from './AdSenseSection';
 
 const LandingPage: React.FC = () => {
   const navigate = useNavigate();
@@ -55,16 +54,7 @@ const LandingPage: React.FC = () => {
       </section>
 
       {/* Google AdSense Section */}
-      <section className="ad-container">
-        <div className="ad-label">{t(language, 'advertisementLabel') || 'Advertisement'}</div>
-        <GoogleAdsense 
-          client="ca-pub-6348470051332056" // Replace with your AdSense Publisher ID
-          slot="7094024363" // Replace with your AdSense Ad Slot ID
-          format="auto"
-          responsive={true}
-          style={{ display: 'block', width: '100%' }}
-        />
-      </section>
+      <AdSenseSection />
 
       <section className="how-it-works-section">
         <h2>{t(language, 'howItWorksTitle')}</h2>
