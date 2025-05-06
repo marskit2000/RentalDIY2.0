@@ -77,8 +77,9 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   // ConvertToImage State - used by the preview function
   const [images, setImages] = useState<string[]>([]);
   // These variables are used in the handlePreview function when passed to generatePDF
-  // We need these state setters for the generatePDF function, even though the linter doesn't recognize it
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [imageLoading, setImageLoading] = useState<boolean>(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [imageError, setImageError] = useState<string | null>(null);
 
   // Create a debounced update function with 500ms delay

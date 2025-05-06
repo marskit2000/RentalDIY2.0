@@ -21,13 +21,11 @@ const AdInterstitialModal: React.FC<AdInterstitialModalProps> = ({
 }) => {
   const { language } = useLanguage();
   const [countdown, setCountdown] = useState<number>(10);
-  const [adInteracted, setAdInteracted] = useState<boolean>(false);
   
   // Reset state when modal opens
   useEffect(() => {
     if (isOpen) {
       setCountdown(10);
-      setAdInteracted(false);
     }
   }, [isOpen]);
 
@@ -36,12 +34,12 @@ const AdInterstitialModal: React.FC<AdInterstitialModalProps> = ({
     if (!isOpen) return;
 
     const timer = setInterval(() => {
-      setCountdown((prev) => {
-        if (prev <= 1) {
+      setCountdown((prevCountdown) => {
+        if (prevCountdown <= 1) {
           clearInterval(timer);
           return 0;
         }
-        return prev - 1;
+        return prevCountdown - 1;
       });
     }, 1000);
 
@@ -85,15 +83,9 @@ const AdInterstitialModal: React.FC<AdInterstitialModalProps> = ({
         </div>
         
         <div className="ad-interstitial-modal-footer">
-          {countdown > 0 && !adInteracted ? (
+          {countdown > 0 ? (
             <div className="ad-interstitial-countdown">
               <p>{t(language, 'adModalCountdown')} {countdown} {countdown === 1 ? t(language, 'second') : t(language, 'seconds')}</p>
-              <button 
-                className="ad-interstitial-skip-button" 
-                onClick={() => setAdInteracted(true)}
-              >
-                {t(language, 'adModalSkip') || 'I\'ve seen the ad'}
-              </button>
             </div>
           ) : (
             <button 
