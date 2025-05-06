@@ -166,4 +166,7 @@ export const zhTW = {
   //Payment Return Page
   paymentDeclined: '付款被拒絕。未進行任何交易。正在重定向回結算頁面...',
   redirecting: '正在重定向...',
+  
+  // Advertisement
+  advertisementLabel: '廣告',
 };

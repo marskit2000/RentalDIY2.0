@@ -166,4 +166,7 @@ export const zhCN = {
   //Payment Return Page
   paymentDeclined: '支付被拒绝。未进行任何交易。正在重定向回结算页面...',
   redirecting: '正在重定向...',
+  
+  // Advertisement
+  advertisementLabel: '广告',
 };

@@ -1,0 +1,20 @@
+.google-adsense {
+  width: 100%;
+  margin: 20px 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+.ad-container {
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
+.ad-label {
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+  margin-bottom: 5px;
+}

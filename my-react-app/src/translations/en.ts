@@ -167,4 +167,7 @@ export const en = {
   //Payment Return Page
   paymentDeclined: 'The payment was declined. No transaction has been made. Redirecting back to the checkout page...',
   redirecting: 'Redirecting...',
+  
+  // Advertisement
+  advertisementLabel: 'Advertisement',
 };
