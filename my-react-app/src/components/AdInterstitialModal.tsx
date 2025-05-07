@@ -21,30 +21,42 @@ const AdInterstitialModal: React.FC<AdInterstitialModalProps> = ({
 }) => {
   const { language } = useLanguage();
   const [countdown, setCountdown] = useState<number>(10);
+  const [smoothProgress, setSmoothProgress] = useState<number>(0);
   
   // Reset state when modal opens
   useEffect(() => {
     if (isOpen) {
       setCountdown(10);
+      setSmoothProgress(0);
     }
   }, [isOpen]);
 
-  // Handle countdown timer
+  // Handle countdown timer with smooth progress
   useEffect(() => {
     if (!isOpen) return;
-
+    
+    // Update 10 times per second for smooth animation
+    const updateInterval = 100; // milliseconds
+    const decrementPerInterval = 0.1; // 0.1 second per update
+    
     const timer = setInterval(() => {
-      setCountdown((prevCountdown) => {
-        if (prevCountdown <= 1) {
+      setSmoothProgress(prev => {
+        const newProgress = prev + decrementPerInterval;
+        if (newProgress >= 10) {
           clearInterval(timer);
-          return 0;
+          return 10;
         }
-        return prevCountdown - 1;
+        return newProgress;
       });
-    }, 1000);
+      
+      // Update the countdown display (integer part) every second
+      if (Math.floor(smoothProgress) !== Math.floor(smoothProgress + decrementPerInterval)) {
+        setCountdown(10 - Math.floor(smoothProgress + decrementPerInterval));
+      }
+    }, updateInterval);
 
     return () => clearInterval(timer);
-  }, [isOpen]);
+  }, [isOpen, smoothProgress]);
 
   // We're using a manual approach with a button instead of automatic tracking
   // This is more reliable and gives the user more control
@@ -69,6 +81,19 @@ const AdInterstitialModal: React.FC<AdInterstitialModalProps> = ({
         <div className="ad-interstitial-modal-header">
           <h2>{t(language, 'adModalTitle')}</h2>
           <p>{t(language, 'adModalDescription')}</p>
+          {countdown > 0 && (
+            <div className="ad-interstitial-progress-wrapper">
+              <div className="ad-interstitial-progress-container">
+                <div 
+                  className="ad-interstitial-progress-bar" 
+                  style={{ width: `${(smoothProgress / 10) * 100}%` }}
+                ></div>
+                <span className="ad-interstitial-progress-label">
+                  {countdown} {countdown === 1 ? t(language, 'second') : t(language, 'seconds')}
+                </span>
+              </div>
+            </div>
+          )}
         </div>
         
         <div className="ad-interstitial-modal-content">
