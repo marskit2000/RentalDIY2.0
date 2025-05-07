@@ -134,5 +134,48 @@ export const zhCN = {
   previewWarning: '这是租赁协议的预览版本',
 
   // Preview Placeholder
-  previewPlaceholder: '点击预览按钮预览租赁协议'
+  previewPlaceholder: '点击预览按钮预览租赁协议',
+  
+  // Payment Success
+  paymentSuccessful: '支付成功！',
+  paymentThankYou: '感谢您的支付。您的租赁协议已成功处理。',
+  transactionDetails: '交易详情',
+  transactionId: '交易ID',
+  date: '日期',
+  returnToHome: '返回首页',
+  downloadRentalAgreement: '下载租赁协议',
+
+  //Edit Button
+  edit: '编辑',
+
+  //Check out left div headings
+  orderSummary: '订单摘要',
+  propertyDetails: '物业详情',
+  financialDetails: '财务详情',
+  partiesInvolved: '当事人',
+  breakClause: '提前终止条款',
+  bankDetails: '银行详情',
+  fixtures: '设施与设备',
+  otherDetails: '其他详情',
+
+  //Checkout Headings and Text
+  checkoutTitle: '结算',
+  checkoutSubtitle: '请审核您的信息并完成支付以生成租赁协议',
+  payment: '付款',
+  
+  //Payment Return Page
+  paymentDeclined: '支付被拒绝。未进行任何交易。正在重定向回结算页面...',
+  redirecting: '正在重定向...',
+  
+  // Advertisement
+  advertisementLabel: '广告',
+  
+  // Ad Modal
+  adModalTitle: '即将完成！',
+  adModalDescription: '您的PDF已准备好。请稍等片刻或与下方广告互动以下载。',
+  adModalCountdown: '下载将在以下时间内可用',
+  adModalContinue: '下载PDF',
+  adModalSkip: '我已经看过广告',
+  second: '秒',
+  seconds: '秒'
 };

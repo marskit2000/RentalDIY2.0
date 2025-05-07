@@ -22,6 +22,11 @@
 .hero-content {
   flex: 1;
   max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .hero-content h1 {
@@ -207,6 +212,9 @@
   background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
   text-align: center;
   color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .cta-section h2 {
@@ -226,6 +234,8 @@
 .cta-section .cta-button {
   background: white;
   color: #2c3e50;
+  display: block;
+  margin: 0 auto;
 }
 
 .cta-section .cta-button:hover {

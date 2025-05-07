@@ -135,5 +135,48 @@ export const en = {
   previewWarning: 'This is a preview of the Rental Agreement.',
   
   // Preview Placeholder
-  previewPlaceholder: 'Click the Preview button to view the Rental Agreement here'
+  previewPlaceholder: 'Click the Preview button to view the Rental Agreement here',
+  
+  // Payment Success
+  paymentSuccessful: 'Payment Successful!',
+  paymentThankYou: 'Thank you for your payment. Your rental agreement has been processed successfully.',
+  transactionDetails: 'Transaction Details',
+  transactionId: 'Transaction ID',
+  date: 'Date',
+  returnToHome: 'Return to Home',
+  downloadRentalAgreement: 'Download Rental Agreement',
+
+  //Edit Button
+  edit: 'Edit',
+
+  //Check out left div headings
+  orderSummary: 'Order Summary',
+  propertyDetails: 'Property Details',
+  financialDetails: 'Financial Details',
+  partiesInvolved: 'Parties Involved',
+  breakClause: 'Break Clause',
+  bankDetails: 'Bank Details',
+  fixtures: 'Fixtures & Fittings',
+  otherDetails: 'Other Details',
+
+  //Checkout Headings and Text
+  checkoutTitle: 'Checkout',
+  checkoutSubtitle: 'Please review your information and complete the payment to generate your rental agreement.',
+  payment: 'Payment',
+  
+  //Payment Return Page
+  paymentDeclined: 'The payment was declined. No transaction has been made. Redirecting back to the checkout page...',
+  redirecting: 'Redirecting...',
+  
+  // Advertisement
+  advertisementLabel: 'Advertisement',
+  
+  // Ad Modal
+  adModalTitle: 'Almost there!',
+  adModalDescription: 'Your PDF is ready. Please wait a moment or interact with the ad below to download.',
+  adModalCountdown: 'Download available in',
+  adModalContinue: 'Download PDF',
+  adModalSkip: 'I\'ve seen the ad',
+  second: 'second',
+  seconds: 'seconds'
 };

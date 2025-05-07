@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import './PdfGenerateSection.css';
+import { Navigate } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { t } from '../translations';
 import { 
@@ -11,6 +11,9 @@ import {
   PdfInputValues
 } from '../utils/pdfGenerator';
 import ConfirmationModal from './ui/ConfirmationModal';
+import AdSenseSection from './AdSenseSection';
+import AdInterstitialModal from './AdInterstitialModal';
+import './PdfGenerateSection.css';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface PdfGenerateSectionProps {
@@ -19,6 +22,8 @@ interface PdfGenerateSectionProps {
 
 const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const { language } = useLanguage();
+  
+  const isFreeMode = true;
   
   // Load saved values from session storage or use defaults
   const savedValues = loadPdfInputValues();
@@ -66,11 +71,12 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const [remarksFields, setRemarksFields] = useState<string[]>(savedValues.remarksFields);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [showResetModal, setShowResetModal] = useState(false);
+  const [redirectToCheckout, setRedirectToCheckout] = useState(false);
+  const [showAdModal, setShowAdModal] = useState(false);
 
   // ConvertToImage State - used by the preview function
   const [images, setImages] = useState<string[]>([]);
   // These variables are used in the handlePreview function when passed to generatePDF
-  // The linter doesn't recognize they're being used because they're passed as props to another function
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [imageLoading, setImageLoading] = useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -93,7 +99,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   }, [])();
 
   // Generic change handler for input fields
-  const handleInputChange = useCallback((fieldName: keyof PdfInputValues, value: any, setter: React.Dispatch<React.SetStateAction<any>>) => {
+  const handleInputChange = useCallback(<T extends string | number | boolean | string[]>(fieldName: keyof PdfInputValues, value: T, setter: React.Dispatch<React.SetStateAction<T>>) => {
     setter(value);
     debouncedUpdate({ [fieldName]: value } as Partial<PdfInputValues>);
   }, [debouncedUpdate]);
@@ -336,9 +342,131 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
     debouncedUpdate({ remarksFields: newRemarksFields });
   };
 
+  const handleRedirectToCheckout = () => {
+    // Save form values before redirecting
+    const currentValues: PdfInputValues = {
+      inputText1, inputText2, inputText3, inputText4, inputText5,
+      rentAmount, securityDeposit, propertyUse, managementFee,
+      governmentRates, governmentRent, rentFreeFrom, rentFreeTo,
+      breakClause1, breakClause2, breakClause3, breakClause3Other,
+      airConditioner, ventilator, oilVentilator, waterHeater,
+      gasStove, lightings, refrigerator, washingMachine,
+      bed, wardrobe, settee, otherFurniture,
+      landLordId, landlordTel, tenantId, tenantTel,
+      landlordBankAccount, bank, inputDate2, dateFrom, dateTo,
+      remarksFields
+    };
+    
+    // Save the current form state to localStorage
+    updatePdfInputValues(currentValues);
+    
+    // Set state to trigger redirection
+    setRedirectToCheckout(true);
+  }
+  
+  // Add the redirect to checkout if the state is true
+  if (redirectToCheckout) {
+    return <Navigate to="/checkout" />;
+  }
+
+  const handleRedirectToReturn = () => {
+    // Save form values before showing ad modal
+    const currentValues: PdfInputValues = {
+      inputText1, inputText2, inputText3, inputText4, inputText5,
+      rentAmount, securityDeposit, propertyUse, managementFee,
+      governmentRates, governmentRent, rentFreeFrom, rentFreeTo,
+      breakClause1, breakClause2, breakClause3, breakClause3Other,
+      airConditioner, ventilator, oilVentilator, waterHeater,
+      gasStove, lightings, refrigerator, washingMachine,
+      bed, wardrobe, settee, otherFurniture,
+      landLordId, landlordTel, tenantId, tenantTel,
+      landlordBankAccount, bank, inputDate2, dateFrom, dateTo,
+      remarksFields
+    };
+    
+    // Save the current form state to localStorage
+    updatePdfInputValues(currentValues);
+    
+    // Show ad modal instead of generating PDF immediately
+    setShowAdModal(true);
+  }
+  
+  // Function to handle PDF generation after ad interaction
+  const handleGeneratePDFAfterAd = async () => {
+    try {
+      setIsLoading(true);
+      
+      const params: PdfGenerationParams = {
+        inputDate2,
+        inputText1,
+        inputText2,
+        inputText3,
+        inputText4,
+        inputText5,
+        rentAmount,
+        securityDeposit,
+        propertyUse,
+        managementFee,
+        governmentRates,
+        governmentRent,
+        rentFreeFrom,
+        rentFreeTo,
+        breakClause1,
+        breakClause2,
+        breakClause3,
+        breakClause3Other,
+        airConditioner,
+        ventilator,
+        oilVentilator,
+        waterHeater,
+        gasStove,
+        lightings,
+        refrigerator,
+        washingMachine,
+        bed,
+        wardrobe,
+        settee,
+        otherFurniture,
+        landLordId,
+        landlordTel,
+        tenantId,
+        tenantTel,
+        landlordBankAccount,
+        bank,
+        dateFrom,
+        dateTo,
+        remarksFields,
+        language,
+        t
+      };
+      
+      const url = await generatePDF(params);
+      
+      if (url) {
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = "filled_tenancy_agreement.pdf";
+        link.click();
+        
+        // Reset form after successful PDF generation
+        resetFormValues();
+        alert(t(language, 'pdfGeneratedAndReset') || 'PDF generated successfully. Form has been reset.');
+      }
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      alert(t(language, 'pdfError') || 'Error generating PDF. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  // No longer need to redirect to pricing page as we're generating the PDF directly
+
   return (
     <div className="pdf-generate-section">
       <div className="left-section">  
+        {/* Google AdSense Section */}
+        <AdSenseSection slot='2060948289'/>
         <p className="input-group-heading">{t(language, 'Please fill in the following information:')}</p>
         <div className="input-group">
           <label htmlFor="pdf-date-2">{t(language, 'agreementDate')}</label>
@@ -803,16 +931,16 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           <div className="button-group-right">
             <button 
               className="generate-btn" 
-              onClick={handleGeneratePDF}
+              onClick={isFreeMode ? handleRedirectToReturn : handleRedirectToCheckout}
               onTouchStart={(e) => {
-                if (isLoading) return;
+                // if (isLoading) return;
                 // Prevent default to avoid any delay
                 e.preventDefault();
-                handleGeneratePDF();
+                isFreeMode ? handleRedirectToReturn() : handleRedirectToCheckout(); 
               }}
-              disabled={isLoading}
+              // disabled={isLoading}
             >
-              {isLoading ? (t(language, 'generating') || 'Generating...') : (t(language, 'generatePDF') || 'Generate PDF')}
+              {(t(language, 'generatePDF') || 'Generate PDF')}
             </button>
             <button 
               className="preview-btn"
@@ -872,6 +1000,15 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
         cancelText={t(language, 'cancel') || 'Cancel'}
         onConfirm={confirmReset}
         onCancel={cancelReset}
+      />
+      
+      {/* Ad Interstitial Modal */}
+      <AdInterstitialModal
+        isOpen={showAdModal}
+        onClose={() => setShowAdModal(false)}
+        onContinue={handleGeneratePDFAfterAd}
+        client="ca-pub-3940256099942544" // Use your Google AdSense client ID
+        slot="7094024363" // Use your preferred ad slot
       />
     </div>
   );

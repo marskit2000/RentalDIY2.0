@@ -4,6 +4,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { t } from '../translations';
 import './LandingPage.css';
 import HeroImageTwo from './HeroImageTwo';
+import AdSenseSection from './AdSenseSection';
 
 const LandingPage: React.FC = () => {
   const navigate = useNavigate();
@@ -52,6 +53,9 @@ const LandingPage: React.FC = () => {
         </div>
       </section>
 
+      {/* Google AdSense Section */}
+      <AdSenseSection />
+
       <section className="how-it-works-section">
         <h2>{t(language, 'howItWorksTitle')}</h2>
         <div className="steps-container">
@@ -80,6 +84,8 @@ const LandingPage: React.FC = () => {
           {t(language, 'getStarted')}
         </button>
       </section>
+
+      
     </div>
   );
 };

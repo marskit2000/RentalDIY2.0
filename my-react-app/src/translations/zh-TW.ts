@@ -134,5 +134,48 @@ export const zhTW = {
   previewWarning: '這是租賃協議的預覽版本',
 
   // Preview Placeholder
-  previewPlaceholder: '點擊預覽按鈕預覽租賃協議'
+  previewPlaceholder: '點擊預覽按鈕預覽租賃協議',
+  
+  // Payment Success
+  paymentSuccessful: '支付成功！',
+  paymentThankYou: '感謝您的支付。您的租賃協議已成功處理。',
+  transactionDetails: '交易詳情',
+  transactionId: '交易ID',
+  date: '日期',
+  returnToHome: '返回首頁',
+  downloadRentalAgreement: '下載租賃協議',
+
+  //Edit Button
+  edit: '編輯',
+
+  //Check out left div headings
+  orderSummary: '訂單摘要',
+  propertyDetails: '物業详情',
+  financialDetails: '財務详情',
+  partiesInvolved: '当事人',
+  breakClause: '提前终止条款',
+  bankDetails: '銀行详情',
+  fixtures: '设施与设备',
+  otherDetails: '其他详情',
+
+  //Checkout Headings and Text
+  checkoutTitle: '結算',
+  checkoutSubtitle: '請審核您的資訊並完成付款以產生租賃協議',
+  payment: '付款',
+  
+  //Payment Return Page
+  paymentDeclined: '付款被拒絕。未進行任何交易。正在重定向回結算頁面...',
+  redirecting: '正在重定向...',
+  
+  // Advertisement
+  advertisementLabel: '廣告',
+  
+  // Ad Modal
+  adModalTitle: '即將完成！',
+  adModalDescription: '您的PDF已準備好。請稍等片刻或與下方廣告互動以下載。',
+  adModalCountdown: '下載將在以下時間內可用',
+  adModalContinue: '下載PDF',
+  adModalSkip: '我已經看過廣告',
+  second: '秒',
+  seconds: '秒'
 };
