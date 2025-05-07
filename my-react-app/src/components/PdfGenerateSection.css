@@ -360,13 +360,23 @@
 .controls {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
-  padding: 15px 0;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #000;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(3, 3, 3, 0.05);
+}
+
+.controls-left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .button-group-right {
   display: flex;
-  gap: 10px;
+  gap: 1rem;
 }
 
 .reset-btn {
