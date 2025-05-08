@@ -12,6 +12,7 @@ import {
 } from '../utils/pdfGenerator';
 import ConfirmationModal from './ui/ConfirmationModal';
 import AdInterstitialModal from './AdInterstitialModal';
+import AdSenseSection from './AdSenseSection';
 import PdfInputForm from './PdfInputForm';
 import './PdfGenerateSection.css';
 
@@ -462,7 +463,11 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
 
   return (
     <div className="pdf-generate-section">
-      <PdfInputForm 
+      {/* Left Section */}
+      <div className="left-section">
+        {/* Google AdSense Section */}
+        <AdSenseSection slot='2060948289'/>
+        <PdfInputForm 
         formValues={{
           inputText1, inputText2, inputText3, inputText4, inputText5,
           rentAmount, securityDeposit, propertyUse, managementFee,
@@ -497,6 +502,8 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           setLandlordBankAccount, setBank, setInputDate2, setDateFrom, setDateTo
         }}
       />
+      </div>
+      {/* Right Section */}
       <div className="right-section">
         {showPreview ? (
           <div className="pdf-preview">

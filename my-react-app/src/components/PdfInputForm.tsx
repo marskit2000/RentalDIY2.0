@@ -2,7 +2,6 @@ import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { t } from '../translations';
 import { PdfInputValues } from '../utils/pdfGenerator';
-import AdSenseSection from './AdSenseSection';
 
 interface PdfInputFormProps {
   formValues: PdfInputValues;
@@ -104,9 +103,7 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
   } = setters;
 
   return (
-    <div className="left-section">  
-      {/* Google AdSense Section */}
-      <AdSenseSection slot='2060948289'/>
+    <>
       <p className="input-group-heading">{t(language, 'Please fill in the following information:')}</p>
       <div className="input-group">
         <label htmlFor="pdf-date-2">{t(language, 'agreementDate')}</label>
@@ -596,7 +593,7 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
