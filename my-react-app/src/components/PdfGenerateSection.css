@@ -39,6 +39,7 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  background-color: #f8f9fa;
   /* Removed pointer-events: none as it was disabling interactions */
 }
 
@@ -464,7 +465,7 @@
 }
 
 .preview-placeholder {
-  height: 100%;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
