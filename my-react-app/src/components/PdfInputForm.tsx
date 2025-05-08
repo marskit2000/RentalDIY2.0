@@ -105,6 +105,7 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
   return (
     <>
       <p className="input-group-heading">{t(language, 'Please fill in the following information:')}</p>
+      <h2 className='form-sub-heading'>{t(language, 'Section 1')}</h2>
       <div className="input-group">
         <label htmlFor="pdf-date-2">{t(language, 'agreementDate')}</label>
         <input
@@ -115,6 +116,8 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
           placeholder={t(language, 'enterDate')}
         />
       </div>
+      <hr className="form-section-divider" />
+      <h2 className='form-sub-heading'>{t(language, 'Section 2')}</h2>
       <div className="input-group">
         <label htmlFor="pdf-text-1">{t(language, 'propertyAddress')}</label>
         <input
@@ -125,6 +128,8 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
           placeholder={t(language, 'enterPropertyAddress')}
         />
       </div>
+      <hr className="form-section-divider" />
+      <h2 className='form-sub-heading'>{t(language, 'Section 3')}</h2>
       <div className="input-group">
         <label htmlFor="pdf-text-2">{t(language, 'landlord')}</label>
         <input
@@ -198,8 +203,7 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
             placeholder={t(language, 'enterID')}
           />
         </div>
-      </div>
-      
+      </div>    
       <div className="input-group">
         <label htmlFor="pdf-text-5">{t(language, 'tenantAddress')}</label>
         <input
@@ -210,6 +214,8 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
           placeholder={t(language, 'enterAddress')}
         />
       </div>
+      <hr className="form-section-divider" />
+      <h2 className='form-sub-heading'>{t(language, 'Section 4')}</h2>
       <div className="date-range-group">
         <div className="input-group">
           <label htmlFor="date-from">{t(language, 'from')}</label>
@@ -256,6 +262,8 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
           step="0.01"
         />
       </div>
+      <hr className="form-section-divider" />
+      <h2 className='form-sub-heading'>{t(language, 'Section 5')}</h2>
       <div className="input-group">
         <label htmlFor="property-use">{t(language, 'propertyUse')}</label>
         <select
@@ -305,6 +313,8 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
           </select>
         </div>
       </div>
+      <hr className="form-section-divider" />
+      <h2 className='form-sub-heading'>{t(language, 'Section 6')}</h2>
       <div className="date-range-group">
         <div className="input-group">
           <label htmlFor="rent-free-from">{t(language, 'rentFreeFrom')}</label>
@@ -327,6 +337,8 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
           />
         </div>
       </div>
+      <hr className="form-section-divider" />
+      <h2 className='form-sub-heading'>{t(language, 'Section 7')}</h2>
       <div className="break-clause-row">
         <div className="input-group">
           <label htmlFor="break-clause-1">{t(language, 'breakClause1')}</label>
@@ -378,6 +390,8 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
           </div>
         </div>
       </div>
+      <hr className="form-section-divider" />
+      <h2 className='form-sub-heading'>{t(language, 'Section 8')}</h2>
       <div className="furniture-row">
         <div className="input-group">
           <label htmlFor="air-conditioner">{t(language, 'airConditioner')}</label>
@@ -504,6 +518,8 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
           />
         </div>
       </div>
+      <hr className="form-section-divider" />
+      <h2 className='form-sub-heading'>{t(language, 'Section 9')}</h2>
       <div className="bank-row">
         <div className="input-group">
           <label htmlFor="landlord-bank-account">{t(language, 'landlordBankAccount')}</label>
@@ -526,6 +542,8 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
           />
         </div>
       </div>
+      <hr className="form-section-divider" />
+      <h2 className='form-sub-heading'>{t(language, 'Section 10')}</h2>
       <div className="remarks-group">
         <label>{t(language, 'remarks')}</label>
         {remarksFields.map((remark, index) => (
@@ -553,6 +571,7 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
           +
         </button>
       </div>
+      <hr className="form-section-divider" />
       <div className="controls">
         <button 
           className="reset-btn" 

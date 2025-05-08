@@ -12,6 +12,25 @@
   margin-bottom: 1.5rem;
 }
 
+/* Override for form sub-headings */
+.pdf-generate-section .form-sub-heading {
+  color: #4B9DAC !important;
+  text-align: left !important;
+  font-size: 2.2rem !important;
+  margin: 20px 0 10px 0 !important;
+  font-weight: bold !important;
+}
+
+/* This is kept for reference but the rule above has higher specificity */
+.form-sub-heading {
+  color: white;
+  text-align: left;
+  font-size: 1.2rem;
+  margin: 10px 0 5px 0;
+  font-weight: 500;
+}
+
+
 .left-section {
   flex: 1;
   min-width: 300px;
@@ -30,6 +49,7 @@
   font-weight: bold;
   margin-bottom: 1.5rem;
   color: #fff;
+  font-size: 2rem;
 }
 
 .right-section {
@@ -44,9 +64,8 @@
 }
 
 .input-group {
-  margin: 1.5rem 0;
+  margin: 1.5rem 0 1rem 0;
   text-align: left;
-  margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -196,6 +215,7 @@
 }
 
 .furniture-row {
+  margin: 1.5rem 0;
   display: flex;
   justify-content: space-between;
   gap: 1rem;
@@ -453,6 +473,15 @@
   border-radius: 4px;
   cursor: pointer;
 }
+
+.form-section-divider {
+  margin: 30px 0 25px 0;
+  border: 0;
+  height: 1px;
+  background-color: #ccc;
+  width: 100%;
+}
+
 
 .pdf-controls button:disabled {
   background-color: #e0e0e0;
