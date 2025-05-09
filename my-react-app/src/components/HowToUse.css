@@ -1,0 +1,186 @@
+.how-to-use-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  color: #333;
+}
+
+.how-to-use-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.how-to-use-header h1 {
+  font-size: 2.5rem;
+  color: #4B9DAC;
+  margin-bottom: 1rem;
+}
+
+.how-to-use-subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.how-to-use-section {
+  margin-bottom: 4rem;
+}
+
+.how-to-use-section h2 {
+  font-size: 2rem;
+  color: #4B9DAC;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.how-to-use-card {
+  display: flex;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.how-to-use-card-content {
+  flex: 1;
+  padding: 2rem;
+}
+
+.how-to-use-card-content h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.how-to-use-image {
+  flex: 1;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f9fa;
+}
+
+.placeholder-image {
+  text-align: center;
+  padding: 2rem;
+}
+
+.placeholder-image span {
+  font-size: 5rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.placeholder-image p {
+  color: #666;
+}
+
+.how-to-use-steps {
+  margin-top: 1.5rem;
+}
+
+.how-to-use-step {
+  display: flex;
+  margin-bottom: 1.5rem;
+}
+
+.step-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #4B9DAC;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.tips-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.tip-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  text-align: center;
+}
+
+.tip-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.tip-card h3 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.faq-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  gap: 2rem;
+}
+
+.faq-item {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.faq-item h3 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .how-to-use-card {
+    flex-direction: column;
+  }
+  
+  .how-to-use-image {
+    min-height: 200px;
+  }
+  
+  .faq-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .how-to-use-header h1 {
+    font-size: 2rem;
+  }
+  
+  .how-to-use-section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .how-to-use-card-content {
+    padding: 1.5rem;
+  }
+  
+  .tips-container {
+    grid-template-columns: 1fr;
+  }
+}

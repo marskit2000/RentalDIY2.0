@@ -5,6 +5,7 @@ export const zhTW = {
   // Navigation
   home: '首頁',
   rentalAgreement: '租賃協議',
+  howToUse: '使用指南',
   
   // Landing Page
   landingTitle: '幾分鐘內創建專業租賃協議',
@@ -32,6 +33,7 @@ export const zhTW = {
   step2Description: '預覽生成的協議並進行必要的調整。',
   step3Title: '下載並簽署',
   step3Description: '下載PDF，打印出來，並讓所有相關方簽署以使其正式生效。',
+  moreDetail: '更多詳情',
   
   // CTA Section
   ctaTitle: '準備好創建您的租賃協議了嗎？',
@@ -177,5 +179,69 @@ export const zhTW = {
   adModalContinue: '下載PDF',
   adModalSkip: '我已經看過廣告',
   second: '秒',
-  seconds: '秒'
+  seconds: '秒',
+  
+  // How To Use Page
+  howToUseTitle: '如何使用我們的租賃協議工具',
+  howToUseSubtitle: '創建、預覽和生成租賃協議的網羅指南',
+  
+  // Getting Started Section
+  gettingStartedTitle: '開始使用',
+  accessingTheToolTitle: '訪問工具',
+  accessingTheToolDescription: '我們的租賃協議工具設計得直觀易用。以下是開始使用的方法：',
+  accessStep1: '從主導航菜單進入“租賃協議”頁面。',
+  accessStep2: '表單將顯示所有輸入欄位，供您填寫。',
+  homePageImage: '首頁截圖',
+  
+  // Filling the Form Section
+  fillingTheFormTitle: '填寫表單',
+  formSectionsTitle: '了解表單各部分',
+  formSectionsDescription: '表單分為10個部分，每個部分涵蓋租賃協議的不同方面：',
+  formSection1: '第1-3部分涵蓋有關物業、業主和租戶的基本資訊。',
+  formSection2: '第4-6部分處理租期、金額和付款條件，包括免租期。',
+  formSection3: '第7部分涵蓋提前終止條款，規定提前終止的條件。',
+  formSection4: '第8-10部分包括設施、銀行詳情和任何額外備註。',
+  formTip: '通過點擊部分標題旁邊的箭頭按鈕，每個部分都可以折疊或展開，方便導航。',
+  formPageImage: '表單頁面截圖',
+  
+  // Previewing Section
+  previewingTitle: '預覽您的協議',
+  previewFeaturesTitle: '預覽功能',
+  previewFeaturesDescription: '在生成最終PDF之前，您可以預覽協議的外觀：',
+  previewStep1: '填寫表單中的必要欄位。',
+  previewStep2: '點擊表單底部的“預覽”按鈕。',
+  previewStep3: '將顯示協議的預覽，讓您檢查是否有任何錯誤或遺漏。',
+  previewImage: '預覽截圖',
+  
+  // Generating PDF Section
+  generatingPdfTitle: '生成PDF',
+  pdfGenerationProcessTitle: 'PDF生成過程',
+  pdfGenerationProcessDescription: '當您對預覽滿意後，可以生成最終PDF：',
+  pdfGenStep1: '點擊表單底部的“生成PDF”按鈕。',
+  pdfGenStep2: '您將被重定向到結算頁面完成支付（除非使用免費模式）。',
+  pdfGenStep3: '支付成功後，您的PDF將生成並可供下載。',
+  pdfGenStep4: '成功生成PDF後，表單將自動重置。',
+  pdfGenerationImage: 'PDF生成截圖',
+  
+  // Tips and Tricks Section
+  tipsAndTricksTitle: '提示與技巧',
+  tip1Title: '保存進度',
+  tip1Description: '您的表單數據會自動保存在瀏覽器中。您可以關閉頁面，稍後返回繼續。',
+  tip2Title: '使用重置按鈕',
+  tip2Description: '如果要重新開始，使用重置按鈕一次性清除所有欄位。',
+  tip3Title: '先檢查預覽',
+  tip3Description: '在生成最終PDF之前，始終使用預覽功能確保一切正確。',
+  tip4Title: '可折疊部分',
+  tip4Description: '使用折疊/展開功能一次專注於一個部分，尤其是在移動設備上。',
+  
+  // FAQ Section
+  faqTitle: '常見問題',
+  faq1Question: '我的數據安全嗎？',
+  faq1Answer: '是的，所有數據都在您的瀏覽器中本地處理。我們不會在伺服器上存儲您的個人資訊。',
+  faq2Question: '生成PDF後可以編輯協議嗎？',
+  faq2Answer: '一旦PDF生成，就無法通過我們的工具進行編輯。您需要使用更新的資訊創建新的協議。',
+  faq3Question: '接受哪些支付方式？',
+  faq3Answer: '我們通過安全的支付處理器接受所有主要信用卡。',
+  faq4Question: '生成的協議具有法律約束力嗎？',
+  faq4Answer: '協議模板設計為具有法律效力，但我們建議在簽署前由法律專業人士審核，尤其是對於複雜的租賃情況。'
 };

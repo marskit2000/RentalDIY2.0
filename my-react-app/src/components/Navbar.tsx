@@ -49,6 +49,15 @@ const Navbar: React.FC = () => {
               {t(language, 'pricing')}
             </Link>
           </li>
+          <li className="nav-item">
+            <Link 
+              to="/how-to-use" 
+              className={`nav-link ${location.pathname === '/how-to-use' ? 'active' : ''}`}
+              onClick={() => setIsOpen(false)}
+            >
+              {t(language, 'howToUse')}
+            </Link>
+          </li>
         </ul>
       </div>
     </nav>

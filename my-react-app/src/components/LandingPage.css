@@ -156,8 +156,8 @@
 
 /* How It Works Section */
 .how-it-works-section {
-  padding: 100px 10%;
-  background-color: #f5f7fa;
+  padding: 4rem 2rem;
+  background-color: #f8f9fa;
   text-align: center;
 }
 
@@ -204,6 +204,36 @@
 .step p {
   color: #7f8c8d;
   line-height: 1.6;
+}
+
+.more-detail-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.more-detail-button {
+  background-color: #4B9DAC;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.more-detail-button:hover {
+  background-color: #3a7a86;
+  transform: translateY(-2px);
+}
+
+.more-detail-button:active {
+  transform: translateY(0);
 }
 
 /* CTA Section */

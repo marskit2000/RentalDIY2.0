@@ -5,6 +5,7 @@ export const zhCN = {
   // Navigation
   home: '首页',
   rentalAgreement: '租赁协议',
+  howToUse: '使用指南',
   
   // Landing Page
   landingTitle: '几分钟内创建专业租赁协议',
@@ -32,6 +33,7 @@ export const zhCN = {
   step2Description: '预览生成的协议并进行必要的调整。',
   step3Title: '下载并签署',
   step3Description: '下载PDF，打印出来，并让所有相关方签署以使其正式生效。',
+  moreDetail: '更多详情',
   
   // CTA Section
   ctaTitle: '准备好创建您的租赁协议了吗？',
@@ -177,5 +179,69 @@ export const zhCN = {
   adModalContinue: '下载PDF',
   adModalSkip: '我已经看过广告',
   second: '秒',
-  seconds: '秒'
+  seconds: '秒',
+  
+  // How To Use Page
+  howToUseTitle: '如何使用我们的租赁协议工具',
+  howToUseSubtitle: '创建、预览和生成租赁协议的综合指南',
+  
+  // Getting Started Section
+  gettingStartedTitle: '开始使用',
+  accessingTheToolTitle: '访问工具',
+  accessingTheToolDescription: '我们的租赁协议工具设计得直观易用。以下是开始使用的方法：',
+  accessStep1: '从主导航菜单进入“租赁协议”页面。',
+  accessStep2: '表单将显示所有输入字段，供您填写。',
+  homePageImage: '首页截图',
+  
+  // Filling the Form Section
+  fillingTheFormTitle: '填写表单',
+  formSectionsTitle: '了解表单各部分',
+  formSectionsDescription: '表单分为10个部分，每个部分涵盖租赁协议的不同方面：',
+  formSection1: '第1-3部分涵盖有关物业、业主和租户的基本信息。',
+  formSection2: '第4-6部分处理租期、金额和付款条件，包括免租期。',
+  formSection3: '第7部分涵盖提前终止条款，规定提前终止的条件。',
+  formSection4: '第8-10部分包括设施、银行详情和任何额外备注。',
+  formTip: '通过点击部分标题旁边的箭头按钮，每个部分都可以折叠或展开，便于导航。',
+  formPageImage: '表单页面截图',
+  
+  // Previewing Section
+  previewingTitle: '预览您的协议',
+  previewFeaturesTitle: '预览功能',
+  previewFeaturesDescription: '在生成最终PDF之前，您可以预览协议的外观：',
+  previewStep1: '填写表单中的必要字段。',
+  previewStep2: '点击表单底部的“预览”按钮。',
+  previewStep3: '将显示协议的预览，让您检查是否有任何错误或遗漏。',
+  previewImage: '预览截图',
+  
+  // Generating PDF Section
+  generatingPdfTitle: '生成PDF',
+  pdfGenerationProcessTitle: 'PDF生成过程',
+  pdfGenerationProcessDescription: '当您对预览满意后，可以生成最终PDF：',
+  pdfGenStep1: '点击表单底部的“生成PDF”按钮。',
+  pdfGenStep2: '您将被重定向到结算页面完成支付（除非使用免费模式）。',
+  pdfGenStep3: '支付成功后，您的PDF将生成并可供下载。',
+  pdfGenStep4: '成功生成PDF后，表单将自动重置。',
+  pdfGenerationImage: 'PDF生成截图',
+  
+  // Tips and Tricks Section
+  tipsAndTricksTitle: '提示与技巧',
+  tip1Title: '保存进度',
+  tip1Description: '您的表单数据会自动保存在浏览器中。您可以关闭页面，稍后返回继续。',
+  tip2Title: '使用重置按钮',
+  tip2Description: '如果要重新开始，使用重置按钮一次性清除所有字段。',
+  tip3Title: '先检查预览',
+  tip3Description: '在生成最终PDF之前，始终使用预览功能确保一切正确。',
+  tip4Title: '可折叠部分',
+  tip4Description: '使用折叠/展开功能一次专注于一个部分，尤其是在移动设备上。',
+  
+  // FAQ Section
+  faqTitle: '常见问题',
+  faq1Question: '我的数据安全吗？',
+  faq1Answer: '是的，所有数据都在您的浏览器中本地处理。我们不会在服务器上存储您的个人信息。',
+  faq2Question: '生成PDF后可以编辑协议吗？',
+  faq2Answer: '一旦PDF生成，就无法通过我们的工具进行编辑。您需要使用更新的信息创建新的协议。',
+  faq3Question: '接受哪些支付方式？',
+  faq3Answer: '我们通过安全的支付处理器接受所有主要信用卡。',
+  faq4Question: '生成的协议具有法律约束力吗？',
+  faq4Answer: '协议模板设计为具有法律效力，但我们建议在签署前由法律专业人士审核，尤其是对于复杂的租赁情况。'
 };

@@ -75,6 +75,14 @@ const LandingPage: React.FC = () => {
             <p>{t(language, 'step3Description')}</p>
           </div>
         </div>
+        <div className="more-detail-container">
+          <button 
+            className="more-detail-button" 
+            onClick={() => navigate('/how-to-use')}
+          >
+            {t(language, 'moreDetail')}
+          </button>
+        </div>
       </section>
 
       <section className="cta-section">

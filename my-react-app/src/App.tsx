@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import Checkout from './components/Checkout';
 import Return from './components/Return';
 import PaymentSuccess from './components/PaymentSuccess';
+import HowToUse from './components/HowToUse';
 
 function AppContent() {
   const { language } = useLanguage();
@@ -38,6 +39,7 @@ function AppContent() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/rental-agreement" element={<PdfGenerateSection />} />
             <Route path="/pricing" element={<Pricing />} />
+            <Route path="/how-to-use" element={<HowToUse />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/return" element={<Return />} />
             <Route path="/payment-success" element={<PaymentSuccess email={''} />} />
