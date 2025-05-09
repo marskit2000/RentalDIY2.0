@@ -21,6 +21,58 @@
   font-weight: bold !important;
 }
 
+/* Section header with toggle button */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Toggle section button */
+.toggle-section-btn {
+  background-color: #4B9DAC;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s, transform 0.3s;
+  /* Ensure perfect circle */
+  min-width: 30px;
+  min-height: 30px;
+  padding: 0;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+.toggle-section-btn:hover {
+  background-color: #3a7a86;
+  transform: translateY(-2px);
+}
+
+.toggle-section-btn:active {
+  transform: translateY(0);
+}
+
+/* Section content */
+.section-content {
+  overflow: hidden;
+}
+
+.section-content.expanded {
+  display: block;
+}
+
+.section-content.collapsed {
+  display: none;
+}
+
 /* This is kept for reference but the rule above has higher specificity */
 .form-sub-heading {
   color: white;
@@ -288,6 +340,12 @@
     height: 28px !important;
     margin-bottom: 0px !important;
     font-size: 0.85rem !important;
+  }
+  
+  .toggle-section-btn {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
   }
   
   .furniture-row .input-group,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { t } from '../translations';
 import { PdfInputValues } from '../utils/pdfGenerator';
@@ -77,6 +77,28 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
 }) => {
   const { language } = useLanguage();
   
+  // State to track which sections are expanded/collapsed
+  const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
+    section1: true,
+    section2: true,
+    section3: true,
+    section4: true,
+    section5: true,
+    section6: true,
+    section7: true,
+    section8: true,
+    section9: true,
+    section10: true
+  });
+
+  // Function to toggle section visibility
+  const toggleSection = (sectionKey: string) => {
+    setExpandedSections(prev => ({
+      ...prev,
+      [sectionKey]: !prev[sectionKey]
+    }));
+  };
+  
   const {
     inputText1, inputText2, inputText3, inputText4, inputText5,
     rentAmount, securityDeposit, propertyUse, managementFee,
@@ -105,8 +127,18 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
   return (
     <>
       <p className="input-group-heading">{t(language, 'Please fill in the following information:')}</p>
-      <h2 className='form-sub-heading'>{t(language, 'Section 1')}</h2>
-      <div className="input-group">
+      <div className="section-header">
+        <h2 className='form-sub-heading'>{t(language, 'Section 1')}</h2>
+        <button 
+          className={`toggle-section-btn ${expandedSections.section1 ? 'expanded' : 'collapsed'}`}
+          onClick={() => toggleSection('section1')}
+          aria-label={expandedSections.section1 ? 'Collapse section' : 'Expand section'}
+        >
+          {expandedSections.section1 ? '▲' : '▼'}
+        </button>
+      </div>
+      <div className={`section-content ${expandedSections.section1 ? 'expanded' : 'collapsed'}`}>
+        <div className="input-group">
         <label htmlFor="pdf-date-2">{t(language, 'agreementDate')}</label>
         <input
           type="date"
@@ -116,9 +148,20 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
           placeholder={t(language, 'enterDate')}
         />
       </div>
+      </div>
       <hr className="form-section-divider" />
-      <h2 className='form-sub-heading'>{t(language, 'Section 2')}</h2>
-      <div className="input-group">
+      <div className="section-header">
+        <h2 className='form-sub-heading'>{t(language, 'Section 2')}</h2>
+        <button 
+          className={`toggle-section-btn ${expandedSections.section2 ? 'expanded' : 'collapsed'}`}
+          onClick={() => toggleSection('section2')}
+          aria-label={expandedSections.section2 ? 'Collapse section' : 'Expand section'}
+        >
+          {expandedSections.section2 ? '▲' : '▼'}
+        </button>
+      </div>
+      <div className={`section-content ${expandedSections.section2 ? 'expanded' : 'collapsed'}`}>
+        <div className="input-group">
         <label htmlFor="pdf-text-1">{t(language, 'propertyAddress')}</label>
         <input
           type="text"
@@ -128,9 +171,20 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
           placeholder={t(language, 'enterPropertyAddress')}
         />
       </div>
+      </div>
       <hr className="form-section-divider" />
-      <h2 className='form-sub-heading'>{t(language, 'Section 3')}</h2>
-      <div className="input-group">
+      <div className="section-header">
+        <h2 className='form-sub-heading'>{t(language, 'Section 3')}</h2>
+        <button 
+          className={`toggle-section-btn ${expandedSections.section3 ? 'expanded' : 'collapsed'}`}
+          onClick={() => toggleSection('section3')}
+          aria-label={expandedSections.section3 ? 'Collapse section' : 'Expand section'}
+        >
+          {expandedSections.section3 ? '▲' : '▼'}
+        </button>
+      </div>
+      <div className={`section-content ${expandedSections.section3 ? 'expanded' : 'collapsed'}`}>
+        <div className="input-group">
         <label htmlFor="pdf-text-2">{t(language, 'landlord')}</label>
         <input
           type="text"
@@ -214,9 +268,20 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
           placeholder={t(language, 'enterAddress')}
         />
       </div>
+      </div>
       <hr className="form-section-divider" />
-      <h2 className='form-sub-heading'>{t(language, 'Section 4')}</h2>
-      <div className="date-range-group">
+      <div className="section-header">
+        <h2 className='form-sub-heading'>{t(language, 'Section 4')}</h2>
+        <button 
+          className={`toggle-section-btn ${expandedSections.section4 ? 'expanded' : 'collapsed'}`}
+          onClick={() => toggleSection('section4')}
+          aria-label={expandedSections.section4 ? 'Collapse section' : 'Expand section'}
+        >
+          {expandedSections.section4 ? '▲' : '▼'}
+        </button>
+      </div>
+      <div className={`section-content ${expandedSections.section4 ? 'expanded' : 'collapsed'}`}>
+        <div className="date-range-group">
         <div className="input-group">
           <label htmlFor="date-from">{t(language, 'from')}</label>
           <input
@@ -262,9 +327,20 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
           step="0.01"
         />
       </div>
+      </div>
       <hr className="form-section-divider" />
-      <h2 className='form-sub-heading'>{t(language, 'Section 5')}</h2>
-      <div className="input-group">
+      <div className="section-header">
+        <h2 className='form-sub-heading'>{t(language, 'Section 5')}</h2>
+        <button 
+          className={`toggle-section-btn ${expandedSections.section5 ? 'expanded' : 'collapsed'}`}
+          onClick={() => toggleSection('section5')}
+          aria-label={expandedSections.section5 ? 'Collapse section' : 'Expand section'}
+        >
+          {expandedSections.section5 ? '▲' : '▼'}
+        </button>
+      </div>
+      <div className={`section-content ${expandedSections.section5 ? 'expanded' : 'collapsed'}`}>
+        <div className="input-group">
         <label htmlFor="property-use">{t(language, 'propertyUse')}</label>
         <select
           id="property-use"
@@ -313,9 +389,20 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
           </select>
         </div>
       </div>
+      </div>
       <hr className="form-section-divider" />
-      <h2 className='form-sub-heading'>{t(language, 'Section 6')}</h2>
-      <div className="date-range-group">
+      <div className="section-header">
+        <h2 className='form-sub-heading'>{t(language, 'Section 6')}</h2>
+        <button 
+          className={`toggle-section-btn ${expandedSections.section6 ? 'expanded' : 'collapsed'}`}
+          onClick={() => toggleSection('section6')}
+          aria-label={expandedSections.section6 ? 'Collapse section' : 'Expand section'}
+        >
+          {expandedSections.section6 ? '▲' : '▼'}
+        </button>
+      </div>
+      <div className={`section-content ${expandedSections.section6 ? 'expanded' : 'collapsed'}`}>
+        <div className="date-range-group">
         <div className="input-group">
           <label htmlFor="rent-free-from">{t(language, 'rentFreeFrom')}</label>
           <input
@@ -337,9 +424,20 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
           />
         </div>
       </div>
+      </div>
       <hr className="form-section-divider" />
-      <h2 className='form-sub-heading'>{t(language, 'Section 7')}</h2>
-      <div className="break-clause-row">
+      <div className="section-header">
+        <h2 className='form-sub-heading'>{t(language, 'Section 7')}</h2>
+        <button 
+          className={`toggle-section-btn ${expandedSections.section7 ? 'expanded' : 'collapsed'}`}
+          onClick={() => toggleSection('section7')}
+          aria-label={expandedSections.section7 ? 'Collapse section' : 'Expand section'}
+        >
+          {expandedSections.section7 ? '▲' : '▼'}
+        </button>
+      </div>
+      <div className={`section-content ${expandedSections.section7 ? 'expanded' : 'collapsed'}`}>
+        <div className="break-clause-row">
         <div className="input-group">
           <label htmlFor="break-clause-1">{t(language, 'breakClause1')}</label>
           <select
@@ -390,9 +488,20 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
           </div>
         </div>
       </div>
+      </div>
       <hr className="form-section-divider" />
-      <h2 className='form-sub-heading'>{t(language, 'Section 8')}</h2>
-      <div className="furniture-row">
+      <div className="section-header">
+        <h2 className='form-sub-heading'>{t(language, 'Section 8')}</h2>
+        <button 
+          className={`toggle-section-btn ${expandedSections.section8 ? 'expanded' : 'collapsed'}`}
+          onClick={() => toggleSection('section8')}
+          aria-label={expandedSections.section8 ? 'Collapse section' : 'Expand section'}
+        >
+          {expandedSections.section8 ? '▲' : '▼'}
+        </button>
+      </div>
+      <div className={`section-content ${expandedSections.section8 ? 'expanded' : 'collapsed'}`}>
+        <div className="furniture-row">
         <div className="input-group">
           <label htmlFor="air-conditioner">{t(language, 'airConditioner')}</label>
           <input
@@ -518,9 +627,20 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
           />
         </div>
       </div>
+      </div>
       <hr className="form-section-divider" />
-      <h2 className='form-sub-heading'>{t(language, 'Section 9')}</h2>
-      <div className="bank-row">
+      <div className="section-header">
+        <h2 className='form-sub-heading'>{t(language, 'Section 9')}</h2>
+        <button 
+          className={`toggle-section-btn ${expandedSections.section9 ? 'expanded' : 'collapsed'}`}
+          onClick={() => toggleSection('section9')}
+          aria-label={expandedSections.section9 ? 'Collapse section' : 'Expand section'}
+        >
+          {expandedSections.section9 ? '▲' : '▼'}
+        </button>
+      </div>
+      <div className={`section-content ${expandedSections.section9 ? 'expanded' : 'collapsed'}`}>
+        <div className="bank-row">
         <div className="input-group">
           <label htmlFor="landlord-bank-account">{t(language, 'landlordBankAccount')}</label>
           <input
@@ -542,9 +662,20 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
           />
         </div>
       </div>
+      </div>
       <hr className="form-section-divider" />
-      <h2 className='form-sub-heading'>{t(language, 'Section 10')}</h2>
-      <div className="remarks-group">
+      <div className="section-header">
+        <h2 className='form-sub-heading'>{t(language, 'Section 10')}</h2>
+        <button 
+          className={`toggle-section-btn ${expandedSections.section10 ? 'expanded' : 'collapsed'}`}
+          onClick={() => toggleSection('section10')}
+          aria-label={expandedSections.section10 ? 'Collapse section' : 'Expand section'}
+        >
+          {expandedSections.section10 ? '▲' : '▼'}
+        </button>
+      </div>
+      <div className={`section-content ${expandedSections.section10 ? 'expanded' : 'collapsed'}`}>
+        <div className="remarks-group">
         <label>{t(language, 'remarks')}</label>
         {remarksFields.map((remark, index) => (
           <div key={index} className="remark-input-group">
@@ -570,6 +701,7 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
         >
           +
         </button>
+      </div>
       </div>
       <hr className="form-section-divider" />
       <div className="controls">
