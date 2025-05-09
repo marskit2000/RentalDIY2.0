@@ -17,7 +17,7 @@
 }
 
 .how-to-use-subtitle {
-  font-size: 1.2rem;
+  font-size: 1.44rem;
   color: #666;
   max-width: 800px;
   margin: 0 auto;
@@ -85,12 +85,14 @@
 
 .how-to-use-step {
   display: flex;
-  margin-bottom: 1.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
 }
 
 .step-number {
-  width: 36px;
-  height: 36px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background-color: #4B9DAC;
   color: white;
@@ -98,12 +100,18 @@
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  margin-right: 1rem;
+  margin-bottom: 0.5rem;
   flex-shrink: 0;
+  font-size: 1.5rem;
 }
 
 .step-content {
-  flex: 1;
+  width: 100%;
+  
+}
+
+.step-content p {
+  margin-top: 1rem;
 }
 
 .tips-container {

@@ -40,15 +40,7 @@ const Navbar: React.FC = () => {
               {t(language, 'rentalAgreement')}
             </Link>
           </li>
-          <li className="nav-item">
-            <Link 
-              to="/pricing" 
-              className={`nav-link ${location.pathname === '/pricing' ? 'active' : ''}`}
-              onClick={() => setIsOpen(false)}
-            >
-              {t(language, 'pricing')}
-            </Link>
-          </li>
+          {/* Pricing tab removed from navbar but page kept intact for future use */}
           <li className="nav-item">
             <Link 
               to="/how-to-use" 

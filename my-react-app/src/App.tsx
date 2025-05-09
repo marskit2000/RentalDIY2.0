@@ -2,7 +2,8 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PdfGenerateSection from './components/PdfGenerateSection';
 import LandingPage from './components/LandingPage';
-import Pricing from './components/Pricing';
+// Pricing component kept but commented out for future use
+// import Pricing from './components/Pricing';
 import Navbar from './components/Navbar';
 import LanguageSelector from './components/LanguageSelector';
 import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
@@ -38,7 +39,7 @@ function AppContent() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/rental-agreement" element={<PdfGenerateSection />} />
-            <Route path="/pricing" element={<Pricing />} />
+            {/* Pricing route removed but component kept for future use */}
             <Route path="/how-to-use" element={<HowToUse />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/return" element={<Return />} />
