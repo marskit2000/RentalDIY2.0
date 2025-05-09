@@ -181,6 +181,11 @@ export const zhCN = {
   second: '秒',
   seconds: '秒',
   
+  // Footer
+  sitemap: '网站地图',
+  footerDescription: '使用我们的易用工具，在几分钟内创建专业租赁协议。',
+  allRightsReserved: '版权所有',
+  
   // How To Use Page
   howToUseTitle: '如何使用我们的租赁协议工具',
   howToUseSubtitle: '创建、预览和生成租赁协议的综合指南',

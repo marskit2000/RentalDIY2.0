@@ -182,6 +182,11 @@ export const en = {
   second: 'second',
   seconds: 'seconds',
   
+  // Footer
+  sitemap: 'Sitemap',
+  footerDescription: 'Create professional rental agreements in minutes with our easy-to-use tool.',
+  allRightsReserved: 'All Rights Reserved',
+  
   // How To Use Page
   howToUseTitle: 'How To Use Our Rental Agreement Tool',
   howToUseSubtitle: 'A comprehensive guide to creating, previewing, and generating your rental agreement',

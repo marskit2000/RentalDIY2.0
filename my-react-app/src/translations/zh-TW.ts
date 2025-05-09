@@ -181,6 +181,11 @@ export const zhTW = {
   second: '秒',
   seconds: '秒',
   
+  // Footer
+  sitemap: '網站地圖',
+  footerDescription: '使用我們的易用工具，在幾分鐘內創建專業租賃協議。',
+  allRightsReserved: '版權所有',
+  
   // How To Use Page
   howToUseTitle: '如何使用我們的租賃協議工具',
   howToUseSubtitle: '創建、預覽和生成租賃協議的網羅指南',

@@ -5,6 +5,7 @@ import LandingPage from './components/LandingPage';
 // Pricing component kept but commented out for future use
 // import Pricing from './components/Pricing';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import LanguageSelector from './components/LanguageSelector';
 import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
 import { t } from './translations';
@@ -46,6 +47,7 @@ function AppContent() {
             <Route path="/payment-success" element={<PaymentSuccess email={''} />} />
           </Routes>
         </main>
+        <Footer />
       </div>
     </Router>
   );
