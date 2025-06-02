@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="footer">
-      <div className="footer-container">
+      {/* <div className="footer-container">
         <div className="footer-section">
           <h3 className="footer-title">{t(language, 'appTitle')}</h3>
           <p className="footer-description">
@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
             </ul>
           </nav>
         </div>
-      </div>
+      </div> */}
       
       <div className="footer-bottom">
         <p className="copyright">
