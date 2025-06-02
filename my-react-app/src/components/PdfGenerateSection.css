@@ -13,11 +13,11 @@
 }
 
 /* Override for form sub-headings */
-.pdf-generate-section .form-sub-heading {
+.pdf-generate-section .section-subheader .form-sub-heading {
   color: #4B9DAC !important;
   text-align: left !important;
   font-size: 2.2rem !important;
-  margin: 20px 0 10px 0 !important;
+  margin: 0;
   font-weight: bold !important;
 }
 
@@ -25,12 +25,21 @@
 .section-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
   cursor: pointer;
+  
 }
+
+.section-subheader {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0 10px 0 !important;
+}
+
 
 /* Toggle section button */
 .toggle-section-btn {
+  margin: 30px 0 10px 0 !important;
   background-color: #4B9DAC;
   color: white;
   border: none;

@@ -50,6 +50,16 @@ export const en = {
   section8: 'Section 8',
   section9: 'Section 9',
   section10: 'Section 10',
+  section1Topic: 'Sign Date',
+  section2Topic: 'Property Address',
+  section3Topic: 'Landlord and Tenant Details',
+  section4Topic: 'Rent Details',
+  section5Topic: 'Miscellaneous Details',
+  section6Topic: 'Rent Free Period',
+  section7Topic: 'Break Clause',
+  section8Topic: 'Furnitures and Fixture',
+  section9Topic: 'Bank Details',
+  section10Topic: 'Remarks',
   
   // Form Labels
   'Please fill in the following information': 'Please fill in the following information',

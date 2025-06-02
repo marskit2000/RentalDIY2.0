@@ -128,7 +128,10 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
     <>
       <p className="input-group-heading">{t(language, 'Please fill in the following information:')}</p>
       <div className="section-header">
-        <h2 className='form-sub-heading'>{t(language, 'section1')}</h2>
+        <div className="section-subheader">
+          <h2 className='form-sub-heading'>{t(language, 'section1')}&nbsp;</h2>
+          <h2 className='form-sub-heading'>{t(language, 'section1Topic')}</h2>
+        </div>
         <button 
           className={`toggle-section-btn ${expandedSections.section1 ? 'expanded' : 'collapsed'}`}
           onClick={() => toggleSection('section1')}
@@ -151,7 +154,10 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
       </div>
       <hr className="form-section-divider" />
       <div className="section-header">
-        <h2 className='form-sub-heading'>{t(language, 'section2')}</h2>
+        <div className="section-subheader">
+          <h2 className='form-sub-heading'>{t(language, 'section2')}&nbsp;</h2>
+          <h2 className='form-sub-heading'>{t(language, 'section2Topic')}</h2>
+        </div>
         <button 
           className={`toggle-section-btn ${expandedSections.section2 ? 'expanded' : 'collapsed'}`}
           onClick={() => toggleSection('section2')}
@@ -174,7 +180,10 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
       </div>
       <hr className="form-section-divider" />
       <div className="section-header">
-        <h2 className='form-sub-heading'>{t(language, 'section3')}</h2>
+        <div className="section-subheader">
+          <h2 className='form-sub-heading'>{t(language, 'section3')}&nbsp;</h2>
+          <h2 className='form-sub-heading'>{t(language, 'section3Topic')}</h2>
+        </div>
         <button 
           className={`toggle-section-btn ${expandedSections.section3 ? 'expanded' : 'collapsed'}`}
           onClick={() => toggleSection('section3')}
@@ -271,7 +280,10 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
       </div>
       <hr className="form-section-divider" />
       <div className="section-header">
-        <h2 className='form-sub-heading'>{t(language, 'section4')}</h2>
+        <div className="section-subheader">
+          <h2 className='form-sub-heading'>{t(language, 'section4')}&nbsp;</h2>
+          <h2 className='form-sub-heading'>{t(language, 'section4Topic')}</h2>
+        </div>
         <button 
           className={`toggle-section-btn ${expandedSections.section4 ? 'expanded' : 'collapsed'}`}
           onClick={() => toggleSection('section4')}
@@ -330,7 +342,10 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
       </div>
       <hr className="form-section-divider" />
       <div className="section-header">
-        <h2 className='form-sub-heading'>{t(language, 'section5')}</h2>
+        <div className="section-subheader">
+          <h2 className='form-sub-heading'>{t(language, 'section5')}&nbsp;</h2>
+          <h2 className='form-sub-heading'>{t(language, 'section5Topic')}</h2>
+        </div>
         <button 
           className={`toggle-section-btn ${expandedSections.section5 ? 'expanded' : 'collapsed'}`}
           onClick={() => toggleSection('section5')}
@@ -392,7 +407,10 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
       </div>
       <hr className="form-section-divider" />
       <div className="section-header">
-        <h2 className='form-sub-heading'>{t(language, 'section6')}</h2>
+        <div className="section-subheader">
+          <h2 className='form-sub-heading'>{t(language, 'section6')}&nbsp;</h2>
+          <h2 className='form-sub-heading'>{t(language, 'section6Topic')}</h2>
+        </div>
         <button 
           className={`toggle-section-btn ${expandedSections.section6 ? 'expanded' : 'collapsed'}`}
           onClick={() => toggleSection('section6')}
@@ -427,7 +445,10 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
       </div>
       <hr className="form-section-divider" />
       <div className="section-header">
-        <h2 className='form-sub-heading'>{t(language, 'section7')}</h2>
+        <div className="section-subheader">
+          <h2 className='form-sub-heading'>{t(language, 'section7')}&nbsp;</h2>
+          <h2 className='form-sub-heading'>{t(language, 'section7Topic')}</h2>
+        </div>
         <button 
           className={`toggle-section-btn ${expandedSections.section7 ? 'expanded' : 'collapsed'}`}
           onClick={() => toggleSection('section7')}
@@ -491,7 +512,10 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
       </div>
       <hr className="form-section-divider" />
       <div className="section-header">
-        <h2 className='form-sub-heading'>{t(language, 'section8')}</h2>
+        <div className="section-subheader">
+          <h2 className='form-sub-heading'>{t(language, 'section8')}&nbsp;</h2>
+          <h2 className='form-sub-heading'>{t(language, 'section8Topic')}</h2>
+        </div>
         <button 
           className={`toggle-section-btn ${expandedSections.section8 ? 'expanded' : 'collapsed'}`}
           onClick={() => toggleSection('section8')}
@@ -630,7 +654,10 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
       </div>
       <hr className="form-section-divider" />
       <div className="section-header">
-        <h2 className='form-sub-heading'>{t(language, 'section9')}</h2>
+        <div className="section-subheader">
+          <h2 className='form-sub-heading'>{t(language, 'section9')}&nbsp;</h2>
+          <h2 className='form-sub-heading'>{t(language, 'section9Topic')}</h2>
+        </div>
         <button 
           className={`toggle-section-btn ${expandedSections.section9 ? 'expanded' : 'collapsed'}`}
           onClick={() => toggleSection('section9')}
@@ -665,7 +692,10 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
       </div>
       <hr className="form-section-divider" />
       <div className="section-header">
-        <h2 className='form-sub-heading'>{t(language, 'section10')}</h2>
+        <div className="section-subheader">
+          <h2 className='form-sub-heading'>{t(language, 'section10')}&nbsp;</h2>
+          <h2 className='form-sub-heading'>{t(language, 'section10Topic')}</h2>
+        </div>
         <button 
           className={`toggle-section-btn ${expandedSections.section10 ? 'expanded' : 'collapsed'}`}
           onClick={() => toggleSection('section10')}
