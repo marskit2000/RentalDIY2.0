@@ -38,6 +38,18 @@ export const en = {
   // CTA Section
   ctaTitle: 'Ready to Create Your Rental Agreement?',
   ctaDescription: 'It only takes a few minutes to generate a professional, legally-sound rental agreement.',
+
+  //Section
+  section1: 'Section 1',
+  section2: 'Section 2',
+  section3: 'Section 3',
+  section4: 'Section 4',
+  section5: 'Section 5',
+  section6: 'Section 6',
+  section7: 'Section 7',
+  section8: 'Section 8',
+  section9: 'Section 9',
+  section10: 'Section 10',
   
   // Form Labels
   'Please fill in the following information': 'Please fill in the following information',
@@ -186,6 +198,7 @@ export const en = {
   sitemap: 'Sitemap',
   footerDescription: 'Create professional rental agreements in minutes with our easy-to-use tool.',
   allRightsReserved: 'All Rights Reserved',
+  contactUsFooter: 'Contact Us',
   
   // How To Use Page
   howToUseTitle: 'How To Use Our Rental Agreement Tool',
@@ -249,5 +262,6 @@ export const en = {
   faq3Question: 'What payment methods are accepted?',
   faq3Answer: 'We accept all major credit cards through our secure payment processor.',
   faq4Question: 'Is the generated agreement legally binding?',
-  faq4Answer: 'The agreement template is designed to be legally sound, but we recommend having it reviewed by a legal professional before signing, especially for complex rental situations.'
+  faq4Answer: 'The agreement template is designed to be legally sound, but we recommend having it reviewed by a legal professional before signing, especially for complex rental situations.',
+
 };

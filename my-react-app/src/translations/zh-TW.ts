@@ -39,6 +39,18 @@ export const zhTW = {
   ctaTitle: '準備好創建您的租賃協議了嗎？',
   ctaDescription: '只需幾分鐘即可生成專業、合法有效的租賃協議。',
   
+  //Section
+  section1: '第 1 部分',
+  section2: '第 2 部分',
+  section3: '第 3 部分',
+  section4: '第 4 部分',
+  section5: '第 5 部分',
+  section6: '第 6 部分',
+  section7: '第 7 部分',
+  section8: '第 8 部分',
+  section9: '第 9 部分',
+  section10: '第 10 部分',
+
   // Form Labels
   'Please fill in the following information:': '請填寫以下資料',
   agreementDate: '簽署日期',
@@ -185,6 +197,7 @@ export const zhTW = {
   sitemap: '網站地圖',
   footerDescription: '使用我們的易用工具，在幾分鐘內創建專業租賃協議。',
   allRightsReserved: '版權所有',
+  contactUsFooter: '聯絡我們',
   
   // How To Use Page
   howToUseTitle: '如何使用我們的租賃協議工具',

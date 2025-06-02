@@ -38,6 +38,18 @@ export const zhCN = {
   // CTA Section
   ctaTitle: '准备好创建您的租赁协议了吗？',
   ctaDescription: '只需几分钟即可生成专业、合法有效的租赁协议。',
+
+  //Section
+  section1: '第 1 部分',
+  section2: '第 2 部分',
+  section3: '第 3 部分',
+  section4: '第 4 部分',
+  section5: '第 5 部分',
+  section6: '第 6 部分',
+  section7: '第 7 部分',
+  section8: '第 8 部分',
+  section9: '第 9 部分',
+  section10: '第 10 部分',
   
   // Form Labels
   'Please fill in the following information:': '请填写以下信息',
@@ -185,6 +197,7 @@ export const zhCN = {
   sitemap: '网站地图',
   footerDescription: '使用我们的易用工具，在几分钟内创建专业租赁协议。',
   allRightsReserved: '版权所有',
+  contactUsFooter: '联系我们',
   
   // How To Use Page
   howToUseTitle: '如何使用我们的租赁协议工具',

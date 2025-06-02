@@ -43,6 +43,7 @@ const Footer: React.FC = () => {
       </div> */}
       
       <div className="footer-bottom">
+        <p>{t(language, 'contactUsFooter')} - <a href="mailto:rentaldiysupport@gmail.com">rentaldiysupport@gmail.com</a></p>
         <p className="copyright">
           &copy; {currentYear} RentalDIY. {t(language, 'allRightsReserved')}
         </p>
