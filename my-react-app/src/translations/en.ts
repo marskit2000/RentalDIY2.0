@@ -26,7 +26,7 @@ export const en = {
   feature4Description: 'Your data never leaves your browser - complete privacy guaranteed.',
   
   // How It Works Section
-  howItWorksTitle: 'How It Works',
+  howItWorksTitle: 'Simple Steps',
   step1Title: 'Fill the Form',
   step1Description: 'Enter all the required details about the property, landlord, tenant, and terms.',
   step2Title: 'Review the Agreement',

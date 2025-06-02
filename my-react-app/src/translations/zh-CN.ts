@@ -26,7 +26,7 @@ export const zhCN = {
   feature4Description: '您的数据永远不会离开您的浏览器 - 完全保证隐私。',
   
   // How It Works Section
-  howItWorksTitle: '如何使用',
+  howItWorksTitle: '简单操作',
   step1Title: '填写表单',
   step1Description: '输入有关物业、房东、租户和条款的所有必要详细信息。',
   step2Title: '审核协议',

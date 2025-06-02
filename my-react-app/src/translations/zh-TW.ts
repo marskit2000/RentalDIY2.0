@@ -26,7 +26,7 @@ export const zhTW = {
   feature4Description: '您的數據永遠不會離開您的瀏覽器 - 完全保證隱私。',
   
   // How It Works Section
-  howItWorksTitle: '如何使用',
+  howItWorksTitle: '簡單操作',
   step1Title: '填寫表單',
   step1Description: '輸入有關物業、房東、租戶和條款的所有必要詳細信息。',
   step2Title: '審核協議',
