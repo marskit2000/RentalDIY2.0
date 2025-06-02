@@ -64,6 +64,10 @@
   background-color: #f8f9fa;
 }
 
+.how-to-use-image img {
+  width: 100%;
+}
+
 .placeholder-image {
   text-align: center;
   padding: 2rem;

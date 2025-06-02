@@ -466,7 +466,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
       {/* Left Section */}
       <div className="left-section">
         {/* Google AdSense Section */}
-        <AdSenseSection slot='2060948289'/>
+        {/* <AdSenseSection slot='2060948289'/> */}
         <PdfInputForm 
         formValues={{
           inputText1, inputText2, inputText3, inputText4, inputText5,

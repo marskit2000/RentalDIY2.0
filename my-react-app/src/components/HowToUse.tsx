@@ -35,10 +35,11 @@ const HowToUse: React.FC = () => {
             </div>
           </div>
           <div className="how-to-use-image">
-            <div className="placeholder-image">
+            {/* <div className="placeholder-image">
               <span>🏠</span>
               <p>{t(language, 'homePageImage')}</p>
-            </div>
+            </div> */}
+            <img src="/src/assets/images/screen01.gif" alt="step1" />
           </div>
         </div>
       </section>
@@ -48,8 +49,9 @@ const HowToUse: React.FC = () => {
         <div className="how-to-use-card">
           <div className="how-to-use-image">
             <div className="placeholder-image">
-              <span>📝</span>
-              <p>{t(language, 'formPageImage')}</p>
+              {/* <span>📝</span>
+              <p>{t(language, 'formPageImage')}</p> */}
+              <img src="/src/assets/images/screen02.gif" alt="step2" />
             </div>
           </div>
           <div className="how-to-use-card-content">
@@ -120,8 +122,9 @@ const HowToUse: React.FC = () => {
           </div>
           <div className="how-to-use-image">
             <div className="placeholder-image">
-              <span>👁️</span>
-              <p>{t(language, 'previewImage')}</p>
+              {/* <span>👁️</span>
+              <p>{t(language, 'previewImage')}</p> */}
+              <img src="/src/assets/images/screen03.gif" alt="step3" />
             </div>
           </div>
         </div>
@@ -132,8 +135,9 @@ const HowToUse: React.FC = () => {
         <div className="how-to-use-card">
           <div className="how-to-use-image">
             <div className="placeholder-image">
-              <span>📄</span>
-              <p>{t(language, 'pdfGenerationImage')}</p>
+              {/* <span>📄</span>
+              <p>{t(language, 'pdfGenerationImage')}</p> */}
+              <img src="/src/assets/images/screen04.png" alt="step4" />
             </div>
           </div>
           <div className="how-to-use-card-content">
