@@ -1,0 +1,30 @@
+.disclaimer-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 60px auto;
+  font-family: Arial, sans-serif;
+  line-height: 1;
+}
+
+.disclaimer-container h1,
+.disclaimer-container h2 {
+  color: #111;
+  font-size: 1.5rem;
+}
+
+.disclaimer-container p {
+  text-align: justify;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  color: #111;
+}
+
+.disclaimer-container strong {
+  font-weight: 600;
+}
+
+.disclaimer-container li {
+  font-size: 1.4rem;
+  text-align: justify;
+  line-height: 1.2;
+}

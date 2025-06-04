@@ -1,0 +1,30 @@
+.terms-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 60px auto;
+  font-family: Arial, sans-serif;
+  line-height: 1;
+}
+
+.terms-container h1,
+.terms-container h2 {
+  color: #111;
+  font-size: 1.5rem;
+}
+
+.terms-container p {
+  text-align: justify;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  color: #111;
+}
+
+.terms-container strong {
+  font-weight: 600;
+}
+
+li {
+  font-size: 1.4rem;
+  text-align: justify;
+  line-height: 1.2;
+}

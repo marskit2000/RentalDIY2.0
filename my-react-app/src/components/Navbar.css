@@ -116,7 +116,7 @@
 }
 
 /* Tablet styles */
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .hamburger-icon {
     display: flex;
     margin-left: 10px;
@@ -177,6 +177,8 @@
     display: block;
     height: auto;
     font-size: 1rem;
+    color: white;
+    transition: all 0.3s ease;
   }
   
   .nav-link::after {

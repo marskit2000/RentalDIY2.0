@@ -1,6 +1,6 @@
 export const zhTW = {
   // Header
-  appTitle: '租賃協議生成器',
+  appTitle: '租約易',
   
   // Navigation
   home: '首頁',
@@ -50,6 +50,16 @@ export const zhTW = {
   section8: '第 8 部分',
   section9: '第 9 部分',
   section10: '第 10 部分',
+  section1Topic: '簽署日期',
+  section2Topic: '物業地址',
+  section3Topic: '業主和租客詳情',
+  section4Topic: '租金詳情',
+  section5Topic: '其他詳情',
+  section6Topic: '免租期',
+  section7Topic: '提前終止條款',
+  section8Topic: '設施和設備',
+  section9Topic: '銀行詳情',
+  section10Topic: '備註',
 
   // Form Labels
   'Please fill in the following information:': '請填寫以下資料',
@@ -261,5 +271,147 @@ export const zhTW = {
   faq3Question: '接受哪些支付方式？',
   faq3Answer: '我們通過安全的支付處理器接受所有主要信用卡。',
   faq4Question: '生成的協議具有法律約束力嗎？',
-  faq4Answer: '協議模板設計為具有法律效力，但我們建議在簽署前由法律專業人士審核，尤其是對於複雜的租賃情況。'
+  faq4Answer: '協議模板設計為具有法律效力，但我們建議在簽署前由法律專業人士審核，尤其是對於複雜的租賃情況。',
+
+  // Terms and Conditions
+  termsAndConditionsTitle: 'EaseLease 條款和條件',
+  lastUpdated: '最後更新',
+  
+  // Section 1
+  introductionTitle: '1. 引言',
+  introductionContent: '歡迎使用 EaseLease（"我們"、"我們的"或"本公司"）。EaseLease 是一個網絡應用程式，旨在協助房東和租戶生成香港地區的住宅租賃協議。通過訪問或使用我們的服務，您（"用戶"、"您"或"您的"）同意受這些條款和條件（"條款"）的約束。如果您不同意這些條款，請不要使用我們的服務。',
+  
+  // Section 2
+  serviceDescriptionTitle: '2. 服務描述',
+  serviceDescriptionContent: 'EaseLease 為用戶提供一個平台，根據用戶提供的信息生成住宅租賃協議草案。該服務旨在簡化創建標準租賃協議的過程。',
+  notLegalFirm: 'EaseLease 不是律師事務所，不提供法律建議、法律服務或法律代理。',
+  templatesBasedOnUserData: '生成的文件基於常見模板和用戶提供的數據。',
+  
+  // Section 3
+  userResponsibilitiesTitle: '3. 用戶責任',
+  accurateInfoTitle: 'a. 準確信息：',
+  accurateInfoContent: '您對提供給 EaseLease 用於生成任何租賃協議的所有信息的準確性、完整性和合法性負全責。',
+  lawfulUseTitle: 'b. 合法使用：',
+  lawfulUseContent: '您同意僅將 EaseLease 提供的服務用於合法目的，並遵守這些條款以及香港特別行政區（香港特區）的所有適用法律和法規。',
+  reviewDocsTitle: 'c. 文件審核：',
+  reviewDocsContent: '您有責任在簽署或使用 EaseLease 生成的任何文件前仔細審核。您承認生成的文件是模板，可能需要修改以適應您的特定情況。',
+  legalAdviceTitle: 'd. 獨立法律建議：',
+  legalAdviceContent: '您理解並同意 EaseLease 不提供法律建議。我們強烈建議您諮詢香港的合格法律專業人士，審核通過我們平台生成的任何協議，並確保其滿足您的特定法律需求並保護您的利益。',
+  accountSecurityTitle: 'e. 賬戶安全：',
+  accountSecurityContent: '如果需要創建賬戶，您有責任維護您的賬戶憑證的機密性，並對在您賬戶下發生的所有活動負責。',
+  
+  // Section 4
+  noLegalAdviceTitle: '4. 無法律建議或律師-客戶關係',
+  noLegalAdviceA: 'a. EaseLease 提供生成租賃協議的工具，不提供法律建議。您使用我們的服務不會在您與 EaseLease 或其任何員工或附屬機構之間建立律師-客戶關係。',
+  noLegalAdviceB: 'b. 我們平台上的內容，包括任何模板或指導，僅供參考，不應被解釋為法律建議。依賴 EaseLease 提供的任何信息完全由您自行承擔風險。',
+  
+  // Section 5
+  intellectualPropertyTitle: '5. 知識產權',
+  ourContentTitle: 'a. 我們的內容：',
+  ourContentContent: '與 EaseLease 平台相關的所有內容、設計、圖形、編譯和其他事項均受適用的版權、商標和其他專有權利的保護。除第 5(b) 條允許的情況外，嚴禁您複製、重新分發、使用或發布任何此類事項或平台的任何部分。',
+  userGeneratedTitle: 'b. 用戶生成的文件：',
+  userGeneratedContent: '您保留您輸入服務的特定事實數據的所有權。EaseLease 授予您有限的、非排他性的、不可轉讓的許可，以使用通過我們的服務生成的文件，用於與特定租賃協議相關的個人或內部業務目的。',
+  
+  // Section 6
+  feesAndPaymentTitle: '6. 費用和付款',
+  feesAndPaymentContent: 'EaseLease 的基本服務目前免費提供。我們保留在未來引入新功能或現有服務費用的權利，並會提前通知。',
+  
+  // Section 7
+  disclaimerTitle: '7. 免責聲明',
+  disclaimerA: 'a. EaseLease 平台和服務按"原樣"和"可用"基礎提供。我們明確拒絕所有類型的保證，無論是明示或暗示的，包括但不限於適銷性、特定用途適用性和非侵權的暗示保證。',
+  disclaimerB: 'b. 我們不保證服務將滿足您的要求，或服務將不間斷、及時、安全、無錯誤，或缺陷（如有）將被糾正。我們不對通過服務獲得的任何信息的準確性或可靠性，或生成的文件是否適合您的特定需求或符合所有適用法律做出任何保證。',
+  
+  // Section 8
+  limitationOfLiabilityTitle: '8. 責任限制',
+  limitationOfLiabilityA: 'a. 在適用法律允許的最大範圍內，EaseLease 及其附屬機構、高管、董事、員工、代理人和許可方不對任何間接、附帶、特殊、後果性或懲罰性損害負責，包括但不限於因以下原因導致的利潤損失、商譽、使用、數據或其他無形損失的損害：',
+  liabilityItem1: 'i. 使用或無法使用服務；',
+  liabilityItem2: 'ii. 替代商品和服務的採購成本；',
+  liabilityItem3: 'iii. 未經授權訪問或更改您的傳輸或數據；',
+  liabilityItem4: 'iv. 服務上任何第三方的聲明或行為；',
+  liabilityItem5: 'v. 依賴通過服務獲得的任何信息或文件；或',
+  liabilityItem6: 'vi. 與服務相關的任何其他事項。',
+  limitationOfLiabilityB: 'b. 我們對您因這些條款或您使用服務而產生的任何和所有索賠的總責任不超過 100 港元。',
+  
+  // Section 9
+  indemnificationTitle: '9. 賠償',
+  indemnificationContent: '您同意賠償、辯護並使 EaseLease 及其附屬機構、高管、董事、員工和代理人免受因您（或使用您賬戶的任何人）違反這些條款或您使用服務而導致或產生的任何和所有索賠、責任、損害、損失、成本、費用或費用（包括合理的律師費）的傷害。',
+  
+  // Section 10
+  privacyPolicyTitle: '10. 隱私政策',
+  privacyPolicyContent: '您對 EaseLease 的使用也受我們的隱私政策約束，該政策通過引用並入本文。請查看我們的隱私政策，了解我們關於收集和使用您個人信息的做法。',
+  
+  // Section 11
+  modificationOfTermsTitle: '11. 條款修改',
+  modificationOfTermsContent: '我們保留隨時修改這些條款的權利。我們將通過在我們的平台上發布新條款或通過其他通信方式通知您任何重大變更。在此類修改後繼續使用 EaseLease 將構成您對修改後的條款的確認和同意遵守並受其約束。',
+  
+  // Section 12
+  terminationTitle: '12. 終止',
+  terminationA: 'a. 我們可能隨時終止或暫停您對 EaseLease 的全部或部分訪問，無論是否有原因，無論是否通知，立即生效。',
+  terminationB: 'b. 您可以隨時終止使用該服務。',
+  terminationC: 'c. 終止後，您使用服務的權利將立即停止。這些條款中根據其性質應在終止後繼續有效的所有條款將在終止後繼續有效，包括但不限於所有權條款、保證免責聲明、賠償和責任限制。',
+  
+  // Section 13
+  governingLawTitle: '13. 適用法律和管轄權',
+  governingLawContent: '這些條款應根據香港特別行政區法律解釋和執行。您同意就解決因這些條款或您使用 EaseLease 而產生的任何爭議提交香港法院的專屬管轄權。',
+  
+  // Section 14
+  severabilityTitle: '14. 可分割性',
+  severabilityContent: '如果這些條款的任何條款被有管轄權的法院認定為無效，雙方仍同意法院應努力實現雙方在該條款中反映的意圖，並且這些條款的其他條款仍然完全有效。',
+  
+  // Section 15
+  entireAgreementTitle: '15. 完整協議',
+  entireAgreementContent: '這些條款和我們的隱私政策構成您與 EaseLease 之間關於您使用服務的完整協議，並取代所有先前和同時的理解、協議、陳述和保證，無論是書面還是口頭的。',
+  
+  // Section 16
+  contactInfoTitle: '16. 聯繫信息',
+  contactInfoContent: '如果您對這些條款有任何疑問，請聯繫我們：',
+  contactEmail: 'support@easelease.com',
+  
+  // Disclaimer Page
+  disclaimerPageTitle: '租約易免責聲明',
+  disclaimerLastUpdated: '最後更新',
+  
+  // General Disclaimer Section
+  generalDisclaimerTitle: '一般免責聲明',
+  generalDisclaimerContent: '租約易是一個網絡應用程序，旨在為香港的房東和租戶之間的房地產租賃生成租賃協議模板。本服務僅供參考和便利之用。',
+  
+  // Not Legal Advice Section
+  notLegalAdviceDisclaimerTitle: '非法律建議',
+  notLegalAdviceDisclaimerContent: '租約易提供的內容、模板和文件不構成法律建議。租約易不是律師事務所，也不能替代合格法律專業人士的建議。通過我們平台生成的租賃協議是基於香港房地產租賃的常見做法的模板，但可能無法滿足您的特定情況或法律要求。',
+  
+  // Hong Kong Legal Jurisdiction Section
+  hkLegalJurisdictionTitle: '香港法律管轄權',
+  hkLegalJurisdictionContent: '提供的模板是考慮到香港住宅和商業租賃的法律框架而設計的。然而，香港的法律和法規可能會發生變化，租約易不保證所有模板都符合香港最新的法律發展。',
+  
+  // User Responsibility Section
+  userResponsibilityDisclaimerTitle: '用戶責任',
+  userResponsibilityDisclaimerIntro: '租約易的用戶負責：',
+  userResponsibilityItem1: '確保所提供信息的準確性和完整性',
+  userResponsibilityItem2: '在使用前徹底審查所有生成的文件',
+  userResponsibilityItem3: '遵守所有適用的香港房地產租賃法律和法規',
+  userResponsibilityItem4: '在最終確定任何具有法律約束力的協議前尋求專業法律建議',
+  userResponsibilityItem5: '了解根據香港法律，某些租賃條款可能需要特定的法律手續才能執行',
+  
+  // No Warranty Section
+  noWarrantyTitle: '無保證',
+  noWarrantyContent: '租約易提供的服務是「按原樣」提供，不提供任何形式的保證，無論是明示還是暗示的，包括但不限於適銷性、特定用途適用性或非侵權的暗示保證。我們不保證模板將滿足您的特定要求或不會出錯。',
+  
+  // Stamp Duty Section
+  stampDutyTitle: '印花稅和登記',
+  stampDutyContent: '用戶應注意，在香港，租賃協議通常需要支付印花稅，並可能需要在土地註冊處登記。租約易不處理這些流程，用戶全權負責確保遵守這些要求。',
+  
+  // Limitation of Liability Disclaimer Section
+  limitationOfLiabilityDisclaimerTitle: '責任限制',
+  limitationOfLiabilityDisclaimerContent: '租約易及其所有者、員工和附屬機構對於因您使用或無法使用我們的服務或模板而導致的任何直接、間接、附帶、特殊、後果性或懲罰性損害不承擔責任。',
+  
+  // Language Considerations Section
+  languageConsiderationsTitle: '語言考慮',
+  languageConsiderationsContent: '雖然租約易提供多種語言的模板，但在香港，任何文件的具有法律約束力的版本可能需要是英文或中文。用戶應驗證在爭議情況下哪種語言版本將被視為權威版本。',
+  
+  // Governing Law Disclaimer Section
+  governingLawDisclaimerTitle: '適用法律',
+  governingLawDisclaimerContent: '本免責聲明及您對租約易的使用應受香港特別行政區法律管轄並按其解釋，不適用任何法律衝突原則。',
+  
+  // Acknowledgement
+  acknowledgementContent: '使用租約易，即表示您確認已閱讀、理解並同意受本免責聲明的約束。'
 };

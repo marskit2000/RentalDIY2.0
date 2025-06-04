@@ -1,4 +1,5 @@
 import './App.css';
+import './styles/DropdownStyles.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PdfGenerateSection from './components/PdfGenerateSection';
 import LandingPage from './components/LandingPage';
@@ -14,6 +15,8 @@ import Checkout from './components/Checkout';
 import Return from './components/Return';
 import PaymentSuccess from './components/PaymentSuccess';
 import HowToUse from './components/HowToUse';
+import TermsAndConditions from './components/TermsAndConditions';
+import Disclaimer from './components/Disclaimer';
 
 function AppContent() {
   const { language } = useLanguage();
@@ -45,6 +48,8 @@ function AppContent() {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/return" element={<Return />} />
             <Route path="/payment-success" element={<PaymentSuccess email={''} />} />
+            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+            <Route path="/disclaimer" element={<Disclaimer />} />
           </Routes>
         </main>
         <Footer />
