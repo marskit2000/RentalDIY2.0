@@ -17,6 +17,7 @@ import PaymentSuccess from './components/PaymentSuccess';
 import HowToUse from './components/HowToUse';
 import TermsAndConditions from './components/TermsAndConditions';
 import Disclaimer from './components/Disclaimer';
+import PrivacyPolicy from './components/PrivacyPolicy';
 
 function AppContent() {
   const { language } = useLanguage();
@@ -50,6 +51,7 @@ function AppContent() {
             <Route path="/payment-success" element={<PaymentSuccess email={''} />} />
             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
             <Route path="/disclaimer" element={<Disclaimer />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           </Routes>
         </main>
         <Footer />

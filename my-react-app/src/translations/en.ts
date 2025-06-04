@@ -424,5 +424,85 @@ export const en = {
   termsCheckboxPart1: 'I have read through and understand the',
   termsCheckboxPart2: 'Terms and Conditions',
   termsCheckboxPart3: 'and',
-  termsCheckboxPart4: 'Disclaimer'
+  termsCheckboxPart4: 'Disclaimer',
+
+  // Privacy Policy
+  privacyPolicyPageTitle: 'Privacy Policy for EaseLease',
+  privacyLastUpdated: 'Last Updated: June 4, 2025',
+  
+  // Section 1 - Introduction
+  privacyIntroTitle: '1. Introduction',
+  privacyIntroContent: 'Welcome to EaseLease ("we," "our," or "us"). We are committed to protecting your privacy and personal data. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our web application for generating rental agreements between landlords and tenants in Hong Kong.',
+  privacyIntroConsent: 'By accessing or using EaseLease, you consent to the practices described in this Privacy Policy. If you do not agree with the terms of this Privacy Policy, please do not access the application.',
+  
+  // Section 2 - Information We Collect
+  privacyInfoCollectTitle: '2. Information We Collect',
+  privacyPersonalInfoTitle: '2.1 Personal Information',
+  privacyPersonalInfoContent: 'When you use EaseLease to generate rental agreements, we may collect the following types of personal information:',
+  privacyPersonalInfoItem1: 'Contact Information: Names, addresses, email addresses, and phone numbers of landlords and tenants',
+  privacyPersonalInfoItem2: 'Property Details: Address and description of the rental property',
+  privacyPersonalInfoItem3: 'Financial Information: Rental amounts, deposit information, and payment terms',
+  privacyPersonalInfoItem4: 'Identification Information: Hong Kong ID numbers or passport information (if provided)',
+  privacyPersonalInfoItem5: 'Account Information: Login credentials and user preferences',
+  
+  privacyUsageDataTitle: '2.2 Usage Data',
+  privacyUsageDataContent: 'We automatically collect certain information when you access or use our application:',
+  privacyUsageDataItem1: 'Device Information: IP address, browser type, operating system, and device identifiers',
+  privacyUsageDataItem2: 'Usage Patterns: Pages visited, features used, time spent on the application, and interaction data',
+  privacyUsageDataItem3: 'Cookies and Similar Technologies: Information collected through cookies and similar tracking technologies',
+  
+  // Section 3 - How We Use Your Information
+  privacyUseInfoTitle: '3. How We Use Your Information',
+  privacyUseInfoContent: 'We use the information we collect for the following purposes:',
+  privacyUseInfoItem1: 'To generate and provide rental agreements based on the information you input',
+  privacyUseInfoItem2: 'To create and maintain your user account',
+  privacyUseInfoItem3: 'To improve and personalize your experience with our application',
+  privacyUseInfoItem4: 'To communicate with you regarding your account, updates, or customer support',
+  privacyUseInfoItem5: 'To comply with legal obligations and enforce our terms of service',
+  privacyUseInfoItem6: 'To detect, prevent, and address technical issues or fraudulent activities',
+  
+  // Section 4 - Data Storage and Security
+  privacyDataStorageTitle: '4. Data Storage and Security',
+  privacyDataStorageContent: 'Your data is stored on secure servers located in Hong Kong. We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.',
+  privacyDataRetentionContent: 'We retain your personal information only for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law.',
+  
+  // Section 5 - Sharing Your Information
+  privacySharingInfoTitle: '5. Sharing Your Information',
+  privacySharingInfoContent: 'We may share your information with:',
+  privacySharingInfoItem1: 'Service Providers: Third-party vendors who assist us in providing our services',
+  privacySharingInfoItem2: 'Legal Requirements: When required by law, court order, or governmental regulation',
+  privacySharingInfoItem3: 'Business Transfers: In connection with a merger, acquisition, or sale of assets',
+  privacySharingInfoItem4: 'With Your Consent: When you have given us permission to share your information',
+  privacyNoSellContent: 'We do not sell your personal information to third parties.',
+  
+  // Section 6 - Your Rights and Choices
+  privacyRightsTitle: '6. Your Rights and Choices',
+  privacyRightsContent: 'Under Hong Kong\'s Personal Data (Privacy) Ordinance, you have certain rights regarding your personal information:',
+  privacyRightsItem1: 'Access: You can request access to your personal information we hold',
+  privacyRightsItem2: 'Correction: You can request correction of inaccurate personal information',
+  privacyRightsItem3: 'Deletion: You can request deletion of your personal information in certain circumstances',
+  privacyRightsItem4: 'Objection: You can object to the processing of your personal information',
+  privacyRightsItem5: 'Data Portability: You can request a copy of your personal information in a structured, machine-readable format',
+  privacyRightsContact: 'To exercise these rights, please contact us at privacy@easelease.com.',
+  
+  // Section 7 - Children's Privacy
+  privacyChildrenTitle: '7. Children\'s Privacy',
+  privacyChildrenContent: 'Our services are not intended for individuals under the age of 18. We do not knowingly collect personal information from children. If you are a parent or guardian and believe your child has provided us with personal information, please contact us.',
+  
+  // Section 8 - Changes to This Privacy Policy
+  privacyChangesTitle: '8. Changes to This Privacy Policy',
+  privacyChangesContent: 'We may update this Privacy Policy from time to time. The updated version will be indicated by an updated "Last Updated" date. We encourage you to review this Privacy Policy periodically to stay informed about how we protect your information.',
+  
+  // Section 9 - International Data Transfers
+  privacyInternationalTitle: '9. International Data Transfers',
+  privacyInternationalContent: 'While our services are primarily intended for users in Hong Kong, your information may be transferred to and maintained on servers located outside of Hong Kong. By using our services, you consent to such transfers in accordance with this Privacy Policy.',
+  
+  // Section 10 - Contact Us
+  privacyContactTitle: '10. Contact Us',
+  privacyContactContent: 'If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at:',
+  privacyContactEmail: 'Email: privacy@easelease.com',
+  privacyContactAddress: 'Address: EaseLease Limited, Central Plaza, 18 Harbour Road, Wan Chai, Hong Kong',
+  privacyContactPhone: 'Phone: +852 1234 5678',
+  
+  privacyComplianceNote: 'This Privacy Policy is compliant with the Hong Kong Personal Data (Privacy) Ordinance (Cap. 486).'
 };
