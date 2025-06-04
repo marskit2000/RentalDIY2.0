@@ -421,5 +421,85 @@ export const zhCN = {
   termsCheckboxPart1: '我已阅读并理解',
   termsCheckboxPart2: '条款和条件',
   termsCheckboxPart3: '及',
-  termsCheckboxPart4: '免责声明'
+  termsCheckboxPart4: '免责声明',
+
+  // Privacy Policy
+  privacyPolicyPageTitle: 'EaseLease 隐私政策',
+  privacyLastUpdated: '最后更新日期：2025年6月4日',
+  
+  // Section 1 - Introduction
+  privacyIntroTitle: '1. 简介',
+  privacyIntroContent: '欢迎使用 EaseLease（"我们"、"我们的"或"本公司"）。我们致力于保护您的隐私和个人数据。本隐私政策解释了我们如何收集、使用、披露和保护您在使用我们的网络应用程序生成香港租赁协议时的数据。',
+  privacyIntroConsent: '通过访问或使用 EaseLease，您同意本隐私政策中描述的做法。如果您不同意本隐私政策的条款，请不要使用本应用程序。',
+  
+  // Section 2 - Information We Collect
+  privacyInfoCollectTitle: '2. 我们收集的数据',
+  privacyPersonalInfoTitle: '2.1 个人数据',
+  privacyPersonalInfoContent: '当您使用 EaseLease 生成租赁协议时，我们可能会收集以下类型的个人数据：',
+  privacyPersonalInfoItem1: '联系数据：业主和租户的姓名、地址、电子邮件地址和电话号码',
+  privacyPersonalInfoItem2: '物业详情：租赁物业的地址和描述',
+  privacyPersonalInfoItem3: '财务数据：租金金额、押金数据和付款条款',
+  privacyPersonalInfoItem4: '身份证明数据：香港身份证号码或护照数据（如有提供）',
+  privacyPersonalInfoItem5: '账户数据：登录凭证和用户偏好设置',
+  
+  privacyUsageDataTitle: '2.2 使用数据',
+  privacyUsageDataContent: '当您访问或使用我们的应用程序时，我们会自动收集某些数据：',
+  privacyUsageDataItem1: '设备数据：IP 地址、浏览器类型、操作系统和设备识别符',
+  privacyUsageDataItem2: '使用模式：访问的页面、使用的功能、在应用程序上花费的时间和互动数据',
+  privacyUsageDataItem3: 'Cookie 和类似技术：通过 cookie 和类似追踪技术收集的数据',
+  
+  // Section 3 - How We Use Your Information
+  privacyUseInfoTitle: '3. 我们如何使用您的数据',
+  privacyUseInfoContent: '我们使用收集的数据用于以下目的：',
+  privacyUseInfoItem1: '根据您输入的数据生成和提供租赁协议',
+  privacyUseInfoItem2: '创建和维护您的用户账户',
+  privacyUseInfoItem3: '改善和个性化您的应用程序体验',
+  privacyUseInfoItem4: '就您的账户、更新或客户支持与您沟通',
+  privacyUseInfoItem5: '遵守法律义务并执行我们的服务条款',
+  privacyUseInfoItem6: '检测、预防和解决技术问题或欺诈活动',
+  
+  // Section 4 - Data Storage and Security
+  privacyDataStorageTitle: '4. 数据存储和安全',
+  privacyDataStorageContent: '您的数据存储在位于香港的安全服务器上。我们实施适当的技术和组织措施，以保护您的个人数据免受未经授权的访问、更改、披露或销毁。',
+  privacyDataRetentionContent: '我们只会在必要时间内保留您的个人数据，以实现本隐私政策中概述的目的，除非法律要求或允许更长的保留期。',
+  
+  // Section 5 - Sharing Your Information
+  privacySharingInfoTitle: '5. 分享您的数据',
+  privacySharingInfoContent: '我们可能会与以下方分享您的数据：',
+  privacySharingInfoItem1: '服务提供商：协助我们提供服务的第三方供应商',
+  privacySharingInfoItem2: '法律要求：当法律、法院命令或政府法规要求时',
+  privacySharingInfoItem3: '业务转让：与合并、收购或资产出售相关的情况',
+  privacySharingInfoItem4: '经您同意：当您允许我们分享您的数据时',
+  privacyNoSellContent: '我们不会将您的个人数据出售给第三方。',
+  
+  // Section 6 - Your Rights and Choices
+  privacyRightsTitle: '6. 您的权利和选择',
+  privacyRightsContent: '根据香港《个人数据（私隐）条例》，您对您的个人数据拥有以下权利：',
+  privacyRightsItem1: '访问：您可以要求访问我们持有的您的个人数据',
+  privacyRightsItem2: '更正：您可以要求更正不准确的个人数据',
+  privacyRightsItem3: '删除：在某些情况下，您可以要求删除您的个人数据',
+  privacyRightsItem4: '反对：您可以反对处理您的个人数据',
+  privacyRightsItem5: '数据可携性：您可以要求以结构化、机器可读的格式获取您的个人数据副本',
+  privacyRightsContact: '要行使这些权利，请通过 privacy@easelease.com 联系我们。',
+  
+  // Section 7 - Children's Privacy
+  privacyChildrenTitle: '7. 儿童隐私',
+  privacyChildrenContent: '我们的服务不适用于 18 岁以下的个人。我们不会故意收集儿童的个人数据。如果您是家长或监护人，并认为您的孩子向我们提供了个人数据，请联系我们。',
+  
+  // Section 8 - Changes to This Privacy Policy
+  privacyChangesTitle: '8. 本隐私政策的变更',
+  privacyChangesContent: '我们可能会不时更新本隐私政策。更新版本将通过更新的"最后更新"日期表示。我们鼓励您定期查阅本隐私政策，以了解我们如何保护您的数据。',
+  
+  // Section 9 - International Data Transfers
+  privacyInternationalTitle: '9. 国际数据传输',
+  privacyInternationalContent: '虽然我们的服务主要面向香港用户，但您的数据可能会被传输到香港以外的服务器并在那里维护。通过使用我们的服务，您同意根据本隐私政策进行此类传输。',
+  
+  // Section 10 - Contact Us
+  privacyContactTitle: '10. 联系我们',
+  privacyContactContent: '如果您对本隐私政策或我们的数据做法有任何问题或疑虑，请联系我们：',
+  privacyContactEmail: '电子邮件：privacy@easelease.com',
+  privacyContactAddress: '地址：EaseLease Limited，香港湾仔港湾道18号中环广场',
+  privacyContactPhone: '电话：+852 1234 5678',
+  
+  privacyComplianceNote: '本隐私政策符合香港《个人数据（私隐）条例》（第486章）。'
 };
