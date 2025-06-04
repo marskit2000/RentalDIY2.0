@@ -789,3 +789,37 @@
     min-height: 600px;
   }
 }
+
+/* T&C Checkbox */
+
+.terms-checkbox-container {
+  margin-top: 20px;
+}
+
+.terms-warning {
+  color: red;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.checkbox-wrapper label {
+  text-align: left;
+  margin-left: 10px;
+}
+
+.terms-link {
+  color: #0066cc;
+  text-decoration: underline;
+  font-size: 1rem !important; 
+  font-weight: bold;
+}

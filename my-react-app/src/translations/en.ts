@@ -416,5 +416,13 @@ export const en = {
   governingLawDisclaimerContent: 'This disclaimer and your use of EaseLease shall be governed by and construed in accordance with the laws of the Hong Kong Special Administrative Region, without giving effect to any principles of conflicts of law.',
   
   // Acknowledgement
-  acknowledgementContent: 'By using EaseLease, you acknowledge that you have read, understood, and agree to be bound by this disclaimer.'
+  acknowledgementContent: 'By using EaseLease, you acknowledge that you have read, understood, and agree to be bound by this disclaimer.',
+
+  // Form Agreement Checkbox
+  termsCheckboxLabel: 'I have read through and understand the Terms and Conditions and Disclaimer',
+  termsCheckboxWarning: 'Please read and accept the Terms and Conditions and Disclaimer before proceeding',
+  termsCheckboxPart1: 'I have read through and understand the',
+  termsCheckboxPart2: 'Terms and Conditions',
+  termsCheckboxPart3: 'and',
+  termsCheckboxPart4: 'Disclaimer'
 };

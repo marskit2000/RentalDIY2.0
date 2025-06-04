@@ -10,6 +10,9 @@
 .terms-container h2 {
   color: #111;
   font-size: 1.5rem;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  text-align: left;
 }
 
 .terms-container p {
@@ -27,4 +30,9 @@ li {
   font-size: 1.4rem;
   text-align: justify;
   line-height: 1.2;
+}
+
+.main-title {
+  font-size: 1.8rem !important;
+  font-weight: bold; 
 }

@@ -413,5 +413,13 @@ export const zhTW = {
   governingLawDisclaimerContent: '本免責聲明及您對租約易的使用應受香港特別行政區法律管轄並按其解釋，不適用任何法律衝突原則。',
   
   // Acknowledgement
-  acknowledgementContent: '使用租約易，即表示您確認已閱讀、理解並同意受本免責聲明的約束。'
+  acknowledgementContent: '使用租約易，即表示您確認已閱讀、理解並同意受本免責聲明的約束。',
+
+  // Form Agreement Checkbox
+  termsCheckboxLabel: '我已閱讀並理解條款和條件及免責聲明',
+  termsCheckboxWarning: '請在繼續前閱讀並接受條款和條件及免責聲明',
+  termsCheckboxPart1: '我已閱讀並理解',
+  termsCheckboxPart2: '條款和條件',
+  termsCheckboxPart3: '及',
+  termsCheckboxPart4: '免責聲明'
 };

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { t } from '../translations';
 import { PdfInputValues } from '../utils/pdfGenerator';
@@ -76,6 +77,8 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
   setters
 }) => {
   const { language } = useLanguage();
+  const [termsAccepted, setTermsAccepted] = useState<boolean>(false);
+  const [showTermsWarning, setShowTermsWarning] = useState<boolean>(false);
   
   // State to track which sections are expanded/collapsed
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
@@ -732,8 +735,43 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
           +
         </button>
       </div>
+        
+      
       </div>
       <hr className="form-section-divider" />
+
+      {/* T&C Checkbox */}
+      <div className="terms-checkbox-container">
+        {showTermsWarning && (
+          <div className="terms-warning">
+            {t(language, 'termsCheckboxWarning')}
+          </div>
+        )}
+        <div className="checkbox-wrapper">
+          <input
+            type="checkbox"
+            id="terms-checkbox"
+            checked={termsAccepted}
+            onChange={(e) => {
+              setTermsAccepted(e.target.checked);
+              if (e.target.checked) {
+                setShowTermsWarning(false);
+              }
+            }}
+          />
+          <label>
+            {t(language, 'termsCheckboxPart1')}{' '}
+            <Link to="/terms-and-conditions" target="_blank" className="terms-link">
+              {t(language, 'termsCheckboxPart2')}
+            </Link>{' '}
+            {t(language, 'termsCheckboxPart3')}{' '}
+            <Link to="/disclaimer" target="_blank" className="terms-link">
+              {t(language, 'termsCheckboxPart4')}
+            </Link>
+          </label>
+        </div>
+      </div>
+
       <div className="controls">
         <button 
           className="reset-btn" 
@@ -749,10 +787,25 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
         <div className="button-group-right">
           <button 
             className="generate-btn" 
-            onClick={isFreeMode ? handleRedirectToReturn : handleRedirectToCheckout}
+            onClick={(e) => {
+              if (!termsAccepted) {
+                e.preventDefault();
+                setShowTermsWarning(true);
+                // Scroll to the terms checkbox
+                document.getElementById('terms-checkbox')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+              }
+              isFreeMode ? handleRedirectToReturn() : handleRedirectToCheckout();
+            }}
             onTouchStart={(e) => {
               // Prevent default to avoid any delay
               e.preventDefault();
+              if (!termsAccepted) {
+                setShowTermsWarning(true);
+                // Scroll to the terms checkbox
+                document.getElementById('terms-checkbox')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+              }
               isFreeMode ? handleRedirectToReturn() : handleRedirectToCheckout(); 
             }}
             // disabled={isLoading}

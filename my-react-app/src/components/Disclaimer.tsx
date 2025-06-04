@@ -7,7 +7,7 @@ const Disclaimer: React.FC = () => {
   const { language } = useLanguage();
   return (
     <div className="disclaimer-container">
-      <h1>{t(language, 'disclaimerPageTitle')}</h1>
+      <h1 className='main-title'>{t(language, 'disclaimerPageTitle')}</h1>
       <p><strong>{t(language, 'disclaimerLastUpdated')}:</strong> {new Date().toLocaleDateString()}</p>
 
       <h2>{t(language, 'generalDisclaimerTitle')}</h2>

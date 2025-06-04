@@ -7,7 +7,7 @@ const TermsAndConditions: React.FC = () => {
   const { language } = useLanguage();
   return (
     <div className="terms-container">
-      <h1>{t(language, 'termsAndConditionsTitle')}</h1>
+      <h1 className='main-title'>{t(language, 'termsAndConditionsTitle')}</h1>
       <p><strong>{t(language, 'lastUpdated')}:</strong> {new Date().toLocaleDateString()}</p>
 
       <h2>{t(language, 'introductionTitle')}</h2>
