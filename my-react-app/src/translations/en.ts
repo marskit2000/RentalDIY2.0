@@ -2,7 +2,7 @@ import { use } from "react";
 
 export const en = {
   // Header
-  appTitle: 'EaseLease',
+  appTitle: 'EasyLease',
   
   // Navigation
   home: 'Home',
@@ -85,9 +85,9 @@ export const en = {
   governmentRent: 'Government Rent',
   rentFreeFrom: 'Rent Free From',
   rentFreeTo: 'Rent Free To',
-  breakClause1: 'Break Clause 1',
-  breakClause2: 'Break Clause 2',
-  breakClause3: 'Break Clause 3',
+  breakClause1: 'Party(s) with the Right',
+  breakClause2: 'Advance Notice (months)',
+  breakClause3: 'Minimum Rental Period (months)',
   airConditioner: 'Air Conditioner',
   ventilator: 'Ventilator',
   oilVentilator: 'Oil Ventilator',

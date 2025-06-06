@@ -78,11 +78,16 @@
   display: none;
 }
 
-.App-header h1 {
+.App-header h1, .App-header .App-Title {
   font-size: 2rem;
-  font-weight: 900;
+  font-weight: 700;
   text-align: left;
   color: white;
+}
+
+/* Specific rule for the app title with Fredoka font */
+.App-Title {
+  font-family: 'Fredoka', sans-serif !important;
 }
 
 .App-header a{
@@ -98,10 +103,11 @@
     align-items: center;
   }
   
-  .App-header .App-Title-Link h1 {
+  .App-header .App-Title-Link h1, .App-header .App-Title-Link .App-Title {
     color: white;
     font-size: 1.5rem;
     margin: 0.5rem 0;
+    /* Keep the Fredoka font in responsive mode */
   }
 
   .header-right {
@@ -132,9 +138,10 @@
     align-items: center;
   }
   
-  .App-header h1 {
+  .App-header h1, .App-header .App-Title {
     font-size: 1.2rem;
     margin: 0.5rem 0;
+    /* Keep font settings consistent */
   }
   
   .header-right {

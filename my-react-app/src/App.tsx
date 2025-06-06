@@ -27,7 +27,7 @@ function AppContent() {
       <div className="App">
         <header className="App-header">
           <Link to="/" className="App-Title-Link">
-            <h1>{t(language, 'appTitle')}</h1>
+            <h1 className="App-Title">{t(language, 'appTitle')}</h1>
           </Link>  
           <div className="header-right">
             <div className="header-right-desktop">

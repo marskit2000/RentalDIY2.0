@@ -33,10 +33,19 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
   });
 
   // Store language in localStorage when it changes
+  // Also set the HTML lang attribute to ensure proper font selection
   useEffect(() => {
     console.log('Language changed in context to:', language);
     localStorage.setItem('language', language);
+    
+    // Set the HTML lang attribute to ensure proper font selection
+    document.documentElement.lang = language;
   }, [language]);
+
+  // Set initial HTML lang attribute on component mount
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, []);
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage }}>
