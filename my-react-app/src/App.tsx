@@ -9,7 +9,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import LanguageSelector from './components/LanguageSelector';
 import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
-import { t } from './translations';
+import { t, getLocalizedImage } from './translations';
 import { Link } from 'react-router-dom';
 import Checkout from './components/Checkout';
 import Return from './components/Return';
@@ -22,12 +22,19 @@ import PrivacyPolicy from './components/PrivacyPolicy';
 function AppContent() {
   const { language } = useLanguage();
 
+  const appLogo = getLocalizedImage({
+    'en': '/src/assets/images/easylease_logo_white.png',
+    'zh-TW': '/src/assets/images/easylease_logo_white.png',
+    'zh-CN': '/src/assets/images/easylease_logo_white.png'
+  }, language, '/src/assets/images/easylease_logo_white.png');
+
   return (
     <Router>
       <div className="App">
         <header className="App-header">
           <Link to="/" className="App-Title-Link">
-            <h1 className="App-Title">{t(language, 'appTitle')}</h1>
+            {/* <h1 className="App-Title">{t(language, 'appTitle')}</h1> */}
+            <img src={appLogo} alt="App Logo" className="App-Logo" />
           </Link>  
           <div className="header-right">
             <div className="header-right-desktop">
