@@ -1,12 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
-import { t } from '../translations';
+import { getLocalizedImage, t } from '../translations';
 import './Footer.css';
 
 const Footer: React.FC = () => {
   const { language } = useLanguage();
   const currentYear = new Date().getFullYear();
+
+  const appFooterLogo = getLocalizedImage({
+      'en': '/src/assets/images/logo/easylease_logo_white_a_eng.png',
+      'zh-TW': '/src/assets/images/logo/easylease_logo_white_a_chi_HK.png',
+      'zh-CN': '/src/assets/images/logo/easylease_logo_white_a_chi_CN.png'
+    }, language, '/src/assets/images/logo/easylease_logo_white_a_eng.png');
 
   return (
     <footer className="footer">
@@ -41,11 +47,18 @@ const Footer: React.FC = () => {
           </nav>
         </div>
       </div> */}
-      
+
+      <div className="footer-logo-container">
+        <Link to="/" className="App-Title-Link">
+          <img src={appFooterLogo} alt="App Footer Logo" className="app-footer-logo" />
+        </Link>  
+      </div>
+
+
       <div className="footer-bottom">
         <p>{t(language, 'contactUsFooter')} - <a href="mailto:rentaldiysupport@gmail.com">rentaldiysupport@gmail.com</a></p>
         <p className="copyright">
-          &copy; {currentYear} RentalDIY. {t(language, 'allRightsReserved')}
+          &copy; {currentYear} EasyLease {t(language, 'allRightsReserved')}
         </p>
       </div>
     </footer>

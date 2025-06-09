@@ -23,10 +23,10 @@ function AppContent() {
   const { language } = useLanguage();
 
   const appLogo = getLocalizedImage({
-    'en': '/src/assets/images/easylease_logo_white.png',
-    'zh-TW': '/src/assets/images/easylease_logo_white.png',
-    'zh-CN': '/src/assets/images/easylease_logo_white.png'
-  }, language, '/src/assets/images/easylease_logo_white.png');
+    'en': '/src/assets/images/logo/easylease_logo_white_b_eng.png',
+    'zh-TW': '/src/assets/images/logo/easylease_logo_white_b_chi_HK.png',
+    'zh-CN': '/src/assets/images/logo/easylease_logo_white_b_chi_CN.png'
+  }, language, '/src/assets/images/logo/easylease_logo_white_b_eng.png');
 
   return (
     <Router>

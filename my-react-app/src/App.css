@@ -105,22 +105,6 @@
   color: white;
 }
 
-@media (max-width: 1000px){
-  .header-right{
-    scale: 0.9;
-  }
-}
-
-@media (max-width: 900px){
-  .header-right{
-    scale: 0.65;
-  }
-
-  .App-Logo {
-    width: 120px;
-  }
-}
-
 /* Tablet responsive styles */
 @media (max-width: 768px) {
   .App-header {
