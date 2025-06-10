@@ -227,7 +227,7 @@ export const generatePDF = async (params: PdfGenerationParams) => {
   } = params;
 
   try {
-    const response = await fetch('/src/assets/Tenancy_Agreement_Template_20250311.pdf');
+    const response = await fetch('/src/assets/Tenancy_Agreement_Template_20250610.pdf');
     const pdfBuffer = await response.arrayBuffer();
     
     const pdfDoc = await PDFDocument.load(pdfBuffer);
@@ -337,7 +337,7 @@ export const generatePDF = async (params: PdfGenerationParams) => {
     if (landLordId.trim()) {
       pages[1].drawText(landLordId, {
         x: 428,
-        y: height - 792,
+        y: height - 787,
         size: 12,
         font: helveticaFont,
         color: fontColor,
@@ -381,7 +381,7 @@ export const generatePDF = async (params: PdfGenerationParams) => {
     if (tenantId.trim()) {
       pages[1].drawText(tenantId, {
         x: 160,
-        y: height - 792,
+        y: height - 787,
         size: 12,
         font: helveticaFont,
         color: fontColor,
