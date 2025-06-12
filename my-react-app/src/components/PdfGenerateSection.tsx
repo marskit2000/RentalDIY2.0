@@ -312,6 +312,10 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
       alert(t(language, 'pdfPreviewError') || 'Error generating PDF preview. Please try again.');
     } finally {
       setIsLoading(false);
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     }
   };
 
