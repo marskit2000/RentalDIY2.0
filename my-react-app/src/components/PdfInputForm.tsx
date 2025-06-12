@@ -212,7 +212,7 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
           placeholder={t(language, 'enterLandlordName')}
         />
       </div>
-      <div className="input-group-row-container">
+
         <div className="input-group input-group-50">
           <label htmlFor="landlordTel">{t(language, 'landlordTel')}</label>
           <input
@@ -262,7 +262,7 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
             placeholder={t(language, 'enterID')}
           />
         </div>
-      </div>
+      
       <div className="input-group">
         <label htmlFor="pdf-text-3">{t(language, 'landlordAddress')}</label>
         <input
