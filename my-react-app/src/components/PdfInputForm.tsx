@@ -59,6 +59,8 @@ interface PdfInputFormProps {
     setInputDate2: React.Dispatch<React.SetStateAction<string>>;
     setDateFrom: React.Dispatch<React.SetStateAction<string>>;
     setDateTo: React.Dispatch<React.SetStateAction<string>>;
+    setTenantIDorBR: React.Dispatch<React.SetStateAction<string>>;
+    setLandlordIDorBR: React.Dispatch<React.SetStateAction<string>>;
   }
 }
 
@@ -112,7 +114,9 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
     bed, wardrobe, settee, otherFurniture,
     landLordId, landlordTel, tenantId, tenantTel,
     landlordBankAccount, bank, inputDate2, dateFrom, dateTo,
-    remarksFields
+    remarksFields,
+    tenantIDorBR,
+    landlordIDorBR
   } = formValues;
 
   const {
@@ -124,7 +128,9 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
     setGasStove, setLightings, setRefrigerator, setWashingMachine,
     setBed, setWardrobe, setSettee, setOtherFurniture,
     setLandLordId, setLandlordTel, setTenantId, setTenantTel,
-    setLandlordBankAccount, setBank, setInputDate2, setDateFrom, setDateTo
+    setLandlordBankAccount, setBank, setInputDate2, setDateFrom, setDateTo,
+    setTenantIDorBR,
+    setLandlordIDorBR
   } = setters;
 
   return (
@@ -218,7 +224,36 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
           />
         </div>
         <div className="input-group input-group-50">
-          <label htmlFor="landLordId">{t(language, 'landlordId')}</label>
+        <div className="input-group-label-container">
+            <div className="radio-label-group">
+              <label htmlFor="landlordIdRadio">{t(language, 'landlordId')}</label>
+              <input
+                type="radio"
+                id="landlordIdRadio"
+                name="landlordIdType"
+                checked={landlordIDorBR === 'id'}
+                onChange={() => {
+                  handleInputChange('landlordIDorBR', 'id' as string, setLandlordIDorBR);
+                  const element = document.getElementById('landlordIdRadio') as HTMLInputElement;
+                  if (element) element.checked = true;
+                }}
+              />
+            </div>
+            <div className="radio-label-group">
+              <label htmlFor="landlordId2Radio">{t(language, 'landlordId2')}</label>
+              <input
+                type="radio"
+                id="landlordId2Radio"
+                name="landlordIdType"
+                checked={landlordIDorBR === 'br'}
+                onChange={() => {
+                  handleInputChange('landlordIDorBR', 'br' as string, setLandlordIDorBR);
+                  const element = document.getElementById('landlordId2Radio') as HTMLInputElement;
+                  if (element) element.checked = true;
+                }}
+              />
+            </div>
+          </div>
           <input
             type="text"
             id="landLordId"
@@ -248,7 +283,7 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
           placeholder={t(language, 'enterTenantName')}
         />
       </div>
-      <div className="input-group-row-container">
+
         <div className="input-group input-group-50">
           <label htmlFor="tenantTel">{t(language, 'tenantTel')}</label>
           <input
@@ -260,7 +295,36 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
           />
         </div>
         <div className="input-group input-group-50">
-          <label htmlFor="tenantId">{t(language, 'tenantId')}</label>
+          <div className="input-group-label-container">
+            <div className="radio-label-group">
+              <label htmlFor="tenantIdRadio">{t(language, 'tenantId')}</label>
+              <input
+                type="radio"
+                id="tenantIdRadio"
+                name="tenantIdType"
+                checked={tenantIDorBR === 'id'}
+                onChange={() => {
+                  handleInputChange('tenantIDorBR', 'id' as string, setTenantIDorBR);
+                  const element = document.getElementById('tenantIdRadio') as HTMLInputElement;
+                  if (element) element.checked = true;
+                }}
+              />
+            </div>
+            <div className="radio-label-group">
+              <label htmlFor="tenantId2Radio">{t(language, 'tenantId2')}</label>
+              <input
+                type="radio"
+                id="tenantId2Radio"
+                name="tenantIdType"
+                checked={tenantIDorBR === 'br'}
+                onChange={() => {
+                  handleInputChange('tenantIDorBR', 'br' as string, setTenantIDorBR);
+                  const element = document.getElementById('tenantId2Radio') as HTMLInputElement;
+                  if (element) element.checked = true;
+                }}
+              />
+            </div>
+          </div>
           <input
             type="text"
             id="tenantId"
@@ -268,7 +332,7 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
             onChange={(e) => handleInputChange('tenantId', e.target.value, setTenantId)}
             placeholder={t(language, 'enterID')}
           />
-        </div>
+
       </div>    
       <div className="input-group">
         <label htmlFor="pdf-text-5">{t(language, 'tenantAddress')}</label>

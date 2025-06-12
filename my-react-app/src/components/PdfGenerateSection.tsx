@@ -74,6 +74,8 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const [showResetModal, setShowResetModal] = useState(false);
   const [redirectToCheckout, setRedirectToCheckout] = useState(false);
   const [showAdModal, setShowAdModal] = useState(false);
+  const [tenantIDorBR, setTenantIDorBR] = useState(savedValues.tenantIDorBR);
+  const [landlordIDorBR, setLandlordIDorBR] = useState(savedValues.landlordIDorBR);
 
   // ConvertToImage State - used by the preview function
   const [images, setImages] = useState<string[]>([]);
@@ -212,6 +214,8 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
         wardrobe,
         settee,
         otherFurniture,
+        tenantIDorBR,
+        landlordIDorBR,
         landLordId,
         landlordTel,
         tenantId,
@@ -278,6 +282,8 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
         wardrobe,
         settee,
         otherFurniture,
+        tenantIDorBR,
+        landlordIDorBR,
         landLordId,
         landlordTel,
         tenantId,
@@ -355,7 +361,9 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
       bed, wardrobe, settee, otherFurniture,
       landLordId, landlordTel, tenantId, tenantTel,
       landlordBankAccount, bank, inputDate2, dateFrom, dateTo,
-      remarksFields
+      remarksFields,
+      tenantIDorBR,
+      landlordIDorBR
     };
     
     // Save the current form state to localStorage
@@ -382,7 +390,9 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
       bed, wardrobe, settee, otherFurniture,
       landLordId, landlordTel, tenantId, tenantTel,
       landlordBankAccount, bank, inputDate2, dateFrom, dateTo,
-      remarksFields
+      remarksFields,
+      tenantIDorBR,
+      landlordIDorBR
     };
     
     // Save the current form state to localStorage
@@ -428,6 +438,8 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
         wardrobe,
         settee,
         otherFurniture,
+        tenantIDorBR,
+        landlordIDorBR,
         landLordId,
         landlordTel,
         tenantId,
@@ -478,7 +490,9 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           bed, wardrobe, settee, otherFurniture,
           landLordId, landlordTel, tenantId, tenantTel,
           landlordBankAccount, bank, inputDate2, dateFrom, dateTo,
-          remarksFields
+          remarksFields,
+          tenantIDorBR,
+          landlordIDorBR
         }}
         handleInputChange={handleInputChange}
         handleRemarkChange={handleRemarkChange}
@@ -499,7 +513,9 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           setGasStove, setLightings, setRefrigerator, setWashingMachine,
           setBed, setWardrobe, setSettee, setOtherFurniture,
           setLandLordId, setLandlordTel, setTenantId, setTenantTel,
-          setLandlordBankAccount, setBank, setInputDate2, setDateFrom, setDateTo
+          setLandlordBankAccount, setBank, setInputDate2, setDateFrom, setDateTo,
+          setTenantIDorBR,
+          setLandlordIDorBR
         }}
       />
       </div>

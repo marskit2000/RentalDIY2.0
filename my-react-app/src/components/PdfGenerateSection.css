@@ -823,3 +823,26 @@
   font-size: 1rem !important; 
   font-weight: bold;
 }
+
+.input-group-label-container{
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.radio-label-group{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.radio-label-group label{
+  width: auto;
+}
+
+.radio-label-group input{
+  margin-left: 10px;
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+

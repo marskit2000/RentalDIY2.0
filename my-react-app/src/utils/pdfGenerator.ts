@@ -48,6 +48,8 @@ export interface PdfGenerationParams {
   wardrobe: string;
   settee: string;
   otherFurniture: string;
+  tenantIDorBR: string;
+  landlordIDorBR: string;
   landLordId: string;
   landlordTel: string;
   tenantId: string;
@@ -104,6 +106,8 @@ export const defaultPdfInputValues: PdfInputValues = {
   wardrobe: '',
   settee: '',
   otherFurniture: '',
+  tenantIDorBR: 'id',
+  landlordIDorBR: 'id',
   landLordId: '',
   landlordTel: '',
   tenantId: '',
@@ -113,6 +117,7 @@ export const defaultPdfInputValues: PdfInputValues = {
   dateFrom: '',
   dateTo: '',
   remarksFields: ['']
+  
 };
 
 /**
@@ -210,6 +215,8 @@ export const generatePDF = async (params: PdfGenerationParams) => {
     wardrobe,
     settee,
     otherFurniture,
+    tenantIDorBR,
+    landlordIDorBR,
     landLordId,
     landlordTel,
     tenantId,
@@ -227,7 +234,7 @@ export const generatePDF = async (params: PdfGenerationParams) => {
   } = params;
 
   try {
-    const response = await fetch('/src/assets/Tenancy_Agreement_Template_20250610.pdf');
+    const response = await fetch('/src/assets/Tenancy_Agreement_Template_20250610_color.pdf');
     const pdfBuffer = await response.arrayBuffer();
     
     const pdfDoc = await PDFDocument.load(pdfBuffer);
@@ -335,9 +342,16 @@ export const generatePDF = async (params: PdfGenerationParams) => {
 
     // Add landlord ID
     if (landLordId.trim()) {
+      let modifiedHeight
+      if(landlordIDorBR === 'id') {
+        modifiedHeight = height - 787;
+      }
+      else if(landlordIDorBR === 'br') {
+        modifiedHeight = height - 808;
+      }
       pages[1].drawText(landLordId, {
-        x: 428,
-        y: height - 787,
+        x: 160,
+        y: modifiedHeight,
         size: 12,
         font: helveticaFont,
         color: fontColor,
@@ -379,9 +393,16 @@ export const generatePDF = async (params: PdfGenerationParams) => {
 
     // Add tenant ID
     if (tenantId.trim()) {
+      let modifiedHeight2
+      if(tenantIDorBR === 'id') {
+        modifiedHeight2 = height - 787;
+      }
+      else if(tenantIDorBR === 'br') {
+        modifiedHeight2 = height - 808;
+      }
       pages[1].drawText(tenantId, {
-        x: 160,
-        y: height - 787,
+        x: 428,
+        y: modifiedHeight2,
         size: 12,
         font: helveticaFont,
         color: fontColor,
