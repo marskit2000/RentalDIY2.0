@@ -469,6 +469,7 @@
 .button-group-right {
   display: flex;
   gap: 1rem;
+  margin-left: 1rem;
 }
 
 .reset-btn {
