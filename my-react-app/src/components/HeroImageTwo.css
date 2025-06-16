@@ -21,6 +21,29 @@
     transform: rotate(0deg) scale(1.05);
 }
 
+@media (max-width: 1600px) {
+    .hero-image {
+        width: 550px;
+    }
+}
+
+@media (max-width: 1500px) {
+    .hero-image {
+        width: 500px;
+        right: 0;
+    }
+}
+
+@media (max-width: 1280px) {
+    .hero-image {
+        width: 450px;
+        top: 20px;
+        right: 0;
+        transform: rotate(2deg);
+    }
+}
+
+
 /* Tablet Responsive Styles */
 @media (max-width: 768px) {
     .hero-image {
