@@ -1,0 +1,16 @@
+/* PdfInputForm Styles */
+
+/* Background Color Section */
+.background-color-section {
+  display: flex;
+  align-items: center;
+}
+
+.background-color-select-container {
+  margin-left: 20px;
+}
+
+.background-color-select {
+  padding: 5px;
+  border-radius: 4px;
+}

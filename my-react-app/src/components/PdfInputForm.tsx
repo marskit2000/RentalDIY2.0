@@ -808,22 +808,52 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
       <hr className="form-section-divider" />
 
       {/* Background Color Section */}
-      <div className="section-header" style={{ display: 'flex', alignItems: 'center' }}>
-        <div className="section-subheader">
+      <div className="section-header background-color-section">
+        <div className="section-subheader-background-color">
           <h2 className='form-sub-heading'>{t(language, 'backgroundColor')}</h2>
         </div>
-        <div style={{ marginLeft: '20px' }}>
-          <select
-            id="background-color"
-            defaultValue="green"
-            onChange={(e) => {
-              handleInputChange('backgroundColor', e.target.value, setBackgroundColor);
+        <div className="background-color-select-container">
+          {/* Direct click handlers on the divs for immediate visual feedback */}
+          <div 
+            className={`color-circle green ${backgroundColor === 'green' ? 'selected' : ''}`}
+            onClick={() => {
+              // Only update if not already selected
+              if (backgroundColor !== 'green') {
+                // Cast the string literal to string to match the expected type
+                const value: string = 'green';
+                handleInputChange('backgroundColor', value, setBackgroundColor);
+              }
             }}
-            style={{ padding: '5px', borderRadius: '4px' }}
           >
-            <option value="green">{t(language, 'backgroundColorGreen')}</option>
-            <option value="white">{t(language, 'backgroundColorWhite')}</option>
-          </select>
+            <input
+              type="radio"
+              id="background-color-green"
+              name="background-color"
+              value="green"
+              checked={backgroundColor === 'green'}
+              readOnly
+            />
+          </div>
+          <div 
+            className={`color-circle white ${backgroundColor === 'white' ? 'selected' : ''}`}
+            onClick={() => {
+              // Only update if not already selected
+              if (backgroundColor !== 'white') {
+                // Cast the string literal to string to match the expected type
+                const value: string = 'white';
+                handleInputChange('backgroundColor', value, setBackgroundColor);
+              }
+            }}
+          >
+            <input
+              type="radio"
+              id="background-color-white"
+              name="background-color"
+              value="white"
+              checked={backgroundColor === 'white'}
+              readOnly
+            />
+          </div>
         </div>
       </div>
       <hr className="form-section-divider" />
