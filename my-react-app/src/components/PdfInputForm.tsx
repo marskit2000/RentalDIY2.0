@@ -61,6 +61,7 @@ interface PdfInputFormProps {
     setDateTo: React.Dispatch<React.SetStateAction<string>>;
     setTenantIDorBR: React.Dispatch<React.SetStateAction<string>>;
     setLandlordIDorBR: React.Dispatch<React.SetStateAction<string>>;
+    setBackgroundColor: React.Dispatch<React.SetStateAction<string>>;
   }
 }
 
@@ -116,7 +117,8 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
     landlordBankAccount, bank, inputDate2, dateFrom, dateTo,
     remarksFields,
     tenantIDorBR,
-    landlordIDorBR
+    landlordIDorBR,
+    backgroundColor
   } = formValues;
 
   const {
@@ -130,7 +132,8 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
     setLandLordId, setLandlordTel, setTenantId, setTenantTel,
     setLandlordBankAccount, setBank, setInputDate2, setDateFrom, setDateTo,
     setTenantIDorBR,
-    setLandlordIDorBR
+    setLandlordIDorBR,
+    setBackgroundColor
   } = setters;
 
   return (
@@ -801,6 +804,28 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
       </div>
         
       
+      </div>
+      <hr className="form-section-divider" />
+
+      {/* Background Color Section */}
+      <div className="section-header" style={{ display: 'flex', alignItems: 'center' }}>
+        <div className="section-subheader">
+          <h2 className='form-sub-heading'>{t(language, 'backgroundColor')}</h2>
+        </div>
+        <div style={{ marginLeft: '20px' }}>
+          <select
+            id="background-color"
+            defaultValue="green"
+            onChange={(e) => {
+              // console.log('Background color selected:', e.target.value);
+              handleInputChange('backgroundColor', e.target.value, setBackgroundColor);
+            }}
+            style={{ padding: '5px', borderRadius: '4px' }}
+          >
+            <option value="green">{t(language, 'backgroundColorGreen')}</option>
+            <option value="white">{t(language, 'backgroundColorWhite')}</option>
+          </select>
+        </div>
       </div>
       <hr className="form-section-divider" />
 

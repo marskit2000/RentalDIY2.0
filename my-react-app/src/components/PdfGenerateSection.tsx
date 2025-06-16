@@ -76,6 +76,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const [showAdModal, setShowAdModal] = useState(false);
   const [tenantIDorBR, setTenantIDorBR] = useState(savedValues.tenantIDorBR);
   const [landlordIDorBR, setLandlordIDorBR] = useState(savedValues.landlordIDorBR);
+  const [backgroundColor, setBackgroundColor] = useState(savedValues.backgroundColor);
 
   // ConvertToImage State - used by the preview function
   const [images, setImages] = useState<string[]>([]);
@@ -177,6 +178,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
     setDateFrom(defaultValues.dateFrom);
     setDateTo(defaultValues.dateTo);
     setRemarksFields(defaultValues.remarksFields);
+    setBackgroundColor(defaultValues.backgroundColor);
   };
 
   const handleGeneratePDF = async () => {
@@ -226,7 +228,8 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
         dateTo,
         remarksFields,
         language,
-        t
+        t,
+        backgroundColor
       };
       
       const url = await generatePDF(params);
@@ -297,7 +300,8 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
         t,
         setImageLoading,
         setImageError,
-        setImages
+        setImages,
+        backgroundColor
       };
       
       const url = await generatePDF(params);
@@ -367,7 +371,8 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
       landlordBankAccount, bank, inputDate2, dateFrom, dateTo,
       remarksFields,
       tenantIDorBR,
-      landlordIDorBR
+      landlordIDorBR,
+      backgroundColor
     };
     
     // Save the current form state to localStorage
@@ -396,7 +401,8 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
       landlordBankAccount, bank, inputDate2, dateFrom, dateTo,
       remarksFields,
       tenantIDorBR,
-      landlordIDorBR
+      landlordIDorBR,
+      backgroundColor
     };
     
     // Save the current form state to localStorage
@@ -454,7 +460,8 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
         dateTo,
         remarksFields,
         language,
-        t
+        t,
+        backgroundColor
       };
       
       const url = await generatePDF(params);
@@ -496,7 +503,8 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           landlordBankAccount, bank, inputDate2, dateFrom, dateTo,
           remarksFields,
           tenantIDorBR,
-          landlordIDorBR
+          landlordIDorBR,
+          backgroundColor
         }}
         handleInputChange={handleInputChange}
         handleRemarkChange={handleRemarkChange}
@@ -519,7 +527,8 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
           setLandLordId, setLandlordTel, setTenantId, setTenantTel,
           setLandlordBankAccount, setBank, setInputDate2, setDateFrom, setDateTo,
           setTenantIDorBR,
-          setLandlordIDorBR
+          setLandlordIDorBR,
+          setBackgroundColor
         }}
       />
       </div>

@@ -506,5 +506,10 @@ export const en = {
   privacyContactAddress: 'Address: EaseLease Limited, Central Plaza, 18 Harbour Road, Wan Chai, Hong Kong',
   privacyContactPhone: 'Phone: +852 1234 5678',
   
-  privacyComplianceNote: 'This Privacy Policy is compliant with the Hong Kong Personal Data (Privacy) Ordinance (Cap. 486).'
+  privacyComplianceNote: 'This Privacy Policy is compliant with the Hong Kong Personal Data (Privacy) Ordinance (Cap. 486).',
+
+  // Background Color
+  backgroundColor: 'Background Color',
+  backgroundColorGreen: 'Green',
+  backgroundColorWhite: 'White',
 };

@@ -503,5 +503,10 @@ export const zhCN = {
   privacyContactAddress: '地址：EaseLease Limited，香港湾仔港湾道18号中环广场',
   privacyContactPhone: '电话：+852 1234 5678',
   
-  privacyComplianceNote: '本隐私政策符合香港《个人数据（私隐）条例》（第486章）。'
+  privacyComplianceNote: '本隐私政策符合香港《个人数据（私隐）条例》（第486章）。',
+
+  // Background Color
+  backgroundColor: '背景颜色',
+  backgroundColorGreen: '绿色',
+  backgroundColorWhite: '白色',
 };

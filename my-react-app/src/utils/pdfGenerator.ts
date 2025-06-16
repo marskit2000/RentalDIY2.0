@@ -64,6 +64,7 @@ export interface PdfGenerationParams {
   setImageLoading?: (loading: boolean) => void;
   setImageError?: (error: string | null) => void;
   setImages?: (images: string[]) => void;
+  backgroundColor: string;
 }
 
 // Type for input values (excluding function props)
@@ -116,8 +117,8 @@ export const defaultPdfInputValues: PdfInputValues = {
   bank: '',
   dateFrom: '',
   dateTo: '',
-  remarksFields: ['']
-  
+  remarksFields: [''],
+  backgroundColor: 'green',
 };
 
 /**
@@ -230,11 +231,13 @@ export const generatePDF = async (params: PdfGenerationParams) => {
     t,
     setImageLoading,
     setImageError,
-    setImages
+    setImages,
+    backgroundColor
   } = params;
 
   try {
-    const response = await fetch('/src/assets/Tenancy_Agreement_Template_20250610_color.pdf');
+    const templatePath = backgroundColor === 'green' ? '/src/assets/Tenancy_Agreement_Template_20250610_color.pdf': '/src/assets/Tenancy_Agreement_Template_20250610.pdf';
+    const response = await fetch(templatePath);
     const pdfBuffer = await response.arrayBuffer();
     
     const pdfDoc = await PDFDocument.load(pdfBuffer);
