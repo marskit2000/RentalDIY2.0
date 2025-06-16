@@ -198,7 +198,9 @@ export const zhCN = {
   
   // Ad Modal
   adModalTitle: '即将完成！',
+  adModalTitleFinish: '完成！',
   adModalDescription: '您的PDF已准备好。请稍等片刻或与下方广告互动以下载。',
+  adModalDescriptionFinish: '您的PDF已准备好。请下载。',
   adModalCountdown: '下载将在以下时间内可用',
   adModalContinue: '下载PDF',
   adModalSkip: '我已经看过广告',

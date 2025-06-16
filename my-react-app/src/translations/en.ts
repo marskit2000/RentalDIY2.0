@@ -201,7 +201,9 @@ export const en = {
   
   // Ad Modal
   adModalTitle: 'Almost there!',
+  adModalTitleFinish: 'Finished!',
   adModalDescription: 'Your PDF is ready. Please wait a moment or interact with the ad below to download.',
+  adModalDescriptionFinish: 'Your PDF is ready. Please download it now.',
   adModalCountdown: 'Download available in',
   adModalContinue: 'Download PDF',
   adModalSkip: 'I\'ve seen the ad',

@@ -79,8 +79,11 @@ const AdInterstitialModal: React.FC<AdInterstitialModalProps> = ({
           ×
         </button>
         <div className="ad-interstitial-modal-header">
-          <h2>{t(language, 'adModalTitle')}</h2>
-          <p>{t(language, 'adModalDescription')}</p>
+          <div>
+            <img src="" alt="logo" />
+            <h2>{countdown > 0 ? t(language, 'adModalTitle') :   t(language, 'adModalTitleFinish')}</h2>
+          </div>
+          <p>{countdown > 0 ? t(language, 'adModalDescription') : t(language, 'adModalDescriptionFinish')}</p>
           {countdown > 0 && (
             <div className="ad-interstitial-progress-wrapper">
               <div className="ad-interstitial-progress-container">
