@@ -817,7 +817,6 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
             id="background-color"
             defaultValue="green"
             onChange={(e) => {
-              // console.log('Background color selected:', e.target.value);
               handleInputChange('backgroundColor', e.target.value, setBackgroundColor);
             }}
             style={{ padding: '5px', borderRadius: '4px' }}
