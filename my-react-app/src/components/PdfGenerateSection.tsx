@@ -316,10 +316,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
       alert(t(language, 'pdfPreviewError') || 'Error generating PDF preview. Please try again.');
     } finally {
       setIsLoading(false);
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+      document.getElementById('right-section')?.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -339,7 +336,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
     // alert(t(language, 'resetConfirmation') || 'Form has been reset to default values.');
   };
 
-  const cancelReset = () => {
+  const cancelReset = () => {                                                                                                               
     // Just close the modal without resetting
     setShowResetModal(false);
   };
@@ -533,7 +530,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
       />
       </div>
       {/* Right Section */}
-      <div className="right-section">
+      <div className="right-section" id="right-section">
         {showPreview ? (
           <div className="pdf-preview">
             {images.map((image, index) => (
