@@ -892,7 +892,7 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
 
       <div className="controls">
         <button 
-          className="reset-btn" 
+          className="reset-btn round-radius-button" 
           onClick={handleReset}
           onTouchStart={(e) => {
             // Prevent default to avoid any delay
@@ -904,7 +904,7 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
         </button>
         <div className="button-group-right">
           <button 
-            className="generate-btn" 
+            className="generate-btn round-radius-button" 
             onClick={(e) => {
               if (!termsAccepted) {
                 e.preventDefault();
@@ -931,7 +931,7 @@ const PdfInputForm: React.FC<PdfInputFormProps> = ({
             {(t(language, 'generatePDF') || 'Generate PDF')}
           </button>
           <button 
-            className="preview-btn"
+            className="preview-btn round-radius-button"
             onClick={handlePreview}
             onTouchStart={(e) => {
               if (isLoading) return;

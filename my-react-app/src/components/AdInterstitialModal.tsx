@@ -79,8 +79,8 @@ const AdInterstitialModal: React.FC<AdInterstitialModalProps> = ({
           ×
         </button>
         <div className="ad-interstitial-modal-header">
-          <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px'}}>
-            <img src="favicon_green_32x32.png" alt="logo" style={{width: '2rem', marginBottom: '0px'}}/>
+          <div className="ad-interstitial-modal-header-title">
+            <img src="favicon_green_32x32.png" alt="logo"/>
             <h2>{countdown > 0 ? t(language, 'adModalTitle') :   t(language, 'adModalTitleFinish')}</h2>
           </div>
           <p>{countdown > 0 ? t(language, 'adModalDescription') : t(language, 'adModalDescriptionFinish')}</p>

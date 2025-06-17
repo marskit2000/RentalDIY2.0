@@ -460,6 +460,14 @@
   box-shadow: 0 2px 4px rgba(3, 3, 3, 0.05);
 }
 
+@media screen and (max-width: 468px) {
+  .controls {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 0 1rem 0;
+  }
+}
+
 .controls-left {
   display: flex;
   flex-direction: column;
@@ -472,8 +480,15 @@
   margin-left: 1rem;
 }
 
+@media screen and (max-width: 468px) {
+  .button-group-right {
+    flex-direction: column;
+    margin-left: 0;
+  }
+}
+
 .reset-btn {
-  background-color: #d9534f;
+  background: linear-gradient(90deg, #d9534f, #9c3532);
   color: white;
   border: none;
   padding: 10px 20px;
@@ -485,8 +500,12 @@
   background-color: #c9302c;
 }
 
+.round-radius-button {
+  border-radius: 50px !important;
+}
+
 .preview-btn {
-  background-color: #007bff;
+  background: linear-gradient(90deg, #278dfa, #1a71ce);
   color: white;
   border: none;
   padding: 10px 20px;
@@ -495,7 +514,7 @@
 }
 
 .generate-btn {
-  background-color: #5cb85c;
+  background: linear-gradient(90deg, #4ca1af, #46607a);
   color: white;
   border: none;
   padding: 10px 20px;
