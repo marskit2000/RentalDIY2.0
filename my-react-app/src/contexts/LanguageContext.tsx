@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
+import { t } from '../translations';
 
 // Define available languages
 export type Language = 'en' | 'zh-TW' | 'zh-CN';
@@ -34,17 +35,26 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
 
   // Store language in localStorage when it changes
   // Also set the HTML lang attribute to ensure proper font selection
+  // And update the document title based on the selected language
   useEffect(() => {
     console.log('Language changed in context to:', language);
     localStorage.setItem('language', language);
     
     // Set the HTML lang attribute to ensure proper font selection
     document.documentElement.lang = language;
+    
+    // Update the document title based on the selected language
+    const appTitle = t(language, 'appTitle');
+    document.title = appTitle ? `${appTitle} HK` : 'Easy Lease HK';
   }, [language]);
 
-  // Set initial HTML lang attribute on component mount
+  // Set initial HTML lang attribute and document title on component mount
   useEffect(() => {
     document.documentElement.lang = language;
+    
+    // Set initial document title based on the selected language
+    const appTitle = t(language, 'appTitle');
+    document.title = appTitle ? `${appTitle} HK` : 'Easy Lease HK';
   }, []);
 
   return (
