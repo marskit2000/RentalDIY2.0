@@ -1,13 +1,56 @@
 import * as pdfjsLib from 'pdfjs-dist'
+// import * as pdfjsLib from 'pdfjs-dist/webpack.mjs';
+
+//Set the worker source
+// if (typeof window !== 'undefined') {
+//     // Use a web worker from the same origin
+//     pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
+//       'pdfjs-dist/build/pdf.worker.mjs',
+//       import.meta.url
+//     ).toString();
+// }
+
+  // if (typeof window !== 'undefined') {
+  //   // Use a web worker from the same origin
+  //   pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
+  //     'pdfjs-dist/build/pdf.worker.entry.js',
+  //     import.meta.url
+  //   ).toString();
+  // }
+
+// // Set the worker source
+// if (typeof window !== 'undefined') {
+//     // For production builds, use a direct path to the worker file
+//     pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.mjs';
+// }
 
 // Set the worker source
+// if (typeof window !== 'undefined') {
+//   // Option 1: Use a direct path to the worker file with proper MIME type configuration
+//   // pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.mjs';
+  
+//   // Option 2: Use the npm package path (recommended)
+//   pdfjsLib.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.js`;
+// }
+
+//Set the worker source
 if (typeof window !== 'undefined') {
-    // Use a web worker from the same origin
-    pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
-      'pdfjs-dist/build/pdf.worker.mjs',
-      import.meta.url
-    ).toString();
-  }
+  // Option 1: Use a direct path to the worker file with proper MIME type configuration
+  // pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.mjs';
+  console.log("running pdf.worker.mjs");
+  // Option 2: Use the npm package path (recommended)
+  pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.mjs`;
+}
+
+// Set the worker source
+// if (typeof window !== 'undefined') {
+//   // Import the worker directly from node_modules
+//   // This will be handled by your bundler (webpack/vite/etc)
+//   pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
+//     'pdfjs-dist/build/pdf.worker.mjs',
+//     import.meta.url
+//   ).toString();
+// }
 
 export const convertToImage = async (pdfPath: string) => {
     try {

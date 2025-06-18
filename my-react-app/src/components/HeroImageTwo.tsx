@@ -1,4 +1,4 @@
-import TenancyHeroImage from '../assets/images/Tenancy_Agreement_Template_hero_page.jpg'
+import TenancyHeroImage from '/Tenancy_Agreement_Template_hero_page.jpg'
 import './HeroImageTwo.css'
 
 const HeroImageTwo = () => {

@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 80px 10%;
-  background-image: linear-gradient(rgba(143, 143, 143, 0.5), rgba(39, 39, 39, 0.5)),url('../assets/images/Hong_Kong_Island_Skyline_a.jpg');
+  background-image: linear-gradient(rgba(143, 143, 143, 0.5), rgba(39, 39, 39, 0.5)),url('/Hong_Kong_Island_Skyline_a.jpg');
   background-size: cover;
   background-position: center;
   background-color: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);

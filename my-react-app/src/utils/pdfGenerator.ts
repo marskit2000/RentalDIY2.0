@@ -236,7 +236,7 @@ export const generatePDF = async (params: PdfGenerationParams) => {
   } = params;
 
   try {
-    const templatePath = backgroundColor === 'green' ? '/src/assets/Tenancy_Agreement_Template_20250610_color.pdf': '/src/assets/Tenancy_Agreement_Template_20250610.pdf';
+    const templatePath = backgroundColor === 'green' ? '/Tenancy_Agreement_Template_20250610_color.pdf': '/Tenancy_Agreement_Template_20250610.pdf';
     const response = await fetch(templatePath);
     const pdfBuffer = await response.arrayBuffer();
     
@@ -246,7 +246,7 @@ export const generatePDF = async (params: PdfGenerationParams) => {
     const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica)
     pdfDoc.registerFontkit(fontkit)
     const defaultFontBuffer = await fetch(
-      '/src/assets/fonts/NotoSansTC-Regular.ttf',
+      '/fonts/NotoSansTC-Regular.ttf',
     ).then(res => res.arrayBuffer());
     const chineseFont = await pdfDoc.embedFont(defaultFontBuffer);
 

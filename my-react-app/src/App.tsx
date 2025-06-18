@@ -9,7 +9,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import LanguageSelector from './components/LanguageSelector';
 import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
-import { t, getLocalizedImage } from './translations';
+import { getLocalizedImage } from './translations';
 import { Link } from 'react-router-dom';
 import Checkout from './components/Checkout';
 import Return from './components/Return';
@@ -23,10 +23,10 @@ function AppContent() {
   const { language } = useLanguage();
 
   const appLogo = getLocalizedImage({
-    'en': '/src/assets/images/logo/easylease_logo_white_b_eng.png',
-    'zh-TW': '/src/assets/images/logo/easylease_logo_white_b_chi_HK.png',
-    'zh-CN': '/src/assets/images/logo/easylease_logo_white_b_chi_CN.png'
-  }, language, '/src/assets/images/logo/easylease_logo_white_b_eng.png');
+    'en': '/logo/easylease_logo_white_b_eng.png',
+    'zh-TW': '/logo/easylease_logo_white_b_chi_HK.png',
+    'zh-CN': '/logo/easylease_logo_white_b_chi_CN.png'
+  }, language, '/logo/easylease_logo_white_b_eng.png');
 
   return (
     <Router>

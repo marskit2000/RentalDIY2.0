@@ -39,7 +39,7 @@ const HowToUse: React.FC = () => {
               <span>🏠</span>
               <p>{t(language, 'homePageImage')}</p>
             </div> */}
-            <img src="/src/assets/images/screen01.gif" alt="step1" />
+            <img src="/screen01.gif" alt="step1" />
           </div>
         </div>
       </section>
@@ -51,7 +51,7 @@ const HowToUse: React.FC = () => {
             <div className="placeholder-image">
               {/* <span>📝</span>
               <p>{t(language, 'formPageImage')}</p> */}
-              <img src="/src/assets/images/screen02.gif" alt="step2" />
+              <img src="/screen02.gif" alt="step2" />
             </div>
           </div>
           <div className="how-to-use-card-content">
@@ -124,7 +124,7 @@ const HowToUse: React.FC = () => {
             <div className="placeholder-image">
               {/* <span>👁️</span>
               <p>{t(language, 'previewImage')}</p> */}
-              <img src="/src/assets/images/screen03.gif" alt="step3" />
+              <img src="/screen03.gif" alt="step3" />
             </div>
           </div>
         </div>
@@ -137,7 +137,7 @@ const HowToUse: React.FC = () => {
             <div className="placeholder-image">
               {/* <span>📄</span>
               <p>{t(language, 'pdfGenerationImage')}</p> */}
-              <img src="/src/assets/images/screen04.png" alt="step4" />
+              <img src="/Screen04.png" alt="step4" />
             </div>
           </div>
           <div className="how-to-use-card-content">

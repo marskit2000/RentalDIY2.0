@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { FaCheckCircle, FaDownload, FaHome } from 'react-icons/fa'
 import './PaymentSuccess.css'
@@ -89,6 +89,9 @@ const PaymentSuccess = ({ email }: { email: string }) => {
         dateFrom: savedValues.dateFrom,
         dateTo: savedValues.dateTo,
         remarksFields: savedValues.remarksFields,
+        tenantIDorBR: savedValues.tenantIDorBR || '',
+        landlordIDorBR: savedValues.landlordIDorBR || '',
+        backgroundColor: savedValues.backgroundColor || 'white',
         language,
         t
       }

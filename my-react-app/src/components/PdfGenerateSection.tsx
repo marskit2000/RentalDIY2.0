@@ -12,7 +12,6 @@ import {
 } from '../utils/pdfGenerator';
 import ConfirmationModal from './ui/ConfirmationModal';
 import AdInterstitialModal from './AdInterstitialModal';
-import AdSenseSection from './AdSenseSection';
 import PdfInputForm from './PdfInputForm';
 import './PdfGenerateSection.css';
 
@@ -77,14 +76,9 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
   const [tenantIDorBR, setTenantIDorBR] = useState(savedValues.tenantIDorBR);
   const [landlordIDorBR, setLandlordIDorBR] = useState(savedValues.landlordIDorBR);
   const [backgroundColor, setBackgroundColor] = useState(savedValues.backgroundColor);
-
-  // ConvertToImage State - used by the preview function
+  
+  // These variables are used in the handlePreview function
   const [images, setImages] = useState<string[]>([]);
-  // These variables are used in the handlePreview function when passed to generatePDF
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [imageLoading, setImageLoading] = useState<boolean>(false);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [imageError, setImageError] = useState<string | null>(null);
 
   // Create a debounced update function with 500ms delay
   const debouncedUpdate = useCallback(() => {
@@ -181,73 +175,7 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
     setBackgroundColor(defaultValues.backgroundColor);
   };
 
-  const handleGeneratePDF = async () => {
-    try {
-      setIsLoading(true);
-      
-      const params: PdfGenerationParams = {
-        inputDate2,
-        inputText1,
-        inputText2,
-        inputText3,
-        inputText4,
-        inputText5,
-        rentAmount,
-        securityDeposit,
-        propertyUse,
-        managementFee,
-        governmentRates,
-        governmentRent,
-        rentFreeFrom,
-        rentFreeTo,
-        breakClause1,
-        breakClause2,
-        breakClause3,
-        breakClause3Other,
-        airConditioner,
-        ventilator,
-        oilVentilator,
-        waterHeater,
-        gasStove,
-        lightings,
-        refrigerator,
-        washingMachine,
-        bed,
-        wardrobe,
-        settee,
-        otherFurniture,
-        tenantIDorBR,
-        landlordIDorBR,
-        landLordId,
-        landlordTel,
-        tenantId,
-        tenantTel,
-        landlordBankAccount,
-        bank,
-        dateFrom,
-        dateTo,
-        remarksFields,
-        language,
-        t,
-        backgroundColor
-      };
-      
-      const url = await generatePDF(params);
-      
-      if (url) {
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = "filled_tenancy_agreement.pdf";
-        link.click();
-      }
-    } catch (error) {
-      console.error('Error generating PDF:', error);
-      alert('Error generating PDF. Please check the console for details.');
-    } finally {
-      setIsLoading(false);
-      resetFormValues();
-    }
-  };
+  // PDF generation is handled by handleGeneratePDFAfterAd
 
   const handlePreview = async () => {
     try {
@@ -298,8 +226,6 @@ const PdfGenerateSection: React.FC<PdfGenerateSectionProps> = () => {
         remarksFields,
         language,
         t,
-        setImageLoading,
-        setImageError,
         setImages,
         backgroundColor
       };

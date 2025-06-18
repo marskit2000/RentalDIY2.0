@@ -1,4 +1,3 @@
-import { use } from "react";
 
 export const en = {
   // Header
