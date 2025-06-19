@@ -201,7 +201,8 @@ export const en = {
   // Ad Modal
   adModalTitle: 'Almost there!',
   adModalTitleFinish: 'Finished!',
-  adModalDescription: 'Your PDF is ready. Please wait a moment or interact with the ad below to download.',
+  // adModalDescription: 'Your PDF is generating. Please wait a moment or interact with the ad below to download.',
+  adModalDescription: 'Your PDF is generating. Please wait a moment.',
   adModalDescriptionFinish: 'Your PDF is ready. Please download it now.',
   adModalCountdown: 'Download available in',
   adModalContinue: 'Download PDF',
@@ -513,4 +514,7 @@ export const en = {
   backgroundColor: 'Background Color',
   backgroundColorGreen: 'Green',
   backgroundColorWhite: 'White',
+
+  //not legal advice phrase
+  notLegalAdvice: 'The information and services provided on this website do not constitute legal advice.',
 };

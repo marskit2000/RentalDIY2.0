@@ -24,9 +24,12 @@ const Footer: React.FC = () => {
 
 
       <div className="footer-bottom">
-        <p>{t(language, 'contactUsFooter')} - <a href="mailto:rentaldiysupport@gmail.com">rentaldiysupport@gmail.com</a></p>
+        <p>{t(language, 'contactUsFooter')} - <a href="mailto:contact@easylease.com.hk">contact@easylease.com.hk</a></p>
+        <p className="notLegalAdvice">
+          {t(language, 'notLegalAdvice')}
+        </p>
         <p className="copyright">
-          &copy; {currentYear} EasyLease {t(language, 'allRightsReserved')}
+          &copy; {currentYear} EasyLease HK {t(language, 'allRightsReserved')}
         </p>
       </div>
     </footer>

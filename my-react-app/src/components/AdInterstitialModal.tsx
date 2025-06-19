@@ -86,6 +86,7 @@ const AdInterstitialModal: React.FC<AdInterstitialModalProps> = ({
           <p>{countdown > 0 ? t(language, 'adModalDescription') : t(language, 'adModalDescriptionFinish')}</p>
           {countdown > 0 && (
             <div className="ad-interstitial-progress-wrapper">
+              {/* Original linear progress bar - commented out for later use
               <div className="ad-interstitial-progress-container">
                 <div 
                   className="ad-interstitial-progress-bar" 
@@ -95,11 +96,42 @@ const AdInterstitialModal: React.FC<AdInterstitialModalProps> = ({
                   {countdown} {countdown === 1 ? t(language, 'second') : t(language, 'seconds')}
                 </span>
               </div>
+              */}
+              
+              {/* New circular progress bar */}
+              <div className="ad-interstitial-circular-progress-container">
+                <div className="ad-interstitial-circular-progress">
+                  <svg width="80" height="80" viewBox="0 0 80 80">
+                    <circle
+                      className="ad-interstitial-circular-progress-bg"
+                      cx="40"
+                      cy="40"
+                      r="35"
+                      strokeWidth="5"
+                      fill="none"
+                    />
+                    <circle
+                      className="ad-interstitial-circular-progress-bar"
+                      cx="40"
+                      cy="40"
+                      r="35"
+                      strokeWidth="5"
+                      fill="none"
+                      strokeDasharray="219.9"
+                      strokeDashoffset={219.9 - (smoothProgress / 10) * 219.9}
+                      transform="rotate(-90 40 40)"
+                    />
+                  </svg>
+                  <div className="ad-interstitial-circular-progress-text">
+                    {countdown}
+                  </div>
+                </div>
+              </div>
             </div>
           )}
         </div>
         
-        <div className="ad-interstitial-modal-content">
+        {/* <div className="ad-interstitial-modal-content">
           <GoogleAdsense 
             client={client}
             slot={slot}
@@ -108,7 +140,7 @@ const AdInterstitialModal: React.FC<AdInterstitialModalProps> = ({
             style={{ display: 'block', width: '100%' }}
             className="ad-interstitial-adsense"
           />
-        </div>
+        </div> */}
         
         <div className="ad-interstitial-modal-footer">
           {countdown > 0 ? (

@@ -54,7 +54,7 @@ const LandingPage: React.FC = () => {
       </section>
 
       {/* Google AdSense Section */}
-      <AdSenseSection />
+      {/* <AdSenseSection /> */}
 
       <section className="how-it-works-section">
         <h2>{t(language, 'howItWorksTitle')}</h2>

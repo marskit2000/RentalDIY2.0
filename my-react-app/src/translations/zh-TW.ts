@@ -199,7 +199,8 @@ export const zhTW = {
   // Ad Modal
   adModalTitle: '即將完成！',
   adModalTitleFinish: '完成！',
-  adModalDescription: '您的PDF已準備好。請稍等片刻或與下方廣告互動以下載。',
+  // adModalDescription: '您的PDF已準備好。請中稍等片刻或與下方廣告互動以下載。',
+  adModalDescription: '您的PDF正在製作中。請稍等片刻然後下載。',
   adModalDescriptionFinish: '您的PDF已準備好。請下載。',
   adModalCountdown: '下載將在以下時間內可用',
   adModalContinue: '下載PDF',
@@ -511,4 +512,7 @@ export const zhTW = {
   backgroundColor: '背景顏色',
   backgroundColorGreen: '綠色',
   backgroundColorWhite: '白色',
+
+  //not legal advice phrase
+  notLegalAdvice: '本網站提供的信息和服務不構成法律諮詢。',
 };

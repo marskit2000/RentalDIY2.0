@@ -89,6 +89,16 @@
   padding: 0 2rem;
 }
 
+.footer-bottom p a {
+  color: white;
+  font-size: 1.25rem !important;
+}
+
+.footer-bottom p {
+  color: white;
+  margin-bottom: 20px;
+}
+
 @media screen and (max-width: 1024px) {
   .footer-bottom {
     flex-direction: column;

@@ -199,7 +199,8 @@ export const zhCN = {
   // Ad Modal
   adModalTitle: '即将完成！',
   adModalTitleFinish: '完成！',
-  adModalDescription: '您的PDF已准备好。请稍等片刻或与下方广告互动以下载。',
+  // adModalDescription: '您的PDF已准备好。请稍等片刻或与下方广告互动以下载。',
+  adModalDescription: '您的PDF正在製作中。請稍等片刻然後下載。',
   adModalDescriptionFinish: '您的PDF已准备好。请下载。',
   adModalCountdown: '下载将在以下时间内可用',
   adModalContinue: '下载PDF',
@@ -511,4 +512,7 @@ export const zhCN = {
   backgroundColor: '背景颜色',
   backgroundColorGreen: '绿色',
   backgroundColorWhite: '白色',
+
+  //not legal advice phrase
+  notLegalAdvice: '本网站提供的信息和服务不构成法律咨询。',
 };
