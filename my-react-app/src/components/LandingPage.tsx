@@ -4,7 +4,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { t } from '../translations';
 import './LandingPage.css';
 import HeroImageTwo from './HeroImageTwo';
-import AdSenseSection from './AdSenseSection';
+// import AdSenseSection from './AdSenseSection';
 
 const LandingPage: React.FC = () => {
   const navigate = useNavigate();

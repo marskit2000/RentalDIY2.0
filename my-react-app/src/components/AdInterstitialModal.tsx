@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { t } from '../translations';
-import GoogleAdsense from './GoogleAdsense';
+// import GoogleAdsense from './GoogleAdsense';
 import './AdInterstitialModal.css';
 
 interface AdInterstitialModalProps {
@@ -16,8 +16,8 @@ const AdInterstitialModal: React.FC<AdInterstitialModalProps> = ({
   isOpen,
   onClose,
   onContinue,
-  client = 'ca-pub-3940256099942544', // Default test client
-  slot = '3535157352' // Default test slot
+  // client = 'ca-pub-3940256099942544', // Default test client
+  // slot = '3535157352' // Default test slot
 }) => {
   const { language } = useLanguage();
   const [countdown, setCountdown] = useState<number>(10);

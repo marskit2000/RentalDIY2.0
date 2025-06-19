@@ -210,10 +210,10 @@ const HowToUse: React.FC = () => {
             <h3>{t(language, 'faq2Question')}</h3>
             <p>{t(language, 'faq2Answer')}</p>
           </div>
-          <div className="faq-item">
+          {/* <div className="faq-item">
             <h3>{t(language, 'faq3Question')}</h3>
             <p>{t(language, 'faq3Answer')}</p>
-          </div>
+          </div> */}
           <div className="faq-item">
             <h3>{t(language, 'faq4Question')}</h3>
             <p>{t(language, 'faq4Answer')}</p>
